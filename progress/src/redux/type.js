@@ -1,0 +1,5 @@
+export const GET_MEDICINE ="GET_MEDICINE"
+export const GET_EAT ="GET_EAT"
+export const GET_COMFORT ="GET_COMFORT"
+export const GET_STATUS ="GET_STATUS"
+export const GET_COMMUNICATION ="GET_COMMUNICATION"
