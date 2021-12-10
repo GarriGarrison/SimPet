@@ -1,0 +1,50 @@
+.nav{
+  height:100px;
+  width:100vw;
+  display: flex;
+  justify-content: space-between;
+}
+.logo{
+  width:15%;
+}
+.navRight{
+  width: 85%;
+  
+}
+.navRightUp{
+width: 100%;
+height: 25%;
+display: flex;
+justify-content: flex-end;
+align-items: center;
+}
+.navRightUp a{
+  color: #2151B5;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s;
+  margin-left: 1rem;
+  }
+  .navRight a:hover{
+    color: #43A047;
+    font-size: 16px;
+    font-weight: bold;
+  }
+.navRightDown{
+  height: 75%;
+  width: 100%;
+  background: linear-gradient(to top, #12A6EE, #2151B5);
+}
+.navRightUpMenu{
+  display: flex;
+  justify-content: space-between;
+  margin-right: 2rem;
+
+
+}
+.paw{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 1rem;
+}
