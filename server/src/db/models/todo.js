@@ -16,11 +16,11 @@ module.exports = (sequelize, DataTypes) => {
   Todo.init({
     date: {
       allowNull: false,
-      type: DataTypes.DATE
+      type: DataTypes.STRING
     },
     time: {
       allowNull: false,
-      type: DataTypes.TIME
+      type: DataTypes.STRING
     },
     status: {
       allowNull: false,
