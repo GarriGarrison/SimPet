@@ -1,18 +1,56 @@
+/**
+ * Project: "SimPet"
+ * Path: "server"
+ * Release: 4
+ * 
+ * Date: 11.12.2021
+ */
+
+
+
 const express = require('express');
-// const path = require('path');
-// const hbs = require('hbs');
+const session = require('express-session');
 // const createError = require('http-errors');
-// const session = require('express-session');
-// const FileStore = require('session-file-store')(session);
+const FileStore = require('session-file-store')(session);
+const cors = require('cors');
 require('dotenv').config();
 
-// const indexRouter = require('./src/routes/index.router');
-// const signRouter = require('./src/routes/sign.router');
+
 const testRouter = require('./src/routes/test.router');
+const authRouter = require('./src/routes/auth.router');
+const usersRouter = require('./src/routes/users.router');
+const categoryRouter = require('./src/routes/category.router');
 
 
-const PORT = process.env.PORT || 5000;
 const app = express();
+const PORT = process.env.PORT || 5000;
+const { COOKIE_SECRET, COOKIE_NAME } = process.env;
+
+
+/* SERVER'S SETTINGS */
+app.set('cookieName', COOKIE_NAME);
+
+
+/* APP'S MIDDLEWARES */
+app.use(cors({
+  origin: true,
+  credentials: true,
+}));
+
+app.use(express.json());
+app.use(session({
+  name: app.get('cookieName'),
+  secret: COOKIE_SECRET,
+  resave: false,
+  saveUninitialized: false,
+  store: new FileStore(),
+  cookie: {
+    secure: false,
+    httpOnly: true,
+    maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
+    // expires: 24 * 60 * 60e3
+  },
+}))
 
 // const sessionConfig = {
 //   store: new FileStore(),
@@ -39,9 +77,12 @@ const app = express();
 //   next();
 // });
 
-// app.use('/', indexRouter)
-// app.use('/sign', signRouter)
+
+/* APP'S ROUTES */
 app.use('/api/v1/testdb', testRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/category', categoryRouter);
 
 
 
@@ -77,4 +118,6 @@ app.use('/api/v1/testdb', testRouter);
 //   res.render('error');
 // });
 
-app.listen(PORT, () => console.log(`server started on PORT: ${PORT}`))
+app.listen(PORT, () => {
+  console.log('Server has been started on PORT ', PORT);
+});
