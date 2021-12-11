@@ -14,7 +14,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-plusplus': 0,
-    semi: 0,
+    // semi: 0,
     'no-loop-fun': ['error', 'never'],
     tabWidth: 2,
   },
