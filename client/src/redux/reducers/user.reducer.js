@@ -1,0 +1,15 @@
+import { SET_USER, DELL_USER } from '../types'
+export const userReducer = (state = '', action) => {
+  const { type } = action
+  switch (action.type) {
+    case SET_USER:
+      return action.payload
+    
+    case DELL_USER:
+      return null
+
+    default: {
+      return state
+    }
+  }
+}
