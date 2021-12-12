@@ -1,15 +1,13 @@
 
 import { useState } from "react"
 import classes from "./form.module.css";
-import { useDispatch } from "react-redux"
 import { signUp ,signIn } from "../../redux/actions/user.actions"
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router"
+import { useSelector, useDispatch} from "react-redux";
+import { useLocation } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
 
 const UserForm = () => {
-  const history = useHistory()
-
+  let location = useLocation()
   let user = useSelector(state => state.user);
 
   const [isSignUp,setSignUp] = useState(false)
@@ -17,7 +15,7 @@ const UserForm = () => {
   
   
   if(user){
-    history.push('/')
+    // location.push('/')
   }
 
 
@@ -39,6 +37,8 @@ const UserForm = () => {
     let payload = Object.entries(userSign).filter((el) => el[1] ? el[1].trim() : el[1])
     if (payload.length) {
       payload = Object.fromEntries(payload)
+      console.log(payload);
+
       dispatch(signUp(payload)) 
     }
   }
@@ -47,7 +47,7 @@ const UserForm = () => {
     let payload = Object.entries(userSign).filter((el) => el[1] ? el[1].trim() : el[1])
     if (payload.length) {
       payload = Object.fromEntries(payload)
-      dispatch(signIn({email:payload.email,pass:payload.pass})) 
+      dispatch(signIn({email:payload.email,password:payload.password})) 
     }
   }  
 
@@ -64,7 +64,7 @@ const UserForm = () => {
           <Logo/>
           <input onChange={changeHandler} type="text" placeholder="имя пользователя" name="name" />
           <input onChange={changeHandler} type="email" placeholder="электронная почта" name="email" />
-          <input onChange={changeHandler} type="password" placeholder="пароль" name="pass" />
+          <input onChange={changeHandler} type="password" placeholder="пароль" name="password" />
           <button type="submit">Регистрация</button>
           <p className={classes.message}>
             Есть учетная запись? <a href="#" onClick={toggleSignUp}>Войти</a>
@@ -78,7 +78,7 @@ const UserForm = () => {
         <form onSubmit={submitHandlerIn} form className={classes.form}>
           <Logo/>
           <input onChange={changeHandler} type="text" placeholder="электронная почта" name="email" />
-          <input onChange={changeHandler} type="password" placeholder="пароль" name="pass" />
+          <input onChange={changeHandler} type="password" placeholder="пароль" name="password" />
           <button type="submit">Войти</button>
           <p className={classes.message}>
             Нет учетной записи <a href="#" onClick={toggleSignUp}>Создать учетную запись</a>

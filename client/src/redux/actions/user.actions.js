@@ -1,5 +1,5 @@
-import { SET_USER, DELL_USER } from '../types'
-import * as endPoints from '../../config/endPoints'
+import { SET_USER, DELL_USER } from '../types/user.types'
+
 
 export const setUser = (user) => ({ // action creater
   type: SET_USER,
@@ -7,7 +7,8 @@ export const setUser = (user) => ({ // action creater
 })
 
 export const signUp = (payload) => async (dispatch) => {
-  const response = await fetch(endPoints.signUp(), {
+  console.log(payload);
+  const response = await fetch('http://localhost:3001/api/v1/auth/signup', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -26,7 +27,7 @@ export const signUp = (payload) => async (dispatch) => {
 }
 
 export const signIn = (payload) => async (dispatch) => {
-  const response = await fetch(endPoints.signIn(), {
+  const response = await fetch('http://localhost:3001/api/v1/auth/signin', {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
@@ -47,7 +48,7 @@ export const signIn = (payload) => async (dispatch) => {
 
 
 export const checkAuth = () => async (dispatch) => {
-  const response = await fetch(endPoints.checkAuth(), {
+  const response = await fetch('http://localhost:3001/api/v1/auth/check', {
     credentials: 'include'
   })
   if (response.status === 200) {
@@ -59,3 +60,16 @@ export const checkAuth = () => async (dispatch) => {
 export const deleteUser = () => ({
   type: DELL_USER
 })
+
+export const signOut = () => async (dispatch) => {
+  const response = await fetch('http://localhost:3001/api/v1/auth/signout', {
+    credentials: 'include'
+  })
+  if (response.status === 200) {
+    dispatch(deleteUser())
+    // setTimeout(()=>{
+      
+    // }, 2000  )
+  }
+} 
+

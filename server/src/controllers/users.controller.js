@@ -1,19 +1,18 @@
 const { User } = require('../../src/db/models');
 
-const editUser = async (req, res) => {
-  try {
-    const { id } = req.params;
 
-    await User.update({ ...req.body }, {
-      where: {
-        id,
-      },
+const getAllUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      raw: true,
+      attributes: ['id', 'name']
     });
-    res.status(200).json(req.body); //sendStatus(200);
+    return res.status(200).json(users);
   } catch (error) {
-    res.sendStatus(424);  //418
+    return res.sendStatus(500);
   }
 }
+
 
 const getUser = async (req, res) => {
   const { id } = req.params;
@@ -33,20 +32,36 @@ const getUser = async (req, res) => {
   }
 }
 
-const getAllUsers = async (req, res) => {
+
+const editUser = async (req, res) => {
   try {
-    const users = await User.findAll({
-      raw: true,
-      attributes: ['id', 'name']
+    const { id } = req.params;
+
+    await User.update({ ...req.body }, {
+      where: {
+        id,
+      },
     });
-    return res.status(200).json(users);
+    res.status(200).json(req.body); //sendStatus(200);
   } catch (error) {
+    res.sendStatus(424);  //418
+  }
+}
+
+
+const deleteUser = async (req, res) => {
+  try {
+    await User.destroy({ where: { id: req.params.id } });
+    return res.sendStatus(200);
+  } catch (err) {
     return res.sendStatus(500);
   }
 }
 
+
 module.exports = {
+  getAllUsers,
   editUser,
   getUser,
-  getAllUsers
+  deleteUser
 }
