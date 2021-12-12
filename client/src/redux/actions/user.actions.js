@@ -1,4 +1,4 @@
-import { SET_USER, DELL_USER } from '../types'
+import { SET_USER, DELL_USER } from '../types/user.types'
 import * as endPoints from '../../config/endPoints'
 
 export const setUser = (user) => ({ // action creater

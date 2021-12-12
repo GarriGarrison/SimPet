@@ -1,7 +1,8 @@
-// state
-
-// const initialState = [] // если в стейте лежит что-то одно, то делаем только один редьюсер и сразу его передаем в стор
-
 export const initialState = {
-  user:null
+  user: {name: "bib"},
+  sim:  'green',
+  todoDay: null,
+  todoWeek: null,
+  todoMonth: null,
+  todoYear: null 
 }
