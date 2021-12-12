@@ -1,9 +1,9 @@
 const { User } = require('../../src/db/models');
 
 const editUser = async (req, res) => {
-  try {
-    const { id } = req.params;
+  const { id } = req.params;
 
+  try {
     await User.update({ ...req.body }, {
       where: {
         id,

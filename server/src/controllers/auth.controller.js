@@ -1,14 +1,13 @@
-// const bcrypt = require('bcrypt')
-// const userModel = require('../models/user.model')
-
 const bcrypt = require('bcrypt');
 const { User } = require('../../src/db/models');
-require('dotenv').config();
+// require('dotenv').config();
 
 
-const saltRounds = process.env.SALT_ROUNDS;  //10
+const saltRounds = +process.env.BCRYPT_SALT_ROUNDS;  //10
+// console.log('SALT: ', +saltRounds);
 
 const signUp = async (req, res) => {
+  // console.log('SING UP: ', req.body);
   if (req.body === undefined)
     return res.sendStatus(400);
   
@@ -19,7 +18,7 @@ const signUp = async (req, res) => {
       const hashedpass = await bcrypt.hash(password, saltRounds);
 
       const addUser = await User.create({
-        id: Date.now(),  //v4(),
+        // id: Date.now(),  //v4(),
         name,
         email,
         password: hashedpass
@@ -86,11 +85,12 @@ const signOut = async (req, res) => {
   req.session.destroy((error) => {
     if (error) return res.sendStatus(500);
     res.clearCookie(req.app.get('cookieName'));
+    console.log('LOGOUT');
     return res.sendStatus(200);
-  })
+  });
   // try {
   //   req.session.destroy();
-  //   res.clearCookie('simpet');
+  //   res.clearCookie(process.env.COOKIE_NAME);
   //   return res.sendStatus(200);
   // } catch (error) {
   //   return res.sendStatus(500);
@@ -99,9 +99,16 @@ const signOut = async (req, res) => {
 
 
 const checkAuth = async (req, res) => {
+  console.log('SESSION: ', req.session);
+  // if (req.session.user.id === undefined)
+  //   return res.sendStatus(400);
+
   try {
-    const user = await userModel.findById(req.session.user.id, { password: 0 });
-    return res.json(user);
+    const user = await User.findByPk(req.session.user.id, {
+      attributes: ["id", "name"]
+    });
+    // console.log('SESSION USER: ', user);
+    return res.status(200).json(user);
   } catch (error) {
     return res.sendStatus(500);
   }

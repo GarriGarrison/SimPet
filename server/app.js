@@ -38,34 +38,40 @@ app.use(cors({
   credentials: true,
 }));
 
+
+
 app.use(express.json());
-app.use(session({
-  name: app.get('cookieName'),
+// app.use(session({
+//   name: app.get('cookieName'),
+//   secret: COOKIE_SECRET,
+//   resave: false,
+//   saveUninitialized: false,
+//   store: new FileStore(),
+//   cookie: {
+//     secure: false,
+//     httpOnly: true,
+//     maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
+//     // expires: 24 * 60 * 60e3
+//   },
+// }))
+
+const sessionConfig = {
+  store: new FileStore(),
+  key: COOKIE_NAME,
   secret: COOKIE_SECRET,
   resave: false,
   saveUninitialized: false,
-  store: new FileStore(),
-  cookie: {
-    secure: false,
-    httpOnly: true,
-    maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
-    // expires: 24 * 60 * 60e3
-  },
-}))
-
-// const sessionConfig = {
-//   store: new FileStore(),
-//   key: 'simpet',
-//   secret: process.env.SECRET,
-//   resave: false,
-//   saveUninitialized: false,
-//   httpOnly: true,
-//   cookie: { expires: 24 * 60 * 60e3 },
-// };
+  httpOnly: true,
+  cookie: { expires: 24 * 60 * 60e3 },
+};
 
 // app.use(express.urlencoded({ extnded: true }));
 // app.use(express.json());
-// app.use(session(sessionConfig));
+app.use(session(sessionConfig));
+
+// const sessionParser = session(sessionConfig);
+// app.use(sessionParser);
+
 
 //? Какие данные должы попадать в сессию
 // app.use((req, res, next) => {
