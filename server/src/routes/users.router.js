@@ -1,12 +1,13 @@
 const router = require('express').Router();
 const usersController = require('../controllers/users.controller');
-const checkAuth = require('../middlewares/checkAuth');
+// const checkAuth = require('../middlewares/checkAuth'); //todo checkAdmin (только админ можен редактировать)
 
 
 router.get('/', /*checkAuth,*/ usersController.getAllUsers);
 router.route('/:id')
-  .patch(/*checkAuth,*/ usersController.editUser)
-  .get(/*checkAuth,*/ usersController.getUser);
+  .get(/*checkAdmin,*/ usersController.getUser)
+  .patch(/*checkAdmin,*/ /*checkAuth,*/ usersController.editUser)
+  .delete(/*checkAdmin*/ usersController.deleteUser);
 
-
+  
 module.exports = router;

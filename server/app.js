@@ -1,7 +1,7 @@
 /**
  * Project: "SimPet"
  * Path: "server"
- * Release: 4
+ * Release: 5
  * 
  * Date: 12.12.2021
  */
@@ -16,11 +16,12 @@ const cors = require('cors');
 require('dotenv').config();
 
 
-const testRouter = require('./src/routes/test.router');
 const authRouter = require('./src/routes/auth.router');
-const usersRouter = require('./src/routes/users.router');
+const userRouter = require('./src/routes/users.router');
 const categoryRouter = require('./src/routes/category.router');
 const periodRouter = require('./src/routes/period.router');
+const animalRouter = require('./src/routes/animal.router');
+const todoRouter = require('./src/routes/todos.router');
 
 
 const app = express();
@@ -38,59 +39,29 @@ app.use(cors({
   credentials: true,
 }));
 
-
-
 app.use(express.json());
-// app.use(session({
-//   name: app.get('cookieName'),
-//   secret: COOKIE_SECRET,
-//   resave: false,
-//   saveUninitialized: false,
-//   store: new FileStore(),
-//   cookie: {
-//     secure: false,
-//     httpOnly: true,
-//     maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
-//     // expires: 24 * 60 * 60e3
-//   },
-// }))
-
-const sessionConfig = {
-  store: new FileStore(),
-  key: COOKIE_NAME,
+app.use(session({
+  name: app.get('cookieName'),
   secret: COOKIE_SECRET,
   resave: false,
   saveUninitialized: false,
-  httpOnly: true,
-  cookie: { expires: 24 * 60 * 60e3 },
-};
-
-// app.use(express.urlencoded({ extnded: true }));
-// app.use(express.json());
-app.use(session(sessionConfig));
-
-// const sessionParser = session(sessionConfig);
-// app.use(sessionParser);
-
-
-//? Какие данные должы попадать в сессию
-// app.use((req, res, next) => {
-//   if (req.session.userId) {
-//     // res.locals.user = { id: req.session.userId, name: req.session.userName };
-//     res.locals.userId = req.session.userId;
-//     res.locals.userName = req.session.userName;
-//     res.locals.userEmail = req.session.userEmail;
-//   }
-//   next();
-// });
+  store: new FileStore(),
+  cookie: {
+    secure: false,
+    httpOnly: true,
+    maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
+    // expires: 24 * 60 * 60e3
+  },
+}))
 
 
 /* APP'S ROUTES */
-app.use('/api/v1/testdb', testRouter);
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/users', usersRouter);
+app.use('/api/v1/users', userRouter);
 app.use('/api/v1/category', categoryRouter);
 app.use('/api/v1/period', periodRouter);
+app.use('/api/v1/animals', animalRouter);
+app.use('`./api/v1/todos', todoRouter);
 
 
 

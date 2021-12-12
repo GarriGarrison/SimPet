@@ -14,6 +14,7 @@ const allAnimal = async (req, res) => {
 
 
 const newAnimal = async (req, res) => {
+  console.log('BODY: ', req.body);
   if (req.body === undefined)
     return res.sendStatus(400);
   
