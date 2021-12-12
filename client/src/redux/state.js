@@ -1,5 +1,5 @@
 export const initialState = {
-  user: {name: "bib"},
+  user: null,
   sim:  {
     status: 'green',
     medicine: 100,

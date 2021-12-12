@@ -22,9 +22,11 @@ import SimplePaw from '../Paw/SimplePaw';
           <div className={classes.paw}><SimplePaw/></div>
           <Link to='#'>Money</Link>
           <div className={classes.paw}><SimplePaw/></div>
-          <Link to='#'>{user.name }</Link>
+          <Link to='#'>
+            {/* {user.name } */}
+            </Link>
           <div className={classes.paw}><SimplePaw/></div>
-          <Link to='#'>Exit</Link>
+          <Link to={"/exit"}>Exit</Link>
         </div>
         </div>
         <div className={classes.navRightDown}>
