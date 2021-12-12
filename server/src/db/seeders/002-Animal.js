@@ -23,6 +23,16 @@ module.exports = {
       user_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
+    }, {
+      type: 'doc',
+      name: 'Bob',
+      breed: 'Colly',
+      sex: 'female',
+      age: 11.2,
+      weight: 8.9,
+      user_id: 1,
+      createdAt: new Date(),
+      updatedAt: new Date()
     }];
 
     await queryInterface.bulkInsert('Animals', arr, {});

@@ -32,6 +32,14 @@ module.exports = {
           key: 'id',
         }
       },
+      period_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Periods',
+          key: 'id',
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,5 +1,14 @@
 const { Task, Action, Category, Todo } = require('../../src/db/models');
 
+const {
+  CATEGORY_FEED,
+  CATEGORY_HYGIENE,
+  CATEGORY_MEDICAL,
+  CATEGORY_CONTACT,
+  CATEGORY_CARE,
+  CATEGORY_PARTY
+} = process.env;
+
 
 const getFromCategory = async (categoryId, animalId) => {
   const result = [];
@@ -39,7 +48,7 @@ const getFeed = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(1, id);  // 1 - Feed
+    const feed = await getFromCategory(CATEGORY_FEED, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);
@@ -50,7 +59,7 @@ const getHygiene = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(2, id);  // 1 - Hygiene
+    const feed = await getFromCategory(CATEGORY_HYGIENE, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);
@@ -61,7 +70,7 @@ const getMedical = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(3, id);  // 3 - Medical
+    const feed = await getFromCategory(CATEGORY_MEDICAL, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);
@@ -72,7 +81,7 @@ const getContact = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(4, id);  // 4 - Contact
+    const feed = await getFromCategory(CATEGORY_CONTACT, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);
@@ -83,7 +92,7 @@ const getCare = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(5, id);  // 5 - Care
+    const feed = await getFromCategory(CATEGORY_CARE, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);
@@ -94,7 +103,7 @@ const getParty = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const feed = await getFromCategory(6, id);  // 6 - Party
+    const feed = await getFromCategory(CATEGORY_PARTY, id);
     return res.status(200).json(feed);
   } catch (error) {
     return res.sendStatus(500);

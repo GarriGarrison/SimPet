@@ -36,11 +36,16 @@ const newAnimal = async (req, res) => {
 
 const allTaskId = async (req, res) => {
   const todoid = req.params.id;
-  let todosDB;
   const todos = [];
 
   try {
-    todosBD = await Todo.findAll({
+    // const todosDB = await Task.findAll({
+    //   where: { animal_id: todoid },
+    //   include: [{
+    //     model: Todo
+    //   }]
+    // })
+    const todosDB = await Todo.findAll({
       // raw: true,
       include: [{
         model: Task,
@@ -50,15 +55,15 @@ const allTaskId = async (req, res) => {
       }]
     });
 
-    for (let i = 0; i < todosBD.length; i++) {
+    for (let i = 0; i < todosDB.length; i++) {
       const todo = {
-        id: todosBD[i].id,
-        date: todosBD[i].date,
-        time: todosBD[i].time,
-        status: todosBD[i].status,
-        action: todosBD[i].Task.Action.title,
-        category: todosBD[i].Task.Category.title,
-        animalId: todosBD[i].Task.animal_id
+        id: todosDB[i].id,
+        date: todosDB[i].date,
+        time: todosDB[i].time,
+        status: todosDB[i].status,
+        action: todosDB[i].Task.Action.title,
+        category: todosDB[i].Task.Category.title,
+        animalId: todosDB[i].Task.animal_id
       };
       todos.push(todo);
     }

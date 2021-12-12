@@ -14,38 +14,33 @@ module.exports = {
     
     const arr = [
       {
-        title: 'жидкий корм Purina',
-        category_id: 1,
+        title: 'None',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        title: 'вымыть лапы',
-        category_id: 2,
+        title: 'Day',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        title: 'поиграть с кошкой',
-        category_id: 4,
+        title: 'Week',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        title: 'отвезти на выставку',
-        category_id: 6,
+        title: 'Month',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        title: 'вычисать шерсть',
-        category_id: 5,
+        title: 'Year',
         createdAt: new Date(),
         updatedAt: new Date()
-      }
-    ];
+      },
+     ];
   
-    await queryInterface.bulkInsert('Actions', arr, {});
+    await queryInterface.bulkInsert('Periods', arr, {});
   },
 
   down: async (queryInterface, Sequelize) => {
@@ -55,6 +50,6 @@ module.exports = {
      * Example:
      * await queryInterface.bulkDelete('People', null, {});
      */
-    await queryInterface.bulkDelete('Actions', null, {});
+    await queryInterface.bulkDelete('Periods', null, {});
   }
 };

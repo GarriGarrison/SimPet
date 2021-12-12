@@ -3,7 +3,7 @@
  * Path: "server"
  * Release: 4
  * 
- * Date: 11.12.2021
+ * Date: 12.12.2021
  */
 
 
@@ -20,6 +20,7 @@ const testRouter = require('./src/routes/test.router');
 const authRouter = require('./src/routes/auth.router');
 const usersRouter = require('./src/routes/users.router');
 const categoryRouter = require('./src/routes/category.router');
+const periodRouter = require('./src/routes/period.router');
 
 
 const app = express();
@@ -83,6 +84,7 @@ app.use('/api/v1/testdb', testRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/users', usersRouter);
 app.use('/api/v1/category', categoryRouter);
+app.use('/api/v1/period', periodRouter);
 
 
 
