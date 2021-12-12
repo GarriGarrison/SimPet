@@ -15,6 +15,8 @@ import { TodoDay } from "./components/TodoDay/ToDoDay";
 
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
+import LeftBarMenu from "./components/LeftBarMenu/LeftBarMenu";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -40,7 +42,9 @@ function App() {
           <Route path='/year'element={<TodoYear/>}/>
        
           </Routes>  
+          
           <RightBarMenu />
+          <LeftBarMenu />
           
       
       </div>

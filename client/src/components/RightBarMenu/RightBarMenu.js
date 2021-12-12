@@ -1,7 +1,8 @@
 import React,{useState, useEffect} from 'react';
+import { useSelector } from 'react-redux'
 import classes from './rightbarmenu.module.css'
 import { useDispatch } from 'react-redux'
-import { setStatus } from "../../redux/actions/sim.action";
+import { setComfort, setCommun, setEat, setFive, setMedicin, setsix, setStatus } from "../../redux/actions/sim.action";
 
 
 
@@ -12,6 +13,13 @@ const RightBarMenu = () => {
   const [activPosition, setPosition] = useState('M2217.2 223.85l272.71 0 0 -33.61 0 -173.43c0,-9.26 -7.55,-16.81 -16.81,-16.81l-239.1 0 -0.21 0c-9.16,0.11 -16.6,7.62 -16.6,16.8l0 207.05z')
 
   const dispatch = useDispatch()
+  const eatProgress = useSelector((state) => state.sim.eat)
+  const communProgress = useSelector((state) => state.sim.communication)
+  const medicinProgress = useSelector((state) => state.sim.medicine)
+  const comfortProgress = useSelector((state) => state.sim.comfort)
+  const fiveProgress = useSelector((state) => state.sim.five)
+  const sixProgress = useSelector((state) => state.sim.six)
+
 //   let start = 12*60*60*1000
 //  let end = 12.008*60*60*1000
 
@@ -27,12 +35,13 @@ let timeout = {
 }
 
 
-  const [eatProgress, setEat] = useState(100)
-  const [communProgress, setCommun] = useState(100)
-  const [medicinProgress, setMedicin] = useState(100)
-  const [comfortProgress, setComfort] = useState(100)
-  const [fiveProgress, setFive] = useState(100)
-  const [sixProgress, setsix] = useState(100)
+  // const [eatProgress, setEat] = useState(100)
+  // const [communProgress, setCommun] = useState(100)
+  // const [medicinProgress, setMedicin] = useState(100)
+  // const [comfortProgress, setComfort] = useState(100)
+  // const [fiveProgress, setFive] = useState(100)
+  // const [sixProgress, setsix] = useState(100)
+
   const [eatColor, setEatColor] = useState('green')
   const [communColor, setCommunColor] = useState('green')
   const [medicinColor, setMedicinColor] = useState('green')
@@ -47,13 +56,13 @@ let timeout = {
   
 
         if(eatProgress >= 30){
-          setTimeout(() => setEat(eatProgress - 1), timeout.eat);
+          setTimeout(() => dispatch(setEat(eatProgress - 1)), timeout.eat);
         }else{
            dispatch(setStatus('green'))
              if(eatProgress >= 10){
                
                setTimeout(() => {
-                setEat(eatProgress - 1)
+                dispatch(setEat(eatProgress - 1))
                 setEatColor("#ffcb11")
                 }, timeout.eat)
     
@@ -63,7 +72,7 @@ let timeout = {
                  
     
                    setTimeout(() => {
-                    setEat(eatProgress - 1)
+                    dispatch(setEat(eatProgress - 1))
                     setEatColor("red")
                    }, timeout.eat); 
                   }
@@ -77,13 +86,13 @@ let timeout = {
 useEffect(()=>{
 
   if(communProgress >= 30){
-    setTimeout(() => setCommun(communProgress - 1), timeout.communication);
+    setTimeout(() => dispatch(setCommun(communProgress - 1)), timeout.communication);
   }else{
      dispatch(setStatus('green'))
        if(communProgress >= 10){
          
          setTimeout(() => {
-          setCommun(communProgress - 1)
+          dispatch(setCommun(communProgress - 1))
            setCommunColor("#ffcb11")
           }, timeout.communication)
 
@@ -93,7 +102,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-              setCommun(communProgress - 1)
+              dispatch(setCommun(communProgress - 1))
               setCommunColor("red")
              }, timeout.communication); 
             }
@@ -106,13 +115,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(comfortProgress >= 30){
-    setTimeout(() => setComfort(comfortProgress - 1), timeout.comfort);
+    setTimeout(() => dispatch(setComfort(comfortProgress - 1)), timeout.comfort);
   }else{
      dispatch(setStatus('green'))
        if(comfortProgress >= 10){
          
          setTimeout(() => {
-           setComfort(comfortProgress - 1)
+          dispatch(setComfort(comfortProgress - 1))
            setComfortColor("#ffcb11")
           }, timeout.comfort)
 
@@ -122,7 +131,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-                  setComfort(comfortProgress - 1)
+              dispatch(setComfort(comfortProgress - 1))
                   setComfortColor("red")
              }, timeout.comfort); 
             }
@@ -135,13 +144,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(medicinProgress >= 30){
-    setTimeout(() => setMedicin(medicinProgress - 1), timeout.medicin);
+    setTimeout(() => dispatch(setMedicin(medicinProgress - 1)), timeout.medicin);
   }else{
      dispatch(setStatus('green'))
        if(medicinProgress >= 10){
          
          setTimeout(() => {
-           setMedicin(medicinProgress - 1)
+          dispatch(setMedicin(medicinProgress - 1))
            setMedicinColor("#ffcb11")
           }, timeout.medicin)
 
@@ -151,7 +160,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-                  setMedicin(medicinProgress - 1)
+              dispatch(setMedicin(medicinProgress - 1))
                   setMedicinColor("red")
              }, timeout.medicin); 
             }
@@ -164,13 +173,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(fiveProgress >= 30){
-    setTimeout(() => setFive(fiveProgress - 1), timeout.five);
+    setTimeout(() => dispatch(setFive(fiveProgress - 1)), timeout.five);
   }else{
      dispatch(setStatus('green'))
        if(fiveProgress >= 10){
          
          setTimeout(() => {
-           setFive(fiveProgress - 1)
+          dispatch(setFive(fiveProgress - 1))
            setFiveColor("#ffcb11")
           }, timeout)
 
@@ -180,7 +189,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-                  setFive(fiveProgress - 1)
+              dispatch(setFive(fiveProgress - 1))
                    setFiveColor("red")
              }, timeout.five); 
             }
@@ -193,13 +202,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(sixProgress >= 30){
-    setTimeout(() => setsix(sixProgress - 1), timeout.six);
+    setTimeout(() => dispatch(setsix(sixProgress - 1)), timeout.six);
   }else{
      dispatch(setStatus('green'))
        if(sixProgress >= 10){
          
          setTimeout(() => {
-           setsix(sixProgress - 1)
+          dispatch(setsix(sixProgress - 1))
            setsixColor("#ffcb11")
           }, timeout)
 
@@ -209,7 +218,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-                  setsix(sixProgress - 1)
+              dispatch(setsix(sixProgress - 1))
                   setsixColor("red")
              }, timeout.six); 
             }
