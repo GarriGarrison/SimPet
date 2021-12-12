@@ -1,15 +1,13 @@
 
 import { useState } from "react"
 import classes from "./form.module.css";
-import { useDispatch } from "react-redux"
 import { signUp ,signIn } from "../../redux/actions/user.actions"
-import { useSelector } from "react-redux";
-import { useHistory } from "react-router"
+import { useSelector, useDispatch} from "react-redux";
+import { useLocation } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
 
 const UserForm = () => {
-  const history = useHistory()
-
+  let location = useLocation()
   let user = useSelector(state => state.user);
 
   const [isSignUp,setSignUp] = useState(false)
@@ -17,7 +15,7 @@ const UserForm = () => {
   
   
   if(user){
-    history.push('/')
+    location.push('/')
   }
 
 

@@ -1,7 +1,8 @@
 import React,{useEffect} from 'react';
-import Nav from '../Nav/Nav';
 import { useDispatch } from "react-redux"
 import { checkAuth } from "../../redux/actions/user.actions"
+import { SimStatus } from "../SimStatus/SimStatus";
+
 
 const Main = () => {
   
@@ -13,7 +14,12 @@ const Main = () => {
   },[])
 
   return (
-    <Nav/>
+    <>
+    <br/>
+    <br/>
+    <br/>
+    <SimStatus/>
+    </>
   );
 };
 
