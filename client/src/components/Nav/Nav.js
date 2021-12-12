@@ -6,12 +6,15 @@ import {useSelector } from "react-redux";
 import SimplePaw from '../Paw/SimplePaw';
 
 
-const Nav = () => {
+ const Nav = () => {
   const user = useSelector(state=>state.user)
-
-  return (
+  return (<>
     <div className={classes.nav}>
-      <div className={classes.logo}><Logo/></div>
+      <div className={classes.logo}>
+      <Link to={'/'}>
+        <Logo/>
+      </Link>
+        </div>
       <div className={classes.navRight}>
         <div className={classes.navRightUp}>
         <div className={classes.navRightUpMenu}>
@@ -24,10 +27,30 @@ const Nav = () => {
           <Link to='#'>Exit</Link>
         </div>
         </div>
-        <div className={classes.navRightDown}></div>
+        <div className={classes.navRightDown}>
+        <Link to={'/day'}>
+  <button size="lg" variant="secondary">
+      day
+  </button>
+    </Link>  
+    <Link to={'/week'}>
+  <button size="lg" variant="secondary">
+      Week
+  </button>
+    </Link>  
+    <Link to={'/year'}>
+  <button size="lg" variant="secondary">
+      Year
+  </button>
+    </Link>  
+   
+        </div>
       </div>
     </div>
+    </>
   );
 };
 
-export default Nav;
+export default Nav
+
+
