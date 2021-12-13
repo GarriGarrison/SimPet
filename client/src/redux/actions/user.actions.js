@@ -16,7 +16,7 @@ export const signUp = (payload) => async (dispatch) => {
     credentials: 'include',
     body: JSON.stringify(payload)
   })
-  if (response.status === 200) {
+  if (response.ok) {
     const user = await response.json()
     dispatch(setUser(user))
     
@@ -35,8 +35,9 @@ export const signIn = (payload) => async (dispatch) => {
         credentials: 'include',
         body: JSON.stringify(payload)
       })
-  if (response.status === 200) {
+  if (response.ok) {
     const user = await response.json()
+    console.log(user);
     dispatch(setUser(user))
   } else {
     
@@ -51,24 +52,25 @@ export const checkAuth = () => async (dispatch) => {
   const response = await fetch('http://localhost:3001/api/v1/auth/check', {
     credentials: 'include'
   })
-  if (response.status === 200) {
+  if (response.ok) {
     const user = await response.json()
     dispatch(setUser(user))
   }
 }
 
 export const deleteUser = () => ({
-  type: DELL_USER
+  type: DELL_USER,
+  payload: null
 })
 
-export const signOut = () => async (dispatch) => {
+export const signOut = (navigate) => async (dispatch) => {
   const response = await fetch('http://localhost:3001/api/v1/auth/signout', {
     credentials: 'include'
   })
-  if (response.status === 200) {
+  if (response.ok) {
     dispatch(deleteUser())
     // setTimeout(()=>{
-      
+      navigate("/start")
     // }, 2000  )
   }
 } 

@@ -1,14 +1,21 @@
 import React from 'react';
 import Logo from '../UserForm/Logo/Logo';
 import classes from './nav.module.css';
-import { Link } from 'react-router-dom'
-import {useSelector } from "react-redux";
+import { Link, Navigate} from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import SimplePaw from '../Paw/SimplePaw';
+import { checkAuth } from '../../redux/actions/user.actions';
 
 
- const Nav = () => {
-  const user = useSelector(state=>state.user)
-  return (<>
+ const Nav = ({user}) => {
+  
+  console.log(user);
+  if(!user){ 
+  return  <Navigate to='/start'/>}
+
+
+    return (<>
     <div className={classes.nav}>
       <div className={classes.logo}>
       <Link to={'/'}>
@@ -23,7 +30,7 @@ import SimplePaw from '../Paw/SimplePaw';
           <Link to='#'>Money</Link>
           <div className={classes.paw}><SimplePaw/></div>
           <Link to='#'>
-            {/* {user.name } */}
+            {user.name }
             </Link>
           <div className={classes.paw}><SimplePaw/></div>
           <Link to={"/exit"}>Exit</Link>
@@ -52,6 +59,7 @@ import SimplePaw from '../Paw/SimplePaw';
     </>
   );
 };
+
 
 export default Nav
 

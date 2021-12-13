@@ -3,19 +3,19 @@ import { useState } from "react"
 import classes from "./form.module.css";
 import { signUp ,signIn } from "../../redux/actions/user.actions"
 import { useSelector, useDispatch} from "react-redux";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
 
-const UserForm = () => {
+const UserFormReg = () => {
+  const navigate = useNavigate()
   let location = useLocation()
   let user = useSelector(state => state.user);
 
-  const [isSignUp,setSignUp] = useState(false)
 
   
   
   if(user){
-    // location.push('/')
+    navigate('/')
   }
 
 
@@ -51,13 +51,6 @@ const UserForm = () => {
     }
   }  
 
-
-  function toggleSignUp(){
-    setSignUp(!isSignUp)
-  }
-  
-
-  if (isSignUp) {
     return (
       <div className={classes.container}>
         <form onSubmit={submitHandlerUp} className={classes.form}>
@@ -67,25 +60,11 @@ const UserForm = () => {
           <input onChange={changeHandler} type="password" placeholder="пароль" name="password" />
           <button type="submit">Регистрация</button>
           <p className={classes.message}>
-            Есть учетная запись? <a href="#" onClick={toggleSignUp}>Войти</a>
+            Есть учетная запись? <Link to= {'/log'}>Войти</Link>
           </p>
         </form>
       </div>
     );
-  } else
-    return (
-      <div className={classes.container}>
-        <form onSubmit={submitHandlerIn} form className={classes.form}>
-          <Logo/>
-          <input onChange={changeHandler} type="text" placeholder="электронная почта" name="email" />
-          <input onChange={changeHandler} type="password" placeholder="пароль" name="password" />
-          <button type="submit">Войти</button>
-          <p className={classes.message}>
-            Нет учетной записи <a href="#" onClick={toggleSignUp}>Создать учетную запись</a>
-          </p>
-        </form>
-      </div>
-    );
-};
+    }
 
-export default UserForm;
+export default UserFormReg;

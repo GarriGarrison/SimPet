@@ -1,9 +1,9 @@
 // import { Routes, Route } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
 import "./App.css";
-import UserForm from "./components/UserForm/UserForm";
-import { useDispatch } from "react-redux";
+import UserForm from "./components/UserForm/UserFormLog";
+import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/actions/user.actions";
 import { useEffect } from "react";
 import Main from "./components/Main/Main";
@@ -16,36 +16,71 @@ import { TodoDay } from "./components/TodoDay/ToDoDay";
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
 import LeftBarMenu from "./components/LeftBarMenu/LeftBarMenu";
+import Start from "./components/Start/Start";
+import UserFormLog from "./components/UserForm/UserFormLog";
+import UserFormReg from "./components/UserForm/UserFormReg";
 
 
 function App() {
   const dispatch = useDispatch();
-
   useEffect(() => {
+    dispatch(checkAuth());
     console.log("проверка");
     dispatch(checkAuth());
   }, []);
-
+  const user = useSelector(state=>state.user)
+ 
   return (
     <>
     <Paw count={4}/>
       <div className="App">
-         <Nav/>
+         {/* <Nav/> */}
          <Routes >
-          <Route element={ <Nav/>}/>
+          <Route element={ <Nav user={user}/>}/>
+    
+          <Route path="/log" element={ <UserFormLog/>} />
+          <Route path="/reg" element={ <UserFormReg/>} />
 
-          <Route path="/log" element={ <UserForm/>} />
-          <Route path="/" element={ <Main/>} />
+          <Route path="/" element={ <>
+            <Nav user={user}/>
+            <Main/>
+            <RightBarMenu />
+            <LeftBarMenu />
+            </>
+        
+        } />
+          <Route path="/start" element={ <Start/>} />
           <Route path="/exit" element={ <LogOut/>} />
-          <Route path="/day" element={ <TodoDay/>} />
-          <Route path="/week" element={<TodoWeek />} />
-          <Route path='/year'element={<TodoYear/>}/>
-       
+          <Route path="/day" element={            
+            <>
+            <Nav user={user}/>
+            <TodoDay/>
+            <RightBarMenu />
+            <LeftBarMenu />
+            </>
+         } />
+          <Route path="/week" element={
+            <>
+            <Nav user={user}/>
+            <TodoWeek />
+            <RightBarMenu />
+            <LeftBarMenu />
+            </>
+         
+          } />
+          <Route path='/year'element={
+            <>
+            <Nav user={user}/>
+            <TodoYear/>
+            <RightBarMenu />
+            <LeftBarMenu />
+            </>
+            }/>
           </Routes>  
           
-          <RightBarMenu />
+          {/* <RightBarMenu />
           <LeftBarMenu />
-          
+           */}
       
       </div>
         

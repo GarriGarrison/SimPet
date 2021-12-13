@@ -1,16 +1,16 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-// import { useHistory } from "react-router"
+import { useNavigate } from "react-router-dom"
 import { signOut } from "../../redux/actions/user.actions"
 
 const LogOut = () => {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+ 
   
-//   const history = useHistory()
 
   useEffect(() => {
-    dispatch(signOut())
-    // history.push('/')
+    dispatch(signOut(navigate))
   },[])
 
   return null
