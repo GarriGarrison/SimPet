@@ -1,18 +1,13 @@
-// const bcrypt = require('bcrypt')
-// const userModel = require('../models/user.model')
-
 const bcrypt = require('bcrypt');
 const { User } = require('../../src/db/models');
 require('dotenv').config();
 
 
-const saltRounds = +process.env.SALT_ROUNDS;  //10
-
 const signUp = async (req, res) => {
-  console.log('SING UP function ', req.body);
   if (req.body === undefined)
-    return res.sendStatus(400);
+  return res.sendStatus(400);
   
+  const saltRounds = Number(process.env.SALT_ROUNDS);
   const { name, email, password } = req.body;
 
   if (name && email && password) {
@@ -47,7 +42,6 @@ const signUp = async (req, res) => {
 
 
 const signIn = async (req, res) => {
-  console.log('SING IN function ', req.body);
   if (req.body === undefined)
     return res.sendStatus(400);
   
@@ -70,7 +64,7 @@ const signIn = async (req, res) => {
         // req.session.userId = currentUser.id;
         // req.session.userName = currentUser.name;
         // req.session.userEmail = currentUser.email;
-        console.log('SING IN:', { id: currentUser.id, name: currentUser.name });
+
         return res.status(202).json({ id: currentUser.id, name: currentUser.name });
       }
       else {
