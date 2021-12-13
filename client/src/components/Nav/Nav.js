@@ -47,6 +47,11 @@ import { checkAuth } from '../../redux/actions/user.actions';
       Week
   </button>
     </Link>  
+    <Link to={'/month'}>
+  <button size="lg" variant="secondary">
+      Month
+  </button>
+  </Link> 
     <Link to={'/year'}>
   <button size="lg" variant="secondary">
       Year

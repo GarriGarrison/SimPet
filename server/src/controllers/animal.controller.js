@@ -12,10 +12,22 @@ const getAllAnimal = async (req, res) => {
   }
 }
 
+const getAnimal = async (req, res) => {
+  try {
+    const { id } = req.params;
+    console.log(id);
+    const animal = await Animal.findAll({raw: true, where: { user_id: Number(id) }});
+    console.log(animal);
+    return res.status(200).json(animal);
+  } catch (error) {
+    return res.sendStatus(500);
+  }
+}
 
 const addAnimal = async (req, res) => {
   if (req.body === undefined)
     return res.sendStatus(400);
+    console.log(req.body);
   
   const { type, name, breed, sex, age, weight, user_id } = req.body;
 
@@ -58,6 +70,7 @@ const deleteAnimal = async (req, res) => {
 
 module.exports = {
   getAllAnimal,
+  getAnimal,
   addAnimal,
   editAnimal,
   deleteAnimal

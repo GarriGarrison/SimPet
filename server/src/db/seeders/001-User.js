@@ -12,15 +12,15 @@ module.exports = {
      * }], {});
     */
     
-    const arr = [{
-      name: 'admin',
-      email: 'admin@admin.ru',
-      password: 'admin',
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }];
+    // const arr = [{
+    //   name: 'admin',
+    //   email: 'admin@admin.ru',
+    //   password: 'admin',
+    //   createdAt: new Date(),
+    //   updatedAt: new Date()
+    // }];
 
-    await queryInterface.bulkInsert('Users', arr, {});
+    await queryInterface.bulkInsert('Users', [], {});
   },
 
   down: async (queryInterface, Sequelize) => {

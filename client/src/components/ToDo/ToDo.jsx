@@ -4,9 +4,11 @@ import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
 
 
-export function ToDo({todo}) {
+export function ToDo({todo, period}) {
+  if (todo) console.log("netu");
   
-  const [value, setValue ] = useState(todo.body ?? ' ')
+  
+  const [value, setValue ] = useState(todo.action ?? ' ')
   const [day, setDay ] = useState(todo.date ?? ' ')
   const [time, setTime ] = useState(todo.time ?? ' ')
 
@@ -15,9 +17,9 @@ export function ToDo({todo}) {
   const dispatch = useDispatch()
 
   const inputs = [
-    useInput({ type:'text', id: 'body', defaultValue: todo.body }),
-    useInput({ type:'text', id: 'time', defaultValue: todo.date }),
+    useInput({ type:'text', id: 'body', defaultValue: todo.action }),
     useInput({ type:'text', id: 'date', defaultValue: todo.time }),
+    useInput({ type:'text', id: 'time', defaultValue: todo.date }),
   ]
   const handleEditClick = async (event) => {
     event.preventDefault()
@@ -29,27 +31,27 @@ export function ToDo({todo}) {
     
     switch (category) {
 
-      case 'medicine':{
+      case 'Medical':{
           return dispatch(medicinDone())
       }
       
-      case 'eat':{
+      case 'Feed':{
           return dispatch(eatDone())
       }
 
-      case 'communication':{
+      case 'Contact':{
           return dispatch(communDone())
       }
       
-      case 'comfort':{
+      case 'Hygiene':{
           return dispatch(comfortDone())
       }
 
-       case 'five':{
+       case 'Care':{
           return dispatch(fiveDone())
       }
       
-      case 'six':{
+      case 'Party':{
           return dispatch(sixDone())
       }
       
@@ -64,10 +66,10 @@ export function ToDo({todo}) {
 
   const handleEdit = async (event) => {
     event.preventDefault()
-    const body = inputs[0].getValue()
+    const action = inputs[0].getValue()
     const time = inputs[1].getValue()
     const date = inputs[2].getValue()
-    setValue(body)
+    setValue(action)
     setDay(date)
     setTime(time)
  
@@ -81,7 +83,8 @@ export function ToDo({todo}) {
       {editClik?
         <>
       <form onSubmit={handleEdit}>
-      {inputs.map(el=> <input type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
+      {todo.title  === 'Feed' &&  <span>Покормить: </span> }
+      {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
           Ok
         </button>
@@ -92,12 +95,17 @@ export function ToDo({todo}) {
         : 
         <> 
           <div class="container">
-          <div class="main-container">
+          <div id={todo.id} class="main-container">
+            {todo.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{value}</span>
-          <span> {day}</span>
+          { period === "week" && <span> {day}</span> }
+          { period === "month" && <span> {day}</span> }
+          { period === "year" && <span> {day}</span> }
+
+
           <span> {time}</span>
 
-                <button onClick={handleStatus} data-category={todo.category || 'eat'} class="done">✔</button>
+                <button onClick={handleStatus} data-category={todo.title || 'eat'} class="done">✔</button>
                 <button onClick={handleEditClick} class="edit">✏️</button>
             
           </div>

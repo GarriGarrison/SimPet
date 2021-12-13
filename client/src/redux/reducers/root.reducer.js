@@ -6,6 +6,7 @@ import { todoWeekReduser } from "./todoWeek.reducer";
 import { todoMonthReduser } from "./todoMonth.reducer";
 import { todoYearhReduser } from "./todoYear.reducer";
 import { todoAllReduser } from "./todoAll.reducer";
+import { animalReducer } from "./animal.reducer";
 
 
 
@@ -13,6 +14,7 @@ import { todoAllReduser } from "./todoAll.reducer";
 
 export const rootReducer = combineReducers({
   user: userReducer,
+  animal: animalReducer,
   sim: simReducer,
   todoAll: todoAllReduser,
   todoDay: todoDayReduser,

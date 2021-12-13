@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getTodoWeek } from "../../redux/actions/todoWeek.action";
+import { getTodoMonth } from "../../redux/actions/todoMonth.action";
 import { ToDo } from "../ToDo/ToDo";
 
 
-export function TodoWeek() {
-  const todos = useSelector((state) => state.todoWeek)
+export function TodoMonth() {
+  const todos = useSelector((state) => state.todoMonth)
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(getTodoWeek(3))
+    dispatch(getTodoMonth(3))
     }, [])
    
   //   console.log(todos);
@@ -18,7 +18,7 @@ export function TodoWeek() {
     return (
       <> {todos.map(el => 
       <>
-        <ToDo todo={el} period={"week"}/>
+        <ToDo todo={el} period={"month"}/>
      </>
       )}
     

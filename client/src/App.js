@@ -19,16 +19,28 @@ import LeftBarMenu from "./components/LeftBarMenu/LeftBarMenu";
 import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
+import { TodoMonth } from "./components/TodoMonth/TodoMonth";
+import AnimalForm from "./components/AnimalForm/AnimalForm";
+import { getAnimal } from "./redux/actions/animal.action";
 
 
 function App() {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(checkAuth());
     console.log("проверка");
-    dispatch(checkAuth());
   }, []);
   const user = useSelector(state=>state.user)
+  const {id} = useSelector(state=>state.user)
+  useEffect(() => {
+    console.log(id);
+    if (id){
+
+      dispatch(getAnimal(id))
+      console.log("animal");
+    }
+  }, [id]);
  
   return (
     <>
@@ -39,6 +51,8 @@ function App() {
           <Route element={ <Nav user={user}/>}/>
     
           <Route path="/log" element={ <UserFormLog/>} />
+          <Route path="/animal_reg" element={ <AnimalForm/>} />
+
           <Route path="/reg" element={ <UserFormReg/>} />
 
           <Route path="/" element={ <>
@@ -63,6 +77,15 @@ function App() {
             <>
             <Nav user={user}/>
             <TodoWeek />
+            <RightBarMenu />
+            <LeftBarMenu />
+            </>
+         
+          } />
+          <Route path="/month" element={
+            <>
+            <Nav user={user}/>
+            <TodoMonth />
             <RightBarMenu />
             <LeftBarMenu />
             </>

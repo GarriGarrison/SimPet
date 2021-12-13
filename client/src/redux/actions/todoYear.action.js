@@ -2,11 +2,11 @@ import { GET_TODO_YEAR, DEL_ALL_TODO_YEAR } from '../types/todo.types'
 
 export const AllTodoYear = (todos) => ({
   type: GET_TODO_YEAR,
-  payload: { todos },
+  payload: todos ,
 });
 
-export const getTodoYear = () => async (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/todo`, { credentials: "include" })
+export const getTodoYear = (id) => async (dispatch) => {
+  fetch(`http://localhost:3001/api/v1/period/year/${id}`, { credentials: "include" })
     .then((response) => response.json())
     .then((data) => dispatch(AllTodoYear(data)))
     .catch((err) => console.log(err));
