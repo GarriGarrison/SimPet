@@ -27,10 +27,10 @@ const AnimalForm = () => {
 
 
   const [userSign, setUserSign] = useState({
-    type: '',
+    type: 'cat',
     name: '',
     breed: '',
-    sex: '',
+    sex: '1',
     age: '',
     weight: '',
     user_id: null
@@ -82,9 +82,8 @@ const AnimalForm = () => {
 
           <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
           <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
-          <Link to={"/animal_reg/ancet"}>
           <button type="submit">go</button>
-          </Link>
+          
          
         </form>
       </div>

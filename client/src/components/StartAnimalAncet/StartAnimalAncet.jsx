@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../../redux/actions/todoAll.action';
 import Ancet from '../Ancet/Ancet';
@@ -6,7 +6,9 @@ import classes from './startanimal.module.css'
 import Logo from '../UserForm/Logo/Logo'
 import { useNavigate } from "react-router-dom";
 
-const StartAnimalAncet = () => {
+const StartAnimalAncet = ({anId}) => {
+
+  console.log(anId,"-----------------");
 
     let user = useSelector(state => state.user);
     const dispatch = useDispatch();
@@ -24,7 +26,15 @@ const StartAnimalAncet = () => {
     //   navigate('/')
     // }
 
-    const [animal_id, setAnimal_id] = useState(3)
+    const [animal_id, setAnimal_id] = useState()
+
+    useEffect(() => {
+      setAnimal_id(anId)
+    },[anId])
+
+    console.log(animal_id,'))))))))))');
+    
+
   
     const [eat, setEat] = useState({
       num: '',
@@ -75,8 +85,7 @@ const StartAnimalAncet = () => {
         for (let i = 0; i < time.length; i++) {
             eatForm.time= time[i]
             console.log(eatForm);
-            dispatch(addTodo(eatForm)) 
-            
+            dispatch(addTodo(eatForm))
         }
       
       }

@@ -5,7 +5,7 @@ import "./App.css";
 import UserForm from "./components/UserForm/UserFormLog";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/actions/user.actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Main from "./components/Main/Main";
 import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
@@ -29,21 +29,40 @@ import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 
 function App() {
   const dispatch = useDispatch();
-  
+  const [animalId, setAnimalId] = useState(null)
+
   useEffect(() => {
     dispatch(checkAuth());
   },[]);  
 
   const user = useSelector(state=>state.user)
   const {id} = useSelector(state=>state.user)
+
   
   useEffect(() => {
     console.log(id);
     if (id){
       dispatch(getAnimal(id))
-      console.log("animal");
     }
   }, [id]);
+
+  const animal = useSelector(state=>state.animal[0])
+
+  useEffect(() => {
+    if (animal) {
+      setAnimalId(animal.id)
+    }
+  }, [animal])
+
+  // useEffect(() => {
+  //   console.log(animal);
+  //   if (animal){
+  //     console.log(animal,'____________');
+  //   }
+  // }, [animal]);
+
+
+  // console.log(animal,'+++++++++++++++');
  
   return (
     <>
@@ -55,7 +74,7 @@ function App() {
     
           <Route path="/log" element={ <UserFormLog/>} />
           <Route path="/animal_reg" element={ <StartAnimalForm/>} />
-          <Route path="/animal_reg/ancet" element={ <StartAnimalAncet/>} />
+          <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
 
 
           <Route path="/reg" element={ <UserFormReg/>} />
@@ -74,7 +93,7 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
-            <TodoDay/>
+            <TodoDay anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
@@ -83,7 +102,7 @@ function App() {
           <Route path="/week" element={
             <>
             <Nav user={user}/>
-            <TodoWeek />
+            <TodoWeek anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -93,7 +112,7 @@ function App() {
           <Route path="/month" element={
             <>
             <Nav user={user}/>
-            <TodoMonth />
+            <TodoMonth anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -103,7 +122,7 @@ function App() {
           <Route path='/year'element={
             <>
             <Nav user={user}/>
-            <TodoYear/>
+            <TodoYear anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
