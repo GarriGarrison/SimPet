@@ -2,7 +2,11 @@ import { useState } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
+
+import classes from './todo.module.css'
+
 import { deleteTodo, editTodo } from "../../redux/actions/todoAll.action";
+
 
 
 export function ToDo({todo, period_id}) {
@@ -110,10 +114,10 @@ export function ToDo({todo, period_id}) {
 }
 
     return (
-      <> 
+      <div className={classes.container}> 
       {editClik?
         <>
-      <form onSubmit={handleEdit}>
+      <form onSubmit={handleEdit} className={classes.form}>
       {todo.title  === 'Feed' &&  <span>Покормить: </span> }
       {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
@@ -125,8 +129,8 @@ export function ToDo({todo, period_id}) {
         </>
         : 
         <> 
-          <div class="container">
-          <div id={todo.id} class="main-container">
+          
+          <div id={todo.id} class={classes.list}>
             {todo.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{value}</span>
           { period_id == 3 && <span> {day}</span> }
@@ -134,18 +138,22 @@ export function ToDo({todo, period_id}) {
           { period_id == 5 && <span> {day}</span> }
 
 
-          <span> {time}</span>
+          <span > {time}</span>
 
-                <button onClick={handleStatus} data-category={todo.title} class="done">✔</button>
-                <button onClick={handleEditClick} class="edit">✏️</button>
-                <button onClick={handleDelClick} class="edit">x</button>
+
+                <div>
+                  <button onClick={handleStatus} data-category={todo.title} class="done">✔</button>
+                  <button onClick={handleEditClick}>✏️</button>
+                  <button onClick={handleDelClick} class="edit">x</button>
+                </div>
+
             
           </div>
-          </div>
+          
         </> }
 
          
-      </> 
+      </div> 
     );
   }
   
