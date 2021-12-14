@@ -4,7 +4,7 @@ require('dotenv').config();
 
 
 const signUp = async (req, res) => {
-  if (req.body === undefined)
+  if (!req.body)
   return res.sendStatus(400);
   
   const saltRounds = Number(process.env.SALT_ROUNDS);
@@ -43,7 +43,7 @@ const signUp = async (req, res) => {
 
 const signIn = async (req, res) => {
   console.log(req.body);
-  if (req.body === undefined)
+  if (!req.body)
     return res.sendStatus(400);
   
   const { email, password } = req.body;
@@ -86,18 +86,16 @@ const signOut = async (req, res) => {
     res.clearCookie(req.app.get('cookieName'));
     return res.sendStatus(200);
   })
-  // try {
-  //   req.session.destroy();
-  //   res.clearCookie('simpet');
-  //   return res.sendStatus(200);
-  // } catch (error) {
-  //   return res.sendStatus(500);
-  // }
 }
 
 
 const checkAuth = async (req, res) => {
-  console.log('CHECK AUTH: ', req.session);
+  const userId = req.session.user.id;
+
+  if (!userId) {
+    return res.sendStatus(499);
+  }
+
   try {
     const user = await User.findByPk(req.session.user.id, {
       attributes: ["id", "name"]
