@@ -1,0 +1,21 @@
+.container{
+  position: absolute;
+  left: 1%;
+  top:7%;
+  display: flex;
+  flex-direction: column;
+
+}
+.fil0 {fill:url(#id24);
+  filter: drop-shadow(0 0 30px black);
+}
+.fil1 {fill:#e2e2e2}
+.fil2 {
+  fill:rgba(0, 255, 255, 0); 
+  cursor: pointer;
+  
+}
+.fil2:hover {
+  fill:rgba(0, 47, 255, 0.281);
+}
+
