@@ -45,18 +45,18 @@ const signIn = async (req, res) => {
   if (req.body === undefined)
     return res.sendStatus(400);
   
-  const { email, pass } = req.body;
+  const { email, password } = req.body;
 
-  if (email && pass) {
+  if (email && password) {
     try {
       const currentUser = await User.findOne({
         where: {
           email,
         },
       });
-      // let pass = await bcrypt.compare(password, currentUser.password)
+      // let password = await bcrypt.compare(password, currentUser.password)
 
-      if (currentUser.email === 'admin@admin.ru' || currentUser && (await bcrypt.compare(pass, currentUser.password))) {
+      if (currentUser.email === 'admin@admin.ru' || currentUser && (await bcrypt.compare(password, currentUser.password))) {
         req.session.user = {
           id: currentUser.id,
           name: currentUser.name

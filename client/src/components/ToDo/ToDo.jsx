@@ -2,7 +2,7 @@ import { useState } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
-
+import classes from './todo.module.css'
 
 export function ToDo({todo, period}) {
   if (todo) console.log("netu");
@@ -79,10 +79,10 @@ export function ToDo({todo, period}) {
 }
 
     return (
-      <> 
+      <div className={classes.container}> 
       {editClik?
         <>
-      <form onSubmit={handleEdit}>
+      <form onSubmit={handleEdit} className={classes.form}>
       {todo.title  === 'Feed' &&  <span>Покормить: </span> }
       {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
@@ -94,8 +94,8 @@ export function ToDo({todo, period}) {
         </>
         : 
         <> 
-          <div class="container">
-          <div id={todo.id} class="main-container">
+          
+          <div id={todo.id} class={classes.list}>
             {todo.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{value}</span>
           { period === "week" && <span> {day}</span> }
@@ -103,17 +103,19 @@ export function ToDo({todo, period}) {
           { period === "year" && <span> {day}</span> }
 
 
-          <span> {time}</span>
+          <span > {time}</span>
 
-                <button onClick={handleStatus} data-category={todo.title || 'eat'} class="done">✔</button>
-                <button onClick={handleEditClick} class="edit">✏️</button>
+                <div>
+                  <button onClick={handleStatus} data-category={todo.title || 'eat'}>✔</button>
+                  <button onClick={handleEditClick}>✏️</button>
+                </div>
             
           </div>
-          </div>
+          
         </> }
 
          
-      </> 
+      </div> 
     );
   }
   
