@@ -19,7 +19,7 @@ export function TodoYear() {
       {/* {isToDo? <> */}
             {todos.map(el => 
       <>
-        <ToDo key={el.id} todo={el} period={"year"}/>
+        <ToDo key={el.id} todo={el} period_id={5}/>
      </>
       )}
       {/* </>

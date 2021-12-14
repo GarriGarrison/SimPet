@@ -2,10 +2,12 @@ import { useState } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
+import { deleteTodo, editTodo } from "../../redux/actions/todoAll.action";
 
 
-export function ToDo({todo, period}) {
-  if (todo) console.log("netu");
+export function ToDo({todo, period_id}) {
+  if (!todo) console.log("netu");
+  const [animal_id, setAnimal_id] = useState(3)
   
   
   const [value, setValue ] = useState(todo.action ?? ' ')
@@ -28,6 +30,24 @@ export function ToDo({todo, period}) {
   const handleStatus = async (event) => {
     event.preventDefault()
     let {category} = event.target.dataset
+    let categoryNum = 0
+    todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
+    
+    const form ={
+      action: todo.action,
+      time: todo.time,
+      date: todo.date,
+      status: true,
+      animal_id,
+      id: todo.id,
+      periodNum: period_id,
+      categoryNum
+    }
+    console.log(form);
+    dispatch(editTodo(form))
+
+
+
     
     switch (category) {
 
@@ -63,19 +83,30 @@ export function ToDo({todo, period}) {
      
   }
 
-
   const handleEdit = async (event) => {
     event.preventDefault()
-    const action = inputs[0].getValue()
-    const time = inputs[1].getValue()
-    const date = inputs[2].getValue()
-    setValue(action)
-    setDay(date)
-    setTime(time)
- 
+    let categoryNum = 0
+    todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
+    
+    const form ={
+      action: inputs[0].getValue(),
+      time: inputs[1].getValue(),
+      date: inputs[2].getValue(),
+      status: false,
+      animal_id,
+      id: todo.id,
+      periodNum: period_id,
+      categoryNum
+    }
+    console.log(form);
+    dispatch(editTodo(form))
+}
 
-    // dispatch(getNum(num.num))
-    setEditClick(false) 
+  const handleDelClick = async (event) => {
+    event.preventDefault()
+    
+    dispatch(deleteTodo(todo.id))
+
 }
 
     return (
@@ -98,15 +129,16 @@ export function ToDo({todo, period}) {
           <div id={todo.id} class="main-container">
             {todo.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{value}</span>
-          { period === "week" && <span> {day}</span> }
-          { period === "month" && <span> {day}</span> }
-          { period === "year" && <span> {day}</span> }
+          { period_id == 3 && <span> {day}</span> }
+          { period_id == 4 && <span> {day}</span> }
+          { period_id == 5 && <span> {day}</span> }
 
 
           <span> {time}</span>
 
-                <button onClick={handleStatus} data-category={todo.title || 'eat'} class="done">✔</button>
+                <button onClick={handleStatus} data-category={todo.title} class="done">✔</button>
                 <button onClick={handleEditClick} class="edit">✏️</button>
+                <button onClick={handleDelClick} class="edit">x</button>
             
           </div>
           </div>

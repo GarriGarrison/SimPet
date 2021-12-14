@@ -18,7 +18,7 @@ export function TodoWeek() {
     return (
       <> {todos.map(el => 
       <>
-        <ToDo todo={el} period={"week"}/>
+        <ToDo todo={el} period_id={3}/>
      </>
       )}
     
