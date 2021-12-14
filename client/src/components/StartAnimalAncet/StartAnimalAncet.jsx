@@ -2,8 +2,9 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../../redux/actions/todoAll.action';
 import Ancet from '../Ancet/Ancet';
-
-
+import classes from './startanimal.module.css'
+import Logo from '../UserForm/Logo/Logo'
+import { useNavigate } from "react-router-dom";
 
 const StartAnimalAncet = () => {
 
@@ -13,7 +14,7 @@ const StartAnimalAncet = () => {
     //   dispatch(checkAuth());
     //   console.log("проверка");
     // }, []);
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
   
   
   
@@ -131,6 +132,7 @@ const StartAnimalAncet = () => {
         animal_id
       }
       dispatch(addTodo(medicalF))
+      navigate('/')
 
       
 
@@ -144,17 +146,18 @@ const StartAnimalAncet = () => {
   return (
     <>
 
-<div className='db-'>
-        <form onSubmit={submitHandlerIn} id='form'>
-         <p>
+<div className={classes.container}>
+  <div className={classes.logo}><Logo/></div>
+        <form onSubmit={submitHandlerIn} id='form' className={classes.form}>
+         <p className={classes.message}>
           Количество приемов пищи:
          </p>
           <input onChange={changeEat} type="number" placeholder="" name="num" />
-          <p>
+          <p className={classes.message}>
           что именно:
          </p>
           <input onChange={changeEat} type="text" placeholder="" name="action" />
-        <p>насколько общительный:</p>
+        <p className={classes.message}>насколько общительный:</p>
         
           <select onChange={changeContact} name="periodNum" form="form">
           <option value="3"> Любит иногда няшкаться</option>

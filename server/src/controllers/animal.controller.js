@@ -14,7 +14,8 @@ const getAllAnimal = async (req, res) => {
 
 
 const addAnimal = async (req, res) => {
-  if (req.body === undefined)
+  console.log(req.body);
+  if (!req.body)
     return res.sendStatus(400);
   
   const { type, name, breed, sex, age, weight, user_id } = req.body;

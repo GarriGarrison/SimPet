@@ -27,6 +27,7 @@ export const signUp = (payload) => async (dispatch) => {
 }
 
 export const signIn = (payload) => async (dispatch) => {
+  console.log(payload);
   const response = await fetch('http://localhost:3001/api/v1/auth/signin', {
         method: "POST",
         headers: {

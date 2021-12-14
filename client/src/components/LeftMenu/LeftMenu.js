@@ -65,7 +65,7 @@ const LeftMenu = () => {
   }
   return (
     <>
-    <SimStatus/>
+    
     {isChangeAva ? <div className={classes.formAva}>
       <form onSubmit={submitAva} >
         <input type="text" name="img" placeholder="введите новый URL аватара"/>

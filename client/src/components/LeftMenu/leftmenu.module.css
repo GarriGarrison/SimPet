@@ -4,6 +4,11 @@
   left: 0;
   bottom: 0;
 }
+.romb{
+  
+  padding-left: 4rem;
+  
+}
 @font-face { font-family:"Century Gothic";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID1") format(svg)}
 @font-face { font-family:"Arial";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID0") format(svg)}
 .str0 {stroke:#2B2A29;stroke-width:2.35;stroke-miterlimit:22.9256}
