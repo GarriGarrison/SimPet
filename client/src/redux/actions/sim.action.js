@@ -1,5 +1,5 @@
 import { GET_STATUS, ADD_STATUS, GET_MEDICINE, GET_EAT, GET_COMMUNICATION, GET_COMFORT, GET_FIVE, GET_SIX, ADD_SIX, ADD_FIVE, ADD_EAT, ADD_MEDICINE, ADD_COMMUNICATION, ADD_COMFORT} from '../types/sim.types'
-import axios from "axios";
+
 
 export const getStatus = (color) => ({
     type: ADD_STATUS,
