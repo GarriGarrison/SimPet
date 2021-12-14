@@ -23,7 +23,7 @@ const StartAnimalAncet = () => {
     //   navigate('/')
     // }
 
-    const [animal_id, setAnimal_id] = useState(1)
+    const [animal_id, setAnimal_id] = useState(3)
   
     const [eat, setEat] = useState({
       num: '',

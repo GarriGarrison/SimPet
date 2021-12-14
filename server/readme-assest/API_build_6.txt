@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-Server (build 6+,  date: 13.12.2021)
-=======
 Server (build 6,  date: 13.12.2021)
->>>>>>> bf8b2a06d810ffc5846c028ad556a62d5ca2aa3b
 
 
 router ->  authRouter

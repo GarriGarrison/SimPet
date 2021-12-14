@@ -1,26 +1,32 @@
 
+
 import { useEffect, useState } from "react"
 import classes from "./form.module.css";
-import { signUp ,signIn } from "../../redux/actions/user.actions"
+import { signUp ,signIn, checkAuth } from "../../redux/actions/user.actions"
 import { useSelector, useDispatch} from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
 
 const UserFormReg = () => {
   const navigate = useNavigate()
+
+  let location = useLocation()
+
+  useEffect(() => {
+    console.log("ПРОВЕРЯЕМ НА СЕРВАКЕ");
+    dispatch(checkAuth());
+  },[]);
+
   let user = useSelector(state => state.user);
   
+
   useEffect(() => {
+    console.log(user,'registrationsssssss');
+    console.log('проверка на user');
     if(user.name){
-        navigate('/')
-      }
-    console.log("проверка");
-  }, [user]);;
-
-
-  
-  
-  
+      navigate('/')
+    }
+  },[user])
 
 
   const dispatch = useDispatch()
@@ -42,8 +48,8 @@ const UserFormReg = () => {
     if (payload.length) {
       payload = Object.fromEntries(payload)
       console.log(payload);
-
-      dispatch(signUp(payload)) 
+      dispatch(signUp(payload))
+      navigate('/animal_reg')
     }
   }
   const submitHandlerIn = (e) => {

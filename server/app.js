@@ -1,7 +1,7 @@
 /**
  * Project: "SimPet"
  * Path: "server"
- * Release: 7
+ * Release: 6+
  * 
  * Date: 14.12.2021
  */
