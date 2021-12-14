@@ -11,23 +11,6 @@ import Logo from "./Logo/Logo.jsx"
 
 const UserFormLog = () => {
   const navigate = useNavigate()
-  let user = useSelector(state => state.user);
-  
-  useEffect(() => {
-    if(user.name){
-        navigate('/')
-      }
-    console.log("проверка");
-  }, [user]);
-  
-  
-  // if(user){
-  //   navigate('/')
-  // }
-
-
-const UserFormLog = () => {
-  const navigate = useNavigate()
   let location = useLocation()
   const dispatch = useDispatch()
   
