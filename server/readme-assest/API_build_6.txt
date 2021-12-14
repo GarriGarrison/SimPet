@@ -1,0 +1,141 @@
+Server (build 6+,  date: 13.12.2021)
+
+
+router ->  authRouter
+
+[POST] '/api/v1/auth/signup'
+request ->  req.body = { name, email, password }
+response ->  res.status(201).json({ id, name })
+
+[POST] '/api/v1/auth/signin'
+request ->  req.body = { email, pass }
+response ->  return res.status(202).json({ id, name })
+
+[GET] '/api/v1/auth/signout'
+request ->  null
+response ->  return res.sendStatus(200)
+
+[GET] '/api/v1/auth/check'
+request ->  null
+response ->  res.status(201).json({ id, name })
+
+
+router ->  userRouter
+
+[GET] '/api/v1/users'
+request ->  null
+response ->  res.status(200).json([{ id, name }])
+
+[GET] '/api/v1/users/:id'  (id - user)
+request ->  null
+response ->  res.status(200).json({ id, name })
+
+[PATCH] '/api/v1/users/:id'  (id - user)
+request ->  req.body = {name*, email*, password* }
+response ->  res.status(200).json({ id, name })
+
+[DELETE] '/api/v1/users/:id'  (id - user)
+request ->  null
+response ->  res.status(200)
+
+
+
+router ->  categoryRouter
+
+[GET] '/api/v1/category/feed/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/category/hygiene/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/category/medical/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/category/contact/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/category/care/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/category/party/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+
+
+router ->  periodRouter
+
+[GET] '/api/v1/period/none/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/period/day/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/period/week/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/period/month/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/period/year/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+[GET] '/api/v1/period/all/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, title, action, date, time, status }])
+
+
+
+router ->  animalRouter
+
+[GET] '/api/v1/animals'
+request ->  null
+response ->  res.status(200).json([{ type, name, breed, sex, age, weight, user_id }])
+
+[POST] '/api/v1/animals'
+request ->  req.body = { type, name, breed, sex, age, weight, user_id }
+response ->  res.status(201).json({ type, name, breed, sex, age, weight, user_id })
+
+[GET] '/api/v1/animals/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json({ type, name, breed, sex, age, weight, user_id })
+
+[PATCH] '/api/v1/animals/:id'  (id - животное)
+request ->  req.body = { type*, name*, breed*, sex*, age*, weight*, user_id* }
+response ->  res.status(200).json({ type, name, breed, sex, age, weight, user_id })
+
+[DELETE] '/api/v1/animals/:id'  (id - животное)
+request ->  null
+response ->  res.status(200)
+
+
+
+router ->  todosRouter
+
+[GET] '/api/v1/todos/:id'  (id - животное)
+request ->  null
+response ->  res.status(200).json([{ id, date, time, status, action, category, animalId }])
+
+[POST] '/api/v1/todos/:id'  (id - животное)
+request ->  req.body = { action, categoryNum, periodNum, date, time }
+response ->  res.status(201).json({ id, action, categoryNum, periodNum, date, time })
+
+[PATCH] '/api/v1/todos/:id'  (id - todo)
+request ->  req.body = { action*, categoryNum*, periodNum*, date*, time* }
+response ->  res.status(200).json({ action*, categoryNum*, periodNum,* date*, time* })
+
+[DELETE] '/api/v1/todos/:id'  (id - todo)
+request ->  null
+response ->  res.status(200)
+
+
