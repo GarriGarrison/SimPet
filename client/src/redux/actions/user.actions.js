@@ -60,18 +60,16 @@ export const checkAuth = () => async (dispatch) => {
 
 export const deleteUser = () => ({
   type: DELL_USER,
-  payload: null
+  payload: {}
 })
 
-export const signOut = (navigate) => async (dispatch) => {
+export const signOut = () => async (dispatch) => {
   const response = await fetch('http://localhost:3001/api/v1/auth/signout', {
     credentials: 'include'
   })
   if (response.ok) {
     dispatch(deleteUser())
-    // setTimeout(()=>{
-      navigate("/start")
-    // }, 2000  )
+
   }
 } 
 

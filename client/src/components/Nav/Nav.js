@@ -11,7 +11,7 @@ import { checkAuth } from '../../redux/actions/user.actions';
  const Nav = ({user}) => {
   
   console.log(user);
-  if(!user){ 
+  if(!user.name){ 
   return  <Navigate to='/start'/>}
 
 
