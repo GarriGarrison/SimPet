@@ -1,0 +1,60 @@
+.bar{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+.str0 {stroke:#2B2A29;stroke-width:2.36;stroke-miterlimit:22.9256}
+.str2 {stroke:black;stroke-width:2.36;stroke-miterlimit:22.9256}
+.str1 {stroke:white;stroke-width:2.36;stroke-miterlimit:22.9256}
+.fil4 {fill:#FEFEFE;pointer-events: none;}
+.fil44 {fill:#b9b9b9;stroke:black;}
+.fil44:hover {fill:#ffffff;stroke:rgb(255, 0, 0);}
+.fil16 {fill:#E31E24}
+.fil16:hover {fill:#00ff4c}
+.fil17 {fill:#ffffff;pointer-events: none;}
+.fil13 {fill:#393185}
+.fil3 {fill:#222848}
+.fil3:hover {fill:#1c86e9;stroke:white;}
+.fil5 {fill:#262D57}
+.fil5:hover {fill:#881ca3}
+.fil1 {fill:#445C80}
+.fil14 {fill:#50B24F}
+.fil10 {fill:#7398B3}
+.fil11 {fill:#7EACFA}
+.fil12 {fill:#92BAF1}
+.fil2 {fill:#C6FAFF}
+.fil22 {fill:rgb(135, 187, 192)}
+.fil22:hover {fill:rgb(151, 245, 253)}
+.fil6 {fill:#CBEBF8}
+.fil8 {fill:#D11514}
+.fil8:hover {fill:#ff2727;stroke: white;}
+.fil15 {fill:#DEE609}
+.fil0 {fill:#ffffff}
+.fil7 {fill:url(#id11)}
+.fil9 {fill:url(#id12)}
+
+.formAva{
+ position:absolute;
+ bottom:0;
+ width:100vw;
+ height: 100vh;
+ background-color: #222848be;
+ z-index: 50;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+}
+.formAva form{
+  display: flex;
+  width: 30%;
+  flex-direction: column;
+  
+}
+.formAva input{
+  height: 50px;
+  text-align: center;
+}
+.formAva button{
+  height: 50px;
+  text-align: center;
+}

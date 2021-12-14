@@ -25,7 +25,7 @@ const todoRouter = require('./src/routes/todos.router');
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 const { COOKIE_SECRET, COOKIE_NAME } = process.env;
 
 

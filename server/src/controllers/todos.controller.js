@@ -1,7 +1,15 @@
+<<<<<<< HEAD
 const { Todo, Task, Action, Category } = require('../../src/db/models');
 
 
 const allTaskId = async (req, res) => {
+=======
+const { Todo, Task, Action, Category } = require('../db/models');
+
+
+const allTaskId = async (req, res) => {
+  console.log('lol');
+>>>>>>> bf8b2a06d810ffc5846c028ad556a62d5ca2aa3b
   const { id } = req.params;
   const todos = [];
 
