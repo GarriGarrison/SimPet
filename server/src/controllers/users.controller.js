@@ -1,4 +1,6 @@
+const bcrypt = require('bcrypt');
 const { User } = require('../../src/db/models');
+require('dotenv').config();
 
 
 const getAllUsers = async (req, res) => {
@@ -11,6 +13,34 @@ const getAllUsers = async (req, res) => {
   } catch (error) {
     return res.sendStatus(500);
   }
+}
+
+const addUser = async (req, res) => {
+  if (req.body === undefined)
+    return res.sendStatus(400);
+  
+  const saltRounds = Number(process.env.SALT_ROUNDS);
+  const { name, email, password } = req.body;
+
+  if (name && email && password) {
+    try {
+      const hashedpass = await bcrypt.hash(password, saltRounds);
+
+      const createUser = await User.create({
+        // id: Date.now(),  //v4(),
+        name,
+        email,
+        password: hashedpass
+      });
+
+      return res.status(201).json({ id: createUser.id, name: createUser.name });
+    } catch (err) {
+      console.error(err);
+      res.sendStatus(500);
+    }
+  }
+
+  return res.sendStatus(400);
 }
 
 
@@ -42,7 +72,7 @@ const editUser = async (req, res) => {
         id,
       },
     });
-    res.status(200).json(req.body); //sendStatus(200);
+    res.status(200).json(req.body);
   } catch (error) {
     res.sendStatus(424);  //418
   }
@@ -61,6 +91,7 @@ const deleteUser = async (req, res) => {
 
 module.exports = {
   getAllUsers,
+  addUser,
   editUser,
   getUser,
   deleteUser

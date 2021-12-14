@@ -3,11 +3,11 @@ const todoController = require('../controllers/todos.controller');
 // const checkAuthor = require('../middlewares/checkAuthor');
 
 
-router.route('/todos/:id')
+router.route('/:id')
   .get(/*checkAuthor,*/ todoController.allTaskId)
-  // .post(/*checkAuthor,*/ todoController.addTaskId)
-  // .patch(/*checkAuthor,*/ todoController.editTaskId)
-  // .delete(/*checkAuthor,*/ todoController.deleteTaskId);
+  .post(/*checkAuthor,*/ todoController.addTaskId)
+  .patch(/*checkAuthor,*/ todoController.editTaskId)
+  .delete(/*checkAuthor,*/ todoController.deleteTaskId);
 
 
 module.exports = router;

@@ -3,7 +3,7 @@
  * Path: "server"
  * Release: 6
  * 
- * Date: 12.12.2021
+ * Date: 13.12.2021
  */
 
 
@@ -25,7 +25,7 @@ const todoRouter = require('./src/routes/todos.router');
 
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 3001;
 const { COOKIE_SECRET, COOKIE_NAME } = process.env;
 
 
@@ -61,7 +61,7 @@ app.use('/api/v1/users', userRouter);
 app.use('/api/v1/category', categoryRouter);
 app.use('/api/v1/period', periodRouter);
 app.use('/api/v1/animals', animalRouter);
-app.use('`./api/v1/todos', todoRouter);
+app.use('/api/v1/todos', todoRouter);
 
 
 
