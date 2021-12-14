@@ -1,5 +1,6 @@
 
-import { useState, useEffect } from "react"
+
+import { useEffect, useState } from "react"
 import classes from "./form.module.css";
 import { signUp ,signIn, checkAuth } from "../../redux/actions/user.actions"
 import { useSelector, useDispatch} from "react-redux";
@@ -8,6 +9,7 @@ import Logo from "./Logo/Logo.jsx"
 
 const UserFormReg = () => {
   const navigate = useNavigate()
+
   let location = useLocation()
 
   useEffect(() => {
@@ -68,7 +70,7 @@ const UserFormReg = () => {
           <input onChange={changeHandler} type="password" placeholder="пароль" name="password" />
           <button type="submit">Регистрация</button>
           <p className={classes.message}>
-            Есть учетная запись? <Link to= {'/log'}>Войти</Link>
+            Есть учетная запись? <Link to={'/log'}>Войти</Link>
           </p>
         </form>
       </div>

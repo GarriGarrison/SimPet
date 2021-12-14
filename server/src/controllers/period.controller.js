@@ -13,11 +13,10 @@ const {
 
 const getFromCategory = async (periodId, animalId) => {
   const result = [];
-  console.log('IF: ', periodId);
   let periodDB;
 
   try {
-    if (periodId === 6) {
+    if (periodId === PERIOD_ALL) {
       periodDB = await Task.findAll({
         raw: true,
         where: {

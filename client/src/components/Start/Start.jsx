@@ -6,6 +6,7 @@ import Room from "../Room/Room";
 import classes from './start.module.css'
 
 const Start = () => {
+
   const navigate = useNavigate();
 
   const dispatch = useDispatch();

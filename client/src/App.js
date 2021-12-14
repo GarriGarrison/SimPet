@@ -23,6 +23,8 @@ import { TodoMonth } from "./components/TodoMonth/TodoMonth";
 import AnimalForm from "./components/AnimalForm/AnimalForm";
 import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
+import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
+import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 
 
 function App() {
@@ -38,7 +40,6 @@ function App() {
   useEffect(() => {
     console.log(id);
     if (id){
-
       dispatch(getAnimal(id))
       console.log("animal");
     }
@@ -53,7 +54,9 @@ function App() {
           <Route element={ <Nav user={user}/>}/>
     
           <Route path="/log" element={ <UserFormLog/>} />
-          <Route path="/animal_reg" element={ <AnimalForm/>} />
+          <Route path="/animal_reg" element={ <StartAnimalForm/>} />
+          <Route path="/animal_reg/ancet" element={ <StartAnimalAncet/>} />
+
 
           <Route path="/reg" element={ <UserFormReg/>} />
 

@@ -22,13 +22,19 @@ export const newTodo = (newTodo) => ({
 });
 
 export const addTodo = (formData) => async (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/todo`, {
+  const id = formData.animal_id
+  console.log(formData);
+  await fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     credentials: "include",
-    body: formData,
+    body: JSON.stringify(formData)
   })
     .then((response) => response.json())
-    .then((data) => dispatch(newTodo(data), window.location.assign("/")).catch((err) => console.log(err)));
+    .then((data) => dispatch(newTodo(data)))
+    .catch((err) => console.log(err))
 };
 
 

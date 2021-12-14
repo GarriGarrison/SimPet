@@ -2,7 +2,7 @@ import React,{useState, useEffect} from 'react';
 import { useSelector } from 'react-redux'
 import classes from './rightbarmenu.module.css'
 import { useDispatch } from 'react-redux'
-import { setComfort, setCommun, setEat, setFive, setMedicin, setsix, setStatus } from "../../redux/actions/sim.action";
+import { setComfort, setCommun, setEat, setFive, setMedicin, setMedicine, setSix, setsix, setStatus } from "../../redux/actions/sim.action";
 
 
 
@@ -144,13 +144,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(medicinProgress >= 30){
-    setTimeout(() => dispatch(setMedicin(medicinProgress - 1)), timeout.medicin);
+    setTimeout(() => dispatch(setMedicine(medicinProgress - 1)), timeout.medicin);
   }else{
      dispatch(setStatus('green'))
        if(medicinProgress >= 10){
          
          setTimeout(() => {
-          dispatch(setMedicin(medicinProgress - 1))
+          dispatch(setMedicine(medicinProgress - 1))
            setMedicinColor("#ffcb11")
           }, timeout.medicin)
 
@@ -160,7 +160,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-              dispatch(setMedicin(medicinProgress - 1))
+              dispatch(setMedicine(medicinProgress - 1))
                   setMedicinColor("red")
              }, timeout.medicin); 
             }
@@ -202,13 +202,13 @@ useEffect(()=>{
 useEffect(()=>{
 
   if(sixProgress >= 30){
-    setTimeout(() => dispatch(setsix(sixProgress - 1)), timeout.six);
+    setTimeout(() => dispatch(setSix(sixProgress - 1)), timeout.six);
   }else{
      dispatch(setStatus('green'))
        if(sixProgress >= 10){
          
          setTimeout(() => {
-          dispatch(setsix(sixProgress - 1))
+          dispatch(setSix(sixProgress - 1))
            setsixColor("#ffcb11")
           }, timeout)
 
@@ -218,7 +218,7 @@ useEffect(()=>{
            
 
              setTimeout(() => {
-              dispatch(setsix(sixProgress - 1))
+              dispatch(setSix(sixProgress - 1))
                   setsixColor("red")
              }, timeout.six); 
             }
