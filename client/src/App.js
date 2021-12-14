@@ -64,7 +64,7 @@ function App() {
           <Route element={ <Nav user={user}/>}/>
     
           <Route path="/log" element={ <UserFormLog/>} />
-          <Route path="/animal_reg" element={ <StartAnimalForm/>} />
+          <Route path="/animal_reg" element={ <StartAnimalForm redirect={'/animal_reg/ancet'}/>} />
           <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
 
 
