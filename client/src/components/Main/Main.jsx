@@ -1,7 +1,7 @@
 import React,{useEffect, useState} from 'react';
 import { useDispatch } from "react-redux"
-import { Link } from "react-router-dom";
 import { checkAuth } from "../../redux/actions/user.actions"
+import AddAnimal from '../AddAnimal/AddAnimal';
 import AddTodo from '../AddTodo/AddTodo';
 
 
@@ -18,9 +18,7 @@ const Main = ({anId}) => {
 
   const [click, setClick] = useState(true)
 
-console.log(click);
   const clickHandler = (e) => {
-    console.log('tut');
     e.preventDefault()
     setClick(false)
   }
@@ -31,6 +29,7 @@ console.log(click);
     <br/>
     <br/>
     <br/>
+    <AddAnimal/>
     {click?
     <button onClick={clickHandler}>+</button>
 
