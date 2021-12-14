@@ -22,13 +22,13 @@ export const createAnimalOk = (animal) => ({
 
 
   export const getAnimal = (id_user) => async (dispatch) =>{
-      console.log(id_user);
+      
     await fetch(`http://localhost:3001/api/v1/animals/${id_user}`, {
       head: {credentials: 'include'},
      })
      .then(response => response.json())
      .then(animal => {
-         console.log(animal);
+      
        dispatch(getAnimalOk(animal))
      })
 

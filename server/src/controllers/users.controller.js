@@ -16,7 +16,7 @@ const getAllUsers = async (req, res) => {
 }
 
 const addUser = async (req, res) => {
-  if (req.body === undefined)
+  if (!req.body)
     return res.sendStatus(400);
   
   const saltRounds = Number(process.env.SALT_ROUNDS);

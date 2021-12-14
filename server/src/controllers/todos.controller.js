@@ -2,7 +2,6 @@ const { Todo, Task, Action, Category } = require('../db/models');
 
 
 const allTaskId = async (req, res) => {
-  console.log('lol');
   const { id } = req.params;
   const todos = [];
 
@@ -43,7 +42,7 @@ const allTaskId = async (req, res) => {
 
 
 const addTaskId = async (req, res) => {
-  if (req.body === undefined)
+  if (!req.body)
     return res.sendStatus(400);
   
   const { action, categoryNum, periodNum, date, time } = req.body;
@@ -90,7 +89,7 @@ const addTaskId = async (req, res) => {
 
 
 const editTaskId = async (req, res) => {
-  if (req.body === undefined)
+  if (!req.body)
     return res.sendStatus(400);
   
   try {
@@ -156,12 +155,10 @@ const editTaskId = async (req, res) => {
 
 const deleteTaskId = async (req, res) => {
   try {
-    console.log(id);
     const { id } = req.params;
+    console.log("task_id",req.params);
     const { task_id: taskId } = await Todo.findByPk(Number(id));
     const { action_id: actionId } = await Task.findByPk(taskId);
-
-    console.log('ID: ', +id, taskId, actionId);
 
     await Todo.destroy({ where: { id: id } });
     await Task.destroy({ where: { id: taskId } });

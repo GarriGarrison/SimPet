@@ -4,20 +4,27 @@ import { getTodoYear } from "../../redux/actions/todoYear.action";
 import { ToDo } from "../ToDo/ToDo";
 
 
-export function TodoYear() {
-  // const [isToDo, setIsToDo] = useState(true)
+export function TodoYear({anId}) {
+
   const todos = useSelector((state) => state.todoYear)
   const dispatch = useDispatch()
+
+  const [todosLocal,setTodos] = useState([])
   useEffect(() => {
-    dispatch(getTodoYear(3))
-    }, [])
-    console.log(todos.lenght);
-    // if(todos.lenght) {setIsToDo(true)} else {setIsToDo(false)}
-    // let text = ['lol', 'kek', 'cheburek']
+    if(todos) {
+      setTodos(todos)
+    }
+  },[todos])
+
+
+  useEffect(() => {
+    dispatch(getTodoYear(anId))
+    }, [anId])
+
     return (
       <> 
       {/* {isToDo? <> */}
-            {todos.map(el => 
+            {todosLocal.map(el => 
       <>
         <ToDo key={el.id} todo={el} period_id={5}/>
      </>

@@ -1,5 +1,7 @@
 
 import { useEffect, useState } from "react"
+import classes from './animal.module.css'
+import Logo from '../UserForm/Logo/Logo'
 
 import { useSelector, useDispatch} from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -25,10 +27,10 @@ const AnimalForm = () => {
 
 
   const [userSign, setUserSign] = useState({
-    type: '',
+    type: 'cat',
     name: '',
     breed: '',
-    sex: '',
+    sex: '1',
     age: '',
     weight: '',
     user_id: null
@@ -56,18 +58,32 @@ const AnimalForm = () => {
   }  
 
     return (
-      <div className='db-'>
-        <form onSubmit={submitHandlerIn}>
+      <div className={classes.container}>
+        <div className={classes.logo}>
+        <Logo/>
+        </div>
+        <form onSubmit={submitHandlerIn} className={classes.form} id="form">
          
-          <input onChange={changeHandler} type="text" placeholder="тип" name="type" />
+        <select onChange={changeHandler} placeholder="тип" name="type" form="form">
+        
+          <option value="cat">Кошка</option>
+          <option value="dog">Собака</option>
+          <option value="hamster">Хомяк</option>
+          <option value="snek">Змея</option>
+          <option value="turtle">Черепахи</option>
+          </select>
+
           <input onChange={changeHandler} type="text" placeholder="имя" name="name" />
           <input onChange={changeHandler} type="text" placeholder="порода" name="breed" />
-          <input onChange={changeHandler} type="text" placeholder="пол" name="sex" />
+          <select onChange={changeHandler} name="sex" form="form">
+          <option value="1">Мальчик(самец)</option>
+          <option value="2">Девочка(самка)</option>
+          </select>
+
           <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
-          <input onChange={changeHandler} type="number" placeholder="вес" name="weight" />
-          <Link to={"/animal_reg/ancet"}>
+          <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
           <button type="submit">go</button>
-          </Link>
+          
          
         </form>
       </div>

@@ -1,8 +1,13 @@
 @charset "UTF-8";
 .bar{
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  left: 0.5rem;
+  bottom: 0.5rem;
+}
+.romb{
+  
+  padding-left: 4rem;
+  
 }
 @font-face { font-family:"Century Gothic";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID1") format(svg)}
 @font-face { font-family:"Arial";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID0") format(svg)}
@@ -16,6 +21,7 @@
 .fil12 {fill:black}
 .fil4 {fill:#222848; transition: all 1s;}
 .fil4:hover {fill:#0026ff}
+.fil4:active {fill:#ff00ff;transition: all 0.1s;}
 .fil6 {fill:#262D57}
 .fil2 {fill:#445C80}
 .fil1 {fill:#666666}
