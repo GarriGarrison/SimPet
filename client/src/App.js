@@ -23,11 +23,13 @@ import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
+import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 
 
 function App() {
   const dispatch = useDispatch();
   const [animalId, setAnimalId] = useState(null)
+  const [animalAll, setAnimal] = useState(null)
 
   useEffect(() => {
     dispatch(checkAuth());
@@ -45,16 +47,18 @@ function App() {
   }, [id]);
 
   const animal = useSelector(state=>state.animal[0])
+  const ani = useSelector(state=>state.animal)
 
   useEffect(() => {
     if (animal) {
       setAnimalId(animal.id)
+      setAnimal(ani)
     }
   }, [animal])
 
   return (
     <>
-    <Paw count={4}/>
+    <Paw count={6}/>
       <div className="App">
          <Routes >
           <Route element={ <Nav user={user}/>}/>
@@ -70,7 +74,7 @@ function App() {
             <Nav user={user}/>
             <Main anId={animalId}/>
             <RightBarMenu />
-
+            <TogleAnimal animal={animalAll}/>
             <LeftMenu/>
             </>
         
