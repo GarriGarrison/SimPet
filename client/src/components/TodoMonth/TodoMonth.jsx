@@ -6,10 +6,18 @@ import { ToDo } from "../ToDo/ToDo";
 
 export function TodoMonth() {
   const todos = useSelector((state) => state.todoMonth)
-  const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getTodoMonth(3))
-    }, [])
+  const animal = useSelector((state) => state.animal)
+ 
+  const {id} = useSelector(state=>state.animal[0])
+  
+ 
+   const dispatch = useDispatch()
+ 
+   useEffect(() => {
+     if(id){
+       console.log(id);
+     dispatch(getTodoMonth(id))}
+     }, [id])
    
   //   console.log(todos);
   // console.log('tut');

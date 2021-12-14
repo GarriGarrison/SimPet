@@ -18,6 +18,7 @@ const addAnimal = async (req, res) => {
     return res.sendStatus(400);
   
   const { type, name, breed, sex, age, weight, user_id } = req.body;
+  console.log('AAAAA');
 
   if (type && name && breed && sex && age && weight && user_id) {
     try {

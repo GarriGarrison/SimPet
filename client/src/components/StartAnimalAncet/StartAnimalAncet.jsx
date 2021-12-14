@@ -6,25 +6,18 @@ import classes from './startanimal.module.css'
 import Logo from '../UserForm/Logo/Logo'
 import { useNavigate } from "react-router-dom";
 
-const StartAnimalAncet = () => {
+const StartAnimalAncet = (id) => {
 
     let user = useSelector(state => state.user);
     const dispatch = useDispatch();
-    // useEffect(() => {
-    //   dispatch(checkAuth());
-    //   console.log("проверка");
-    // }, []);
-    const navigate = useNavigate()
-  
-  
-  
-   
-    
-    // if(!user){
-    //   navigate('/')
-    // }
 
-    const [animal_id, setAnimal_id] = useState(3)
+    const navigate = useNavigate()
+    console.log(id);
+  
+  
+  
+
+    const [animal_id, setAnimal_id] = useState(1)
   
     const [eat, setEat] = useState({
       num: '',

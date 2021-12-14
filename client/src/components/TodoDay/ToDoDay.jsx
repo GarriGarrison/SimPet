@@ -6,11 +6,18 @@ import { ToDo } from "../ToDo/ToDo";
 
 export function TodoDay() {
  const todos = useSelector((state) => state.todoDay)
+ const animal = useSelector((state) => state.animal)
+
+ const {id} = useSelector(state=>state.animal[0])
+ 
+
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(getTodoDay(3))
-    }, [])
+    if(id){
+      console.log(id);
+    dispatch(getTodoDay(id))}
+    }, [id])
    
     console.log(todos);
 
