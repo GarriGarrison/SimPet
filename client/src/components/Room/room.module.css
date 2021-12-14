@@ -1,0 +1,44 @@
+.container{
+  width: 100vw;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.fil18 {fill:#4D4D4D}
+.fil9 {fill:#9A9AC1}
+.fil8 {fill:#C14CC1}
+.fil5 {fill:#4C4C4C;fill-rule:nonzero}
+.fil10 {fill:#743900;fill-rule:nonzero;transition: all 2s;}
+.fil10:hover {fill:#c76000;fill-rule:nonzero}
+.fil2 {fill:#74C1C1;fill-rule:nonzero;transition: all 2s;}
+.fil2:hover {fill:#3189c3;fill-rule:nonzero}
+.fil4 {fill:rgb(37, 37, 37);fill-rule:nonzero}
+.fil15 {fill:#1ca3a3;fill-rule:nonzero}
+.fil16 {fill:#09ffff;fill-rule:nonzero;transition: all 2s;}
+.fil16:hover {fill:#5a5a5a;fill-rule:nonzero}
+.fil0 {fill:#8F8FB5;fill-rule:nonzero;transition: all 2s;}
+.fil0:hover {fill:#2121a3;fill-rule:nonzero}
+.fil7 {fill:#03037e;fill-rule:nonzero;transition: all 2s;}
+.fil7:hover {fill:#2b2bd8;fill-rule:nonzero}
+.fil12 {fill:#ABABAB;fill-rule:nonzero; transition: all 2s;}
+.fil12:hover {fill:#6b6b6b;fill-rule:nonzero}
+.fil6 {fill:#C14CC1;fill-rule:nonzero; transition: all 2s;}
+.fil6:hover {fill:#701c70;fill-rule:nonzero}
+.fil11 {fill:#C1A34C;fill-rule:nonzero;transition: all 2s;}
+.fil11:hover {fill:#ffde7a;fill-rule:nonzero;}
+.fil17 {fill:#C1C14C;fill-rule:nonzero;transition: all 2s;}
+.fil17:hover {fill:#ebeb1b;fill-rule:nonzero}
+.fil3 {fill:#C1C1C1;fill-rule:nonzero;transition: all 2s;}
+.fil3:hover {fill:#ffffff;fill-rule:nonzero}
+.fil1 {fill:#CBE2B5;fill-rule:nonzero;transition: all 2s;}
+.fil1:hover {fill:#32ad51;fill-rule:nonzero}
+.fil13 {fill:#E2E2E2;fill-rule:nonzero}
+.fil14 {fill:#EAEAEA;fill-rule:nonzero}
+
+.cat {
+  pointer-events: none;
+}
+.none{
+  pointer-events: none;
+}

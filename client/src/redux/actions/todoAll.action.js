@@ -24,16 +24,17 @@ export const newTodo = (newTodo) => ({
 export const addTodo = (formData) => async (dispatch) => {
   const id = formData.animal_id
   console.log(formData);
-  fetch(`http://localhost:3001/api/v1/todos/${id}`, {
+  await fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
     },
     credentials: "include",
-    body: JSON.stringify(formData,)
+    body: JSON.stringify(formData)
   })
     .then((response) => response.json())
-    .then((data) => dispatch( console.log(data)).catch((err) => console.log(err)));
+    .then((data) => dispatch(newTodo(data)))
+    .catch((err) => console.log(err))
 };
 
 
