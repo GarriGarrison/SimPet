@@ -38,7 +38,7 @@ export const createAnimalOk = (animal) => ({
   export const addAnimal = (animal) => async (dispatch)=>{
       console.log(animal);
    
-    const response = await fetch('http://localhost:3001/api/v1/animals/animals', {
+    const response = await fetch('http://localhost:3001/api/v1/animals', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

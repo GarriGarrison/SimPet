@@ -64,8 +64,9 @@ const AnimalForm = () => {
           <input onChange={changeHandler} type="text" placeholder="пол" name="sex" />
           <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
           <input onChange={changeHandler} type="number" placeholder="вес" name="weight" />
-        
+          <Link to={"/animal_reg/ancet"}>
           <button type="submit">go</button>
+          </Link>
          
         </form>
       </div>

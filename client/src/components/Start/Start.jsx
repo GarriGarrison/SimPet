@@ -7,19 +7,17 @@ import { checkAuth,  } from "../../redux/actions/user.actions"
 
 const Start = () => {
   const navigate = useNavigate()
-  
-
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(checkAuth())
-  },[])
-
   let user = useSelector(state => state.user);
+  
+  useEffect(() => {
+    if(user.name){
+        navigate('/')
+      }
+    console.log("проверка");
+  }, [user]);
 
-  if(user){
-    navigate('/')
-  }
 
 
   return (

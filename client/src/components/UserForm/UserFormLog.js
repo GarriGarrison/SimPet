@@ -1,5 +1,5 @@
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import classes from "./form.module.css";
 import { signUp ,signIn } from "../../redux/actions/user.actions"
 import { useSelector, useDispatch} from "react-redux";
@@ -8,14 +8,19 @@ import Logo from "./Logo/Logo.jsx"
 
 const UserFormLog = () => {
   const navigate = useNavigate()
-
   let user = useSelector(state => state.user);
-
+  
+  useEffect(() => {
+    if(user.name){
+        navigate('/')
+      }
+    console.log("проверка");
+  }, [user]);
   
   
-  if(user){
-    navigate('/')
-  }
+  // if(user){
+  //   navigate('/')
+  // }
 
 
   const dispatch = useDispatch()
