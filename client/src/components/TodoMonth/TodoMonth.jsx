@@ -18,7 +18,7 @@ export function TodoMonth() {
     return (
       <> {todos.map(el => 
       <>
-        <ToDo todo={el} period={"month"}/>
+        <ToDo todo={el} period_id={4}/>
      </>
       )}
     

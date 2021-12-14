@@ -44,12 +44,16 @@ export const todoDel = (id) => ({
 });
 
 export const deleteTodo = (id) => async (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/todo/${id}`, {
+  console.log(id);
+  fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     credentials: "include",
     body: JSON.stringify(id),
   })
-    .then((response) => response.ok && dispatch(todoDel(id), window.location.assign("/")))
+    .then((response) => response.ok && dispatch(todoDel(id)))
     .catch((err) => console.log(err));
 };
 
@@ -69,14 +73,15 @@ export const editStatusTodo = (id) => async (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const editTodo= (id, inputValue) => async (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/todo/${id}`, {
-    method: "PUT",
+export const editTodo = (todo) => async (dispatch) => {
+  let {id} = todo
+  fetch(`http://localhost:3001/api/v1/todos/${id}`, {
+    method: "PATCH",
     credentials: "include",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ id, tittle: inputValue }),
+    body: JSON.stringify(todo),
   })
     .then((response) => response.json())
     .then((data) => {

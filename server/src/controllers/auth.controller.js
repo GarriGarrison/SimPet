@@ -42,6 +42,7 @@ const signUp = async (req, res) => {
 
 
 const signIn = async (req, res) => {
+  console.log(req.body);
   if (req.body === undefined)
     return res.sendStatus(400);
   
