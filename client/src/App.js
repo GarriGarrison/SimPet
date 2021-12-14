@@ -68,7 +68,7 @@ function App() {
 
           <Route path="/" element={ <>
             <Nav user={user}/>
-            <Main/>
+            <Main anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
