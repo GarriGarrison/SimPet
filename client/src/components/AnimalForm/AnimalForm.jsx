@@ -51,6 +51,7 @@ const AnimalForm = () => {
       console.log(payload);
     
       dispatch(addAnimal(payload)) 
+      navigate('/animal_reg/ancet')
     }
   }  
 

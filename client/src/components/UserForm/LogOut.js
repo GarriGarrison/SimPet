@@ -4,21 +4,25 @@ import { useNavigate } from "react-router-dom"
 import { signOut } from "../../redux/actions/user.actions"
 
 const LogOut = () => {
+  
   const dispatch = useDispatch()
- 
-  let user = useSelector(state => state.user);
+
   const navigate = useNavigate()
+  
+  let user = useSelector(state => state.user);
+  
   useEffect(() => {
-    dispatch(signOut(navigate))
+    if(user.name){
+      dispatch(signOut())
+      navigate('/start')
+    }
   },[user])
   
-  // useEffect(() => {
-  //   if(!user.name) navigate('/start')
+  
+  
+  
+  return null;
 
-  // }, [user]);
-
-
-  return null
 }
 
 export default LogOut;

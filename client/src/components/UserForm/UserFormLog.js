@@ -1,10 +1,13 @@
 
-import { useEffect, useState } from "react"
+
+import { useState, useEffect } from "react"
+
 import classes from "./form.module.css";
-import { signUp ,signIn } from "../../redux/actions/user.actions"
+import { signUp ,signIn, checkAuth } from "../../redux/actions/user.actions"
 import { useSelector, useDispatch} from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
+
 
 const UserFormLog = () => {
   const navigate = useNavigate()
@@ -23,7 +26,17 @@ const UserFormLog = () => {
   // }
 
 
+const UserFormLog = () => {
+  const navigate = useNavigate()
+  let location = useLocation()
   const dispatch = useDispatch()
+  
+  useEffect(() => {
+    console.log("ПРОВЕРЯЕМ НА СЕРВАКЕ");
+    dispatch(checkAuth());
+  },[]);
+
+  let user = useSelector(state => state.user);
 
   const [userSign, setUserSign] = useState({
     email: '',
@@ -31,6 +44,13 @@ const UserFormLog = () => {
     userName: ''
   })
 
+  useEffect(()=>{
+    console.log(user.name,'avtorizationsssssss');
+    console.log('проверка на user');
+    if(user.name){
+      navigate('/')
+    }
+  },[user])
 
   const changeHandler = (e) => {
     setUserSign(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -43,6 +63,7 @@ const UserFormLog = () => {
     if (payload.length) {
       payload = Object.fromEntries(payload)
       dispatch(signIn({email:payload.email,password:payload.password})) 
+      navigate('/')
     }
   }  
 

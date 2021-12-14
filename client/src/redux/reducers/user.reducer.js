@@ -6,7 +6,7 @@ export const userReducer = (state = '', action) => {
       return action.payload
     
     case DELL_USER:
-      return null
+      return {}
 
     default: {
       return state
