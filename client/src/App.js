@@ -1,8 +1,7 @@
 // import { Routes, Route } from "react-router-dom";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import UserForm from "./components/UserForm/UserFormLog";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/actions/user.actions";
 import { useEffect, useState } from "react";
@@ -20,7 +19,6 @@ import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
 import { TodoMonth } from "./components/TodoMonth/TodoMonth";
-import AnimalForm from "./components/AnimalForm/AnimalForm";
 import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
@@ -54,21 +52,10 @@ function App() {
     }
   }, [animal])
 
-  // useEffect(() => {
-  //   console.log(animal);
-  //   if (animal){
-  //     console.log(animal,'____________');
-  //   }
-  // }, [animal]);
-
-
-  // console.log(animal,'+++++++++++++++');
- 
   return (
     <>
     <Paw count={4}/>
       <div className="App">
-         {/* <Nav/> */}
          <Routes >
           <Route element={ <Nav user={user}/>}/>
     
