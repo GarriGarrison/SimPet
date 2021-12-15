@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
@@ -10,10 +10,10 @@ import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAl
 
 
 
-export function ToDo({todo, period_id}) {
+export function ToDo({todo, period_id, anId}) {
 
   if (!todo) console.log("netu");
-  const [animal_id, setAnimal_id] = useState(3)
+  const [animal_id, setAnimal_id] = useState(anId)
   
   
   const [value, setValue ] = useState(todo.action ?? ' ')
@@ -36,6 +36,7 @@ export function ToDo({todo, period_id}) {
   const handleStatus = async (event) => {
     event.preventDefault()
     let {category} = event.target.dataset
+
 
     dispatch(editStatusTodo(todo.id))
 

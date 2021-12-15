@@ -6,17 +6,16 @@ import classes from '../ToDo/todo.module.css'
 
 
 export function TodoDay({anId}) {  
-
-  console.log(anId, 'day');
   const todos = useSelector((state) => state.todoDay.all)
   const dispatch = useDispatch()
+  // dispatch(getTodoDay(anId))
   
   const [todosLocal,setTodos] = useState([])
     useEffect(() => {
       if(todos) {
         setTodos(todos)
       }
-    },[todos])
+    },[todosLocal])
 
 
     useEffect(() => {
@@ -24,14 +23,11 @@ export function TodoDay({anId}) {
       dispatch(getTodoDay(anId))
 
     },[anId])
-    
-   
-    console.log(todos);
 
     return (
       <div className={classes.container}> {todosLocal.map(el => 
         <> 
-        <ToDo todo={el} period_id={2}/>
+        <ToDo todo={el} period_id={2} anId={anId}/>
          {/* <button onClick={handleStatus} id={el.id} data-category={el.title} class="done">✔</button> */}
      </>
       )}

@@ -26,7 +26,7 @@ export function TodoYear({anId}) {
       {/* {isToDo? <> */}
             {todosLocal.map(el => 
       <>
-        <ToDo key={el.id} todo={el} period_id={5}/>
+        <ToDo key={el.id} anId={anId} todo={el} period_id={5}/>
      </>
       )}
       {/* </>

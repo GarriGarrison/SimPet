@@ -25,7 +25,7 @@ export function TodoMonth({anId}) {
     return (
       <div className={classes.container}> {todosLocal.map(el => 
       <>
-        <ToDo todo={el} period_id={4}/>
+        <ToDo todo={el} anId={anId} period_id={4}/>
      </>
       )}
     

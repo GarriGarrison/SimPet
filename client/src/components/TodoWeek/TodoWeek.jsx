@@ -23,7 +23,7 @@ export function TodoWeek({anId}) {
     return (
       <div className={classes.container}> {todosLocal.map(el => 
       <>
-        <ToDo todo={el} period_id={3}/>
+        <ToDo todo={el} anId={anId} period_id={3}/>
      </>
       )}
     
