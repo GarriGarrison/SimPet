@@ -11,24 +11,26 @@ export function TodoDay({anId}) {
   // dispatch(getTodoDay(anId))
   
   const [todosLocal,setTodos] = useState([])
+  useEffect(() => {
+    if(todos) {
+      setTodos(todos)
+    }
+  },[todos])
+  
+  
+  const [animalID, setID] = useState(null)
+
     useEffect(() => {
-      if(todos) {
-        setTodos(todos)
+      if(anId){
+        setID(anId.id)
+        dispatch(getTodoDay(anId.id))
       }
-    },[todosLocal])
-
-
-    useEffect(() => {
-
-      dispatch(getTodoDay(anId))
-
     },[anId])
 
     return (
       <div className={classes.container}> {todosLocal.map(el => 
         <> 
-        <ToDo todo={el} period_id={2} anId={anId}/>
-         {/* <button onClick={handleStatus} id={el.id} data-category={el.title} class="done">✔</button> */}
+        <ToDo todo={el} period_id={2} anId={animalID}/>
      </>
       )}
     

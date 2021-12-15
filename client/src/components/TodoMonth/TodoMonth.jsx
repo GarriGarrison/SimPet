@@ -17,15 +17,20 @@ export function TodoMonth({anId}) {
   },[todos])
 
 
+  const [animalID, setID] = useState(null)
+
   useEffect(() => {
-    dispatch(getTodoMonth(anId))
-    }, [anId])
+    if(anId){
+      setID(anId.id)
+      dispatch(getTodoMonth(anId.id))
+    }
+  },[anId])
    
 
     return (
       <div className={classes.container}> {todosLocal.map(el => 
       <>
-        <ToDo todo={el} anId={anId} period_id={4}/>
+        <ToDo todo={el} period_id={4} anId={animalID}/>
      </>
       )}
     

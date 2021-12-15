@@ -17,16 +17,22 @@ export function TodoYear({anId}) {
   },[todos])
 
 
+  const [animalID, setID] = useState(null)
+
   useEffect(() => {
-    dispatch(getTodoYear(anId))
-    }, [anId])
+    if(anId){
+      setID(anId.id)
+      console.log(anId.id);
+      dispatch(getTodoYear(anId.id))
+    }
+  },[anId])
 
     return (
       <div className={classes.container}> 
       {/* {isToDo? <> */}
             {todosLocal.map(el => 
       <>
-        <ToDo key={el.id} anId={anId} todo={el} period_id={5}/>
+        <ToDo key={el.id} todo={el} period_id={5} anId={animalID}/>
      </>
       )}
       {/* </>
