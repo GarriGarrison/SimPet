@@ -95,6 +95,7 @@ const editTaskId = async (req, res) => {
   try {
     const { id  } = req.params;
     const { action, categoryNum, periodNum, date, time } = req.body;
+    console.log(req);
 
     if (action) {
       const { task_id: taskId } = await Todo.findByPk(id);

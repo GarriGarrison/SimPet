@@ -1,27 +1,47 @@
 import React,{useState,useEffect} from "react";
+import { useDispatch } from "react-redux";
+import { switchActivAnimal } from "../../redux/actions/animal.action";
+import AnimalForm from "../AnimalForm/AnimalForm";
 import classes from "./togle.module.css";
 
 const TogleAnimal = ({animal}) => {
-
+  console.log(animal);
+  const dispatch = useDispatch()
+  
   const [animalLocal,setAnimal] = useState([])
-
+  const [click, setClick] = useState(false)
+  
   useEffect(() =>{
     if(animal){
       setAnimal(animal)
-    }
-  },[animal])
+    }  
+  },[animal])  
 
   function togleAnimal(e){
-    console.log(e.target.attributes.id.value);
+    const index = e.target.attributes.id.value
+    dispatch(switchActivAnimal(Number(index)))
+    // console.log(e.target.attributes.index.value);
+
   }
   function addAnimal(){
+   
+    setClick(true)  
     console.log("add animal");
   }
-
+  
   const [ava, setAvatar] = useState('')
   return (
     <div className={classes.container}>
-      {animalLocal.map(el =>       <div className={classes.icon}>
+      <div>
+          {click?
+              <AnimalForm redirect ={"/"}/>
+    
+          :
+             <> </>
+          }
+      </div>
+    
+      {animalLocal.map((el, index) =>       <div className={classes.icon}>
         <svg
           
           xmlns="http://www.w3.org/2000/svg"
@@ -43,7 +63,7 @@ const TogleAnimal = ({animal}) => {
             x1="148.62"
             y1="107.2"
             x2="247.56"
-            y2="841.15"
+            y2="841.15"    
           >
             <stop offset="0" stop-opacity="1" stop-color="#A3A3A4" />
             <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE" />
@@ -69,7 +89,7 @@ const TogleAnimal = ({animal}) => {
             className={classes.fil0}
             d="M418.58 101.99c205.92,0 372.86,166.71 372.86,372.36 0,205.65 -166.93,372.36 -372.86,372.36 -205.92,0 -372.86,-166.71 -372.86,-372.36 0,-205.65 166.93,-372.36 372.86,-372.36zm0 18.64c195.63,0 354.22,158.36 354.22,353.71 0,195.35 -158.59,353.71 -354.22,353.71 -195.63,0 -354.22,-158.36 -354.22,-353.71 0,-195.35 158.59,-353.71 354.22,-353.71z"
           />
-        <ellipse onClick={togleAnimal} id = {el.id} className={classes.fil2} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
+        <ellipse onClick={togleAnimal} id = {index} index = {el.index} className={classes.fil2} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
         </svg>
         <p>{el.name}</p></div>
        )}
@@ -93,7 +113,7 @@ const TogleAnimal = ({animal}) => {
             gradientUnits="userSpaceOnUse"
             x1="148.62"
             y1="107.2"
-            x2="247.56"
+            x2="247.56"  
             y2="841.15"
           >
             <stop offset="0" stop-opacity="1" stop-color="#A3A3A4" />
@@ -103,12 +123,17 @@ const TogleAnimal = ({animal}) => {
             <stop offset="1" stop-opacity="1" stop-color="#858585" />
           </linearGradient>
 
-          <path
+          <path  
             className={classes.fil0}
             d="M418.58 101.99c205.92,0 372.86,166.71 372.86,372.36 0,205.65 -166.93,372.36 -372.86,372.36 -205.92,0 -372.86,-166.71 -372.86,-372.36 0,-205.65 166.93,-372.36 372.86,-372.36zm0 18.64c195.63,0 354.22,158.36 354.22,353.71 0,195.35 -158.59,353.71 -354.22,353.71 -195.63,0 -354.22,-158.36 -354.22,-353.71 0,-195.35 158.59,-353.71 354.22,-353.71z"
           />
+        
         <ellipse onClick={addAnimal}  className={classes.fil4} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
+       
         </svg>
+
+
+
     </div>
   );
 };
