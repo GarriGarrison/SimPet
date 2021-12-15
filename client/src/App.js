@@ -46,7 +46,6 @@ function App() {
     }
   }, [id]);
 
-
   const animal = useSelector(state=>state.animal.all[0])
   
   
@@ -58,7 +57,6 @@ function App() {
       setAnimal(ani)
     }
   }, [animal])
-
 
   return (
     <>
