@@ -1,6 +1,6 @@
 import { ADD_TODO, GET_TODO, DEL_TODO, EDIT_TODO } from '../types/todo.types'
 
-export const todoAllReduser = (state = [], action) => {
+export const todoAllReduser = (state = {}, action) => {
   const {type} = action
   switch (type) {
 
@@ -14,7 +14,7 @@ export const todoAllReduser = (state = [], action) => {
 
     case DEL_TODO:{
         let id = action.payload
-        return state.filter(el => el.id !== id)
+        return state.filter(el => el !== +id)
     }
 
     case EDIT_TODO:{

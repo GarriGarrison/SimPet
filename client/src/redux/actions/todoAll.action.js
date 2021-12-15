@@ -47,7 +47,11 @@ export const deleteTodo = (id) => async (dispatch) => {
   console.log(id);
   fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "DELETE",
+    headers: {
+      'Content-Type': 'application/json'
+    },
     credentials: "include",
+    body: JSON.stringify(id),
   })
     .then((response) => response.ok && dispatch(todoDel(id)))
     .catch((err) => console.log(err));

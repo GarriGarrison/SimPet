@@ -39,9 +39,9 @@ bower_components
 build/Release
 
 # Dependency directories
-server/node_modules/
 node_modules/
 jspm_packages/
+sessions/
 
 # Snowpack dependency directory (https://snowpack.dev/)
 web_modules/

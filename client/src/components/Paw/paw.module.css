@@ -1,8 +1,8 @@
 .container{
   
     width: 100vw;
-    min-height:  100vh;
-    position: fixed;
+    height: 100vh;
+    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -18,4 +18,4 @@
     justify-content: space-around;
   }
   
-   .fil0 {fill:#dbdbdb;}
+   .fil0 {fill:#CCCCCC;}

@@ -1,7 +1,7 @@
 .bar{
-  position: fixed;
-  right: 0.5rem;
-  bottom: 0.5rem;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 .fil4 {fill:#E31E24}
 .fil4:hover {fill:#00ff4c}
