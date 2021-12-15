@@ -25,6 +25,7 @@ import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 import { timeoutMedicine } from "./redux/actions/sim.action";
+import AnimalLK from "./components/AnimalLk/AnimalLK";
 
 
 function App() {
@@ -81,7 +82,8 @@ function App() {
           <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
 
 
-          <Route path="/reg" element={ <UserFormReg/>} />
+          <Route path="/reg" element={<UserFormReg />} />
+          <Route path='/animal_lk' element={ <AnimalLK /> }/>
 
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>

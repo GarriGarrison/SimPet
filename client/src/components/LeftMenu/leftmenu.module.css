@@ -21,8 +21,15 @@
 .fil12 {fill:black}
 .fil4 {fill:#222848; transition: all 1s;}
 .fil4:hover {fill:#0026ff}
+<<<<<<< HEAD
 
 .fil4:active {fill:#ff00ff;transition: all 0.1s;}
+=======
+<<<<<<< HEAD
+=======
+.fil4:active {fill:#ff00ff;transition: all 0.1s;}
+>>>>>>> 5ddb57bc03181bc995de029c6520e0bad458448e
+>>>>>>> 1e879ed64b805fb9673f1516aa780b16a8817a37
 .fil6 {fill:#262D57}
 .fil2 {fill:#445C80}
 .fil1 {fill:#666666}
