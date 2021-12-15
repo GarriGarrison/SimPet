@@ -3,7 +3,7 @@
  * Path: "server"
  */
  
-const RELEASE = 10
+const RELEASE = 11
 const DATE = '15.12.2021'
 
 
