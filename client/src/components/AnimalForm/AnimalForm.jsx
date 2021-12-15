@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { addAnimal } from "../../redux/actions/animal.action";
 import { checkAuth } from "../../redux/actions/user.actions";
 
-const AnimalForm = () => {
+const AnimalForm = ({redirect}) => {
   let user = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,7 +55,7 @@ const AnimalForm = () => {
       console.log(payload);
     
       dispatch(addAnimal(payload)) 
-      navigate('/animal_reg/ancet')
+      navigate(redirect)
     }
   }  
 
@@ -85,7 +85,7 @@ const AnimalForm = () => {
           <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
           <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
           <button type="submit">go</button>
-         
+       
         </form>
       </div>
     )

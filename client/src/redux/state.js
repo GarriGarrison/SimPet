@@ -1,6 +1,9 @@
 export const initialState = {
   user: {},
-  animal: [],
+  animal: {
+    currAnimal: {},
+    all:[]
+  },
   sim:  {
     status: 'green',
     medicine: 100,
@@ -11,8 +14,20 @@ export const initialState = {
     six: 100,
   },
   todoAll: [],
-  todoDay: [],
-  todoWeek: [],
-  todoMonth: [],
-  todoYear: [] 
+  todoDay: {
+    last: null,
+    all:[]
+  },
+  todoWeek: {
+    last: null,
+    all:[]
+  },
+  todoMonth: {
+    last: null,
+    all:[]
+  },
+  todoYear: {
+    last: null,
+    all:[]
+  },
 }

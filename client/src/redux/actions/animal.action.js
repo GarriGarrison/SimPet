@@ -1,4 +1,4 @@
-import {SET_ANIMAL,ADD_ANIMAL, GET_ANIMAL, DELL_ANIMAL} from '../types/animal.types'
+import {SET_ANIMAL,ADD_ANIMAL, GET_ANIMAL, DELL_ANIMAL, SWITCH_ACTIV, START_ANIMAL} from '../types/animal.types'
 
 export const createAnimalOk = (animal) => ({ 
     type: SET_ANIMAL,
@@ -19,18 +19,32 @@ export const createAnimalOk = (animal) => ({
     payload: id
   })
 
+  export const switchActivAnimal = (index) =>({
+    type: SWITCH_ACTIV,
+    payload: index
+  })
+
+export const startAnimal = (animal)=>({
+  type: START_ANIMAL,
+  payload: animal
+})
+
 
 
   export const getAnimal = (id_user) => async (dispatch) =>{
-      console.log(id_user);
+      
     await fetch(`http://localhost:3001/api/v1/animals/${id_user}`, {
       head: {credentials: 'include'},
      })
      .then(response => response.json())
      .then(animal => {
-         console.log(animal);
        dispatch(getAnimalOk(animal))
-     })
+       console.log(animal[0]);
+       if(animal[0])dispatch(startAnimal(animal[0]))
+       
+      })
+    //  .then(data => )
+     
 
 
 
