@@ -104,11 +104,12 @@ export function ToDo({todo, period_id}) {
     }
     console.log(form);
     dispatch(editTodo(form))
+    setEditClick(false)
 }
 
   const handleDelClick = async (event) => {
     event.preventDefault()
-    
+    console.log(todo.id, typeof todo.id);
     dispatch(deleteTodo(todo.id))
 
 }
@@ -144,7 +145,7 @@ export function ToDo({todo, period_id}) {
                 <div>
                   <button onClick={handleStatus} data-category={todo.title} class="done">✔</button>
                   <button onClick={handleEditClick}>✏️</button>
-                  <button onClick={handleDelClick} class="edit">x</button>
+                  <button onClick={handleDelClick}>x</button>
                 </div>
 
             

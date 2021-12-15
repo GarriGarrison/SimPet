@@ -1,22 +1,27 @@
-import { useEffect } from "react";
+import { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoWeek } from "../../redux/actions/todoWeek.action";
 import { ToDo } from "../ToDo/ToDo";
 
 
-export function TodoWeek() {
-  const todos = useSelector((state) => state.todoWeek)
+export function TodoWeek({anId}) {
+  const todos = useSelector((state) => state.todoWeek.all)
   const dispatch = useDispatch()
-  useEffect(() => {
-    dispatch(getTodoWeek(3))
-    }, [])
-   
-  //   console.log(todos);
-  // console.log('tut');
+  
+  const [todosLocal,setTodos] = useState([])
 
-    // let text = ['lol', 'kek', 'cheburek']
+  useEffect(() => {
+    if(todos) {
+      setTodos(todos)
+    }
+  },[todos])
+
+  useEffect(() => {
+    dispatch(getTodoWeek(anId))
+    }, [anId])
+  
     return (
-      <> {todos.map(el => 
+      <> {todosLocal.map(el => 
       <>
         <ToDo todo={el} period_id={3}/>
      </>

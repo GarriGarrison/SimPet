@@ -1,11 +1,10 @@
 // import { Routes, Route } from "react-router-dom";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
-import UserForm from "./components/UserForm/UserFormLog";
 import { useDispatch, useSelector } from "react-redux";
 import { checkAuth } from "./redux/actions/user.actions";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Main from "./components/Main/Main";
 import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
@@ -20,51 +19,64 @@ import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
 import { TodoMonth } from "./components/TodoMonth/TodoMonth";
-import AnimalForm from "./components/AnimalForm/AnimalForm";
-import { getAnimal } from "./redux/actions/animal.action";
+import { getAnimal, switchActivAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
+import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 
 
 function App() {
   const dispatch = useDispatch();
-  
+  const [animalId, setAnimalId] = useState(null)
+  const [animalAll, setAnimal] = useState(null)
+
   useEffect(() => {
     dispatch(checkAuth());
   },[]);  
 
   const user = useSelector(state=>state.user)
   const {id} = useSelector(state=>state.user)
+
   
   useEffect(() => {
     console.log(id);
     if (id){
       dispatch(getAnimal(id))
-      console.log("animal");
     }
   }, [id]);
- 
+
+  const animal = useSelector(state=>state.animal.all[0])
+  
+  
+  const ani = useSelector(state=>state.animal.all)
+  
+  useEffect(() => {
+    if (animal) {
+      setAnimalId(animal.id)
+      setAnimal(ani)
+    }
+  }, [animal])
+
   return (
     <>
-    <Paw count={4}/>
+    <Paw count={6}/>
       <div className="App">
-         {/* <Nav/> */}
          <Routes >
           <Route element={ <Nav user={user}/>}/>
     
           <Route path="/log" element={ <UserFormLog/>} />
-          <Route path="/animal_reg" element={ <StartAnimalForm/>} />
-          <Route path="/animal_reg/ancet" element={ <StartAnimalAncet/>} />
+          <Route path="/animal_reg" element={ <StartAnimalForm redirect={'/animal_reg/ancet'}/>} />
+          <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
 
 
           <Route path="/reg" element={ <UserFormReg/>} />
 
           <Route path="/" element={ <>
+            <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
-            <Main/>
+            <Main anId={animalId}/>
             <RightBarMenu />
-
             <LeftMenu/>
             </>
         
@@ -74,7 +86,7 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
-            <TodoDay/>
+            <TodoDay anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
@@ -83,7 +95,7 @@ function App() {
           <Route path="/week" element={
             <>
             <Nav user={user}/>
-            <TodoWeek />
+            <TodoWeek anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -93,7 +105,7 @@ function App() {
           <Route path="/month" element={
             <>
             <Nav user={user}/>
-            <TodoMonth />
+            <TodoMonth anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -103,7 +115,7 @@ function App() {
           <Route path='/year'element={
             <>
             <Nav user={user}/>
-            <TodoYear/>
+            <TodoYear anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>

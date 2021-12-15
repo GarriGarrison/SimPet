@@ -1,4 +1,4 @@
-Server (build 9,  date: 15.12.2021)
+Server (build 8,  date: 14.12.2021)
 
 
 router ->  authRouter
