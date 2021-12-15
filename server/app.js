@@ -1,11 +1,11 @@
+
 /**
  * Project: "SimPet"
  * Path: "server"
- * Release: 9
- * 
- * Date: 15.12.2021
  */
-
+ 
+const RELEASE = 9
+const DATE = '15.12.2021'
 
 
 const express = require('express');
@@ -87,5 +87,5 @@ app.use((err, req, res, next) => {
 
 
 app.listen(PORT, () => {
-  console.log('Server has been started on PORT ', PORT);
+  console.log(`Server has been started on PORT: ${PORT}\n build: ${RELEASE},  date: ${DATE} `);
 });
