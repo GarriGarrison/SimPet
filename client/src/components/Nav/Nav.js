@@ -25,7 +25,6 @@ import { checkAuth } from '../../redux/actions/user.actions';
       <div className={classes.navRight}>
         <div className={classes.navRightUp}>
 
-
         </div>
         <div className={classes.navRightDown}>
         <div className={classes.navRightLeft}>

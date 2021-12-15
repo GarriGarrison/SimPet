@@ -31,7 +31,6 @@ function App() {
   const dispatch = useDispatch();
   const [animalId, setAnimalId] = useState(null)
   const [animalAll, setAnimal] = useState(null)
-
   const [currAnimal, setCurAnimal] = useState(null)
 
   useEffect(() => {
@@ -50,7 +49,6 @@ function App() {
   }, [id]);
 
   const animal = useSelector(state=>state.animal.all[0])
-
   const ani = useSelector(state=>state.animal.all)
   const curAn = useSelector(state=>state.animal.currAnimal)
   
@@ -60,7 +58,6 @@ function App() {
       setAnimal(ani)
     }
   }, [animal])
-
 
   useEffect(() => {
     if (curAn) {
@@ -91,7 +88,6 @@ function App() {
             <Nav user={user}/>
             <Main anId={animalId}/>
             <RightBarMenu />
-
             <LeftMenu animal={currAnimal}/>
             </>
         

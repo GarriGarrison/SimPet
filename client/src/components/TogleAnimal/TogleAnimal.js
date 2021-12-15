@@ -40,7 +40,6 @@ const TogleAnimal = ({animal}) => {
              <> </>
           }
       </div>
-
       <div className={classes.icon}>
       {animalLocal.map((el, index) =><><svg className={classes.colco} xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
