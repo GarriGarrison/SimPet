@@ -5,7 +5,9 @@ import { ToDo } from "../ToDo/ToDo";
 
 
 export function TodoDay({anId}) {  
-  const todos = useSelector((state) => state.todoDay)
+
+  console.log(anId, 'day');
+  const todos = useSelector((state) => state.todoDay.all)
   const dispatch = useDispatch()
   
   const [todosLocal,setTodos] = useState([])

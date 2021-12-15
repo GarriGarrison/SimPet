@@ -6,7 +6,7 @@ import { ToDo } from "../ToDo/ToDo";
 
 export function TodoYear({anId}) {
 
-  const todos = useSelector((state) => state.todoYear)
+  const todos = useSelector((state) => state.todoYear.all)
   const dispatch = useDispatch()
 
   const [todosLocal,setTodos] = useState([])

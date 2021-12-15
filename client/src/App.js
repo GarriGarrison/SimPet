@@ -19,7 +19,7 @@ import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
 import { TodoMonth } from "./components/TodoMonth/TodoMonth";
-import { getAnimal } from "./redux/actions/animal.action";
+import { getAnimal, switchActivAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
@@ -46,9 +46,11 @@ function App() {
     }
   }, [id]);
 
-  const animal = useSelector(state=>state.animal[0])
-  const ani = useSelector(state=>state.animal)
-
+  const animal = useSelector(state=>state.animal.all[0])
+  
+  
+  const ani = useSelector(state=>state.animal.all)
+  
   useEffect(() => {
     if (animal) {
       setAnimalId(animal.id)
@@ -71,10 +73,10 @@ function App() {
           <Route path="/reg" element={ <UserFormReg/>} />
 
           <Route path="/" element={ <>
+            <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
             <Main anId={animalId}/>
             <RightBarMenu />
-            <TogleAnimal animal={animalAll}/>
             <LeftMenu/>
             </>
         

@@ -5,7 +5,7 @@ import { ToDo } from "../ToDo/ToDo";
 
 
 export function TodoWeek({anId}) {
-  const todos = useSelector((state) => state.todoWeek)
+  const todos = useSelector((state) => state.todoWeek.all)
   const dispatch = useDispatch()
   
   const [todosLocal,setTodos] = useState([])
