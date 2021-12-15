@@ -87,6 +87,25 @@ const addTaskId = async (req, res) => {
   return res.sendStatus(400);
 }
 
+const statusTaskId = async (req, res) => {
+  //* if (!req.body)
+  //*   return res.sendStatus(400);
+  
+  try {
+    const { id } = req.params;
+
+    const todo = await Todo.findByPk(Number(id));
+    const statusRevers = !todo.status;
+    await Todo.update({ status: statusRevers }, {
+      where: { id }
+    });
+
+    return res.sendStatus(200);  //.json(req.body)
+  } catch (err) {
+    console.error(err);
+    return res.sendStatus(500);
+  }
+}
 
 const editTaskId = async (req, res) => {
   if (!req.body)
@@ -95,16 +114,13 @@ const editTaskId = async (req, res) => {
   try {
     const { id  } = req.params;
     const { action, categoryNum, periodNum, date, time } = req.body;
-    console.log(req);
 
     if (action) {
       const { task_id: taskId } = await Todo.findByPk(id);
-      console.log('task_id', taskId);
       
       const { action_id: actionId } = await Task.findOne({
         where: { id : taskId }
       });
-       console.log('action_id', actionId);
       
       Action.update({title: action }, {
         where: { id: actionId }
@@ -136,28 +152,26 @@ const editTaskId = async (req, res) => {
     }
 
     if (date) {
-      Todo.update({ date, }, {
+      Todo.update({ date }, {
         where: { id }
       });
     }
 
      if (time) {
-      Todo.update({ time, }, {
+      Todo.update({ time }, {
         where: { id }
       });
     }
-    return res.status(200).json(req.body);
+    return res.status(200).json(req.body);  //sensStatus(200);
   } catch (err) {
     console.error(err);
     return res.sendStatus(500);
   }
 }
 
-
 const deleteTaskId = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("task_id",req.params);
     const { task_id: taskId } = await Todo.findByPk(Number(id));
     const { action_id: actionId } = await Task.findByPk(taskId);
 
@@ -176,6 +190,7 @@ const deleteTaskId = async (req, res) => {
 module.exports = {
   allTaskId,
   addTaskId,
+  statusTaskId,
   editTaskId,
   deleteTaskId
 }
