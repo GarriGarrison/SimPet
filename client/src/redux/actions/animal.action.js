@@ -94,7 +94,8 @@ export const editAnimal = (animal) => async (dispatch) => {
       'Content-Type': 'application/json'
     },
     credentials: 'include',
-    body: JSON.stringify(animal)
+    body: JSON.stringify(animal),
+    files: animal.avatar
   })
 
   if (response.ok) {

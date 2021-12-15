@@ -3,14 +3,15 @@
  * Path: "server"
  */
  
-const RELEASE = 11
-const DATE = '15.12.2021'
+const RELEASE = 11;
+const DATE = '15.12.2021';
 
 
 const express = require('express');
 const session = require('express-session');
 const createError = require('http-errors');
 const FileStore = require('session-file-store')(session);
+const fileUpload = require('express-fileupload');
 const cors = require('cors');
 require('dotenv').config();
 
@@ -39,6 +40,7 @@ app.use(cors({
 }));
 
 app.use(express.json());
+app.use(fileUpload());
 app.use(session({
   name: app.get('cookieName'),
   secret: COOKIE_SECRET,
@@ -51,7 +53,7 @@ app.use(session({
     maxAge: 1e3 * 86400, // COOKIE'S LIFETIME — 1 DAY
     // expires: 24 * 60 * 60e3
   },
-}))
+}));
 
 
 /* APP'S ROUTES */
