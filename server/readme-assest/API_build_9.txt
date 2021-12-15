@@ -1,4 +1,4 @@
-Server (build 6,  date: 13.12.2021)
+Server (build 9,  date: 15.12.2021)
 
 
 router ->  authRouter
@@ -100,19 +100,19 @@ router ->  animalRouter
 
 [GET] '/api/v1/animals'
 request ->  null
-response ->  res.status(200).json([{ type, name, breed, sex, age, weight, user_id }])
+response ->  res.status(200).json([{ type, name, avatar, breed, sex, age, weight, user_id }])
 
 [POST] '/api/v1/animals'
-request ->  req.body = { type, name, breed, sex, age, weight, user_id }
-response ->  res.status(201).json({ type, name, breed, sex, age, weight, user_id })
+request ->  req.body = { type, name, avatar, breed, sex, age, weight, user_id }
+response ->  res.status(201).json({ type, name, avatar, breed, sex, age, weight, user_id })
 
 [GET] '/api/v1/animals/:id'  (id - животное)
 request ->  null
-response ->  res.status(200).json({ type, name, breed, sex, age, weight, user_id })
+response ->  res.status(200).json({ type, name, avatar, breed, sex, age, weight, user_id })
 
 [PATCH] '/api/v1/animals/:id'  (id - животное)
-request ->  req.body = { type*, name*, breed*, sex*, age*, weight*, user_id* }
-response ->  res.status(200).json({ type, name, breed, sex, age, weight, user_id })
+request ->  req.body = { type*, name*, avatar*, breed*, sex*, age*, weight*, user_id* }
+response ->  res.status(200).json({ type*, name*, avatar*, breed*, sex*, age*, weight*, user_id* })
 
 [DELETE] '/api/v1/animals/:id'  (id - животное)
 request ->  null
@@ -130,6 +130,10 @@ response ->  res.status(200).json([{ id, date, time, status, action, category, a
 request ->  req.body = { action, categoryNum, periodNum, date, time }
 response ->  res.status(201).json({ id, action, categoryNum, periodNum, date, time })
 
+[PUT] '/api/v1/todos/:id'  (id - животное)
+request ->  req.body = { status }  !!!!! тело запроса пока не обязалено (делается реверс статуса)
+response ->  res.status(200).json([{ id, date, time, status, action, category, animalId }])
+
 [PATCH] '/api/v1/todos/:id'  (id - todo)
 request ->  req.body = { action*, categoryNum*, periodNum*, date*, time* }
 response ->  res.status(200).json({ action*, categoryNum*, periodNum,* date*, time* })
@@ -137,5 +141,4 @@ response ->  res.status(200).json({ action*, categoryNum*, periodNum,* date*, ti
 [DELETE] '/api/v1/todos/:id'  (id - todo)
 request ->  null
 response ->  res.status(200)
-
 

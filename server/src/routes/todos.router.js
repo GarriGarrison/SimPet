@@ -6,6 +6,7 @@ const todoController = require('../controllers/todos.controller');
 router.route('/:id')
   .get(/*checkAuthor,*/ todoController.allTaskId)
   .post(/*checkAuthor,*/ todoController.addTaskId)
+  .put(/*checkAuthor,*/ todoController.statusTaskId)
   .patch(/*checkAuthor,*/ todoController.editTaskId)
   .delete(/*checkAuthor,*/ todoController.deleteTaskId);
 

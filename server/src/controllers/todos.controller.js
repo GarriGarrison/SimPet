@@ -136,17 +136,17 @@ const editTaskId = async (req, res) => {
     }
 
     if (date) {
-      Todo.update({ date, }, {
+      Todo.update({ date }, {
         where: { id }
       });
     }
 
      if (time) {
-      Todo.update({ time, }, {
+      Todo.update({ time }, {
         where: { id }
       });
     }
-    return res.status(200).json(req.body);
+    return res.status(200).json(req.body);  //sensStatus(200);
   } catch (err) {
     console.error(err);
     return res.sendStatus(500);
@@ -173,9 +173,31 @@ const deleteTaskId = async (req, res) => {
 }
 
 
+const statusTaskId = async (req, res) => {
+  //* if (!req.body)
+  //*   return res.sendStatus(400);
+  
+  try {
+    const { id } = req.params;
+
+    const todo = await Todo.findByPk(Number(id));
+    const statusRevers = !todo.status;
+    await Todo.update({ status: statusRevers }, {
+      where: { id }
+    });
+
+    return res.sendStatus(200);  //.json(req.body)
+  } catch (err) {
+    console.error(err);
+    return res.sendStatus(500);
+  }
+}
+
+
 module.exports = {
   allTaskId,
   addTaskId,
   editTaskId,
-  deleteTaskId
+  deleteTaskId,
+  statusTaskId
 }
