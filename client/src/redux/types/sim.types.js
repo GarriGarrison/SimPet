@@ -1,0 +1,16 @@
+export const GET_STATUS ="GET_STATUS"
+export const ADD_STATUS ="ADD_STATUS"
+
+export const GET_MEDICINE ="GET_MEDICINE"
+export const GET_EAT ="GET_EAT"
+export const GET_COMMUNICATION ="GET_COMMUNICATION"
+export const GET_COMFORT ="GET_COMFORT"
+export const GET_FIVE ="GET_FIVE"
+export const GET_SIX ="GET_SIX"
+
+export const ADD_MEDICINE ="ADD_MEDICINE"
+export const ADD_EAT ="ADD_EAT"
+export const ADD_COMMUNICATION ="ADD_COMMUNICATION"
+export const ADD_COMFORT ="ADD_COMFORT"
+export const ADD_FIVE ="ADD_FIVE"
+export const ADD_SIX ="ADD_SIX"

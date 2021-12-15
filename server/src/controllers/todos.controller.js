@@ -95,7 +95,6 @@ const editTaskId = async (req, res) => {
   try {
     const { id  } = req.params;
     const { action, categoryNum, periodNum, date, time } = req.body;
-    console.log(req);
 
     if (action) {
       const { task_id: taskId } = await Todo.findByPk(id);
@@ -157,7 +156,6 @@ const editTaskId = async (req, res) => {
 const deleteTaskId = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("task_id",req.params);
     const { task_id: taskId } = await Todo.findByPk(Number(id));
     const { action_id: actionId } = await Task.findByPk(taskId);
 

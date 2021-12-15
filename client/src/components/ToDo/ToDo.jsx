@@ -5,7 +5,7 @@ import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from
 
 import classes from './todo.module.css'
 
-import { deleteTodo, editTodo } from "../../redux/actions/todoAll.action";
+import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAll.action";
 
 
 
@@ -34,21 +34,21 @@ export function ToDo({todo, period_id}) {
   const handleStatus = async (event) => {
     event.preventDefault()
     let {category} = event.target.dataset
-    let categoryNum = 0
-    todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
+    // let categoryNum = 0
+    // todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
     
-    const form ={
-      action: todo.action,
-      time: todo.time,
-      date: todo.date,
-      status: true,
-      animal_id,
-      id: todo.id,
-      periodNum: period_id,
-      categoryNum
-    }
-    console.log(form);
-    dispatch(editTodo(form))
+    // const form ={
+    //   action: todo.action,
+    //   time: todo.time,
+    //   date: todo.date,
+    //   status: true,
+    //   animal_id,
+    //   id: ,
+    //   periodNum: period_id,
+    //   categoryNum
+    // }
+    // console.log(form);
+    dispatch(editStatusTodo(todo.id))
 
 
 
