@@ -1,14 +1,28 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import classes from './leftmenu.module.css';
 import {SimStatus} from '../SimStatus/SimStatus'
 import { useNavigate } from "react-router-dom"
 
 
-const LeftMenu = () => {
+const LeftMenu = ({animal}) => {
   const [zoom, setZoom] = useState(170)
   const [isChangeAva, setChangeAva] = useState(false)
   const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
+  const [animalType, setAnimalType] = useState(null)
+  const [animalName, setAnimalName] = useState(null)
+  const [animalAge, setAnimalAge] = useState(null)
+  const [animalWeight, setAnimalWeight] = useState(null)
+  
+
+  useEffect(() => {
+    if(animal){
+      setAnimalType(animal.type)
+      setAnimalName(animal.name)
+      setAnimalAge(animal.age)
+      setAnimalWeight(animal.weight)
+    }
+  },[animal])
 
   function ZoomUp(){
     setZoom(zoom + 5)
@@ -245,11 +259,11 @@ viewBox="0 0 3553.52 893.46"
   <text x="3114.32" y="558.17"  className={`${classes.fil12} ${classes.fnt0}`}>ВЕСЕЛЬЧАК</text>
   <path className={classes.fil13} d="M1232.81 824.95l1051.41 0c22.16,-158.84 24.4,-319.52 7.52,-479.05l-0.09 -0.82 -1063.28 0c-3.87,0 -6.73,1.29 -9.3,4.18 -2.55,2.88 -3.5,5.92 -3.04,9.74 7.03,58.16 11.46,116.62 14.28,175.13 4.66,96.86 4.85,193.89 2.49,290.81zm-35.27 -463.71c6.98,57.71 11.37,115.83 14.17,173.79 4.66,96.78 4.82,193.94 2.44,290.79 0.48,12.7 3.88,17.56 16.69,17.77l1069.55 0c24.53,-165.77 27.55,-333.04 9.91,-499.65l-0.08 -0.73 -0.02 -0.74c-0.3,-11.43 -2.7,-15.73 -14.21,-16.03l-1067.6 0c-9.21,0 -17.14,3.57 -23.25,10.46 -6.11,6.89 -8.7,15.19 -7.59,24.34z"/>
   <path className={classes.fil1} d="M1232.81 824.95l1051.41 0c22.16,-158.84 24.4,-319.52 7.52,-479.05l-0.09 -0.82 -1063.28 0c-3.87,0 -6.73,1.29 -9.3,4.18 -2.55,2.88 -3.5,5.92 -3.04,9.74 7.03,58.16 11.46,116.62 14.28,175.13 4.66,96.86 4.85,193.89 2.49,290.81z"/>
-  <text x="1298.76" y="466.94"  className={`${classes.fil14} ${classes.fnt3}`}>ВИД/ИМЯ : СОБАКА/ТУЗИК </text>
+  <text x="1298.76" y="466.94"  className={`${classes.fil14} ${classes.fnt3}`}>ВИД/ИМЯ : {animalType ? animalType.toUpperCase():""} / {animalName? animalName.toUpperCase():""} </text>
   {/* <text x="1798.12" y="466.94"  className={`${classes.fil14} ${classes.fnt3}`}>STRING</text> */}
-  <text x="1298.76" y="610.01"  className={`${classes.fil14} ${classes.fnt3}`}>ВОЗРАСТ : 8 ЛЕТ </text>
+  <text x="1298.76" y="610.01"  className={`${classes.fil14} ${classes.fnt3}`}>ВОЗРАСТ : {animalAge} ЛЕТ </text>
   {/* <text x="1597.98" y="610.01"  className={`${classes.fil14} ${classes.fnt3}`}>INTEGER</text> */}
-  <text x="1298.76" y="753.07"  className={`${classes.fil14} ${classes.fnt3}`}>ВЕС : 9 КГ </text>
+  <text x="1298.76" y="753.07"  className={`${classes.fil14} ${classes.fnt3}`}>ВЕС : {animalWeight} ГРМ </text>
   {/* <text x="1452.49" y="753.07"  className={`${classes.fil14} ${classes.fnt3}`}>INTEGER</text> */}
   <circle className={classes.fil4} cx="2434.96" cy="176.72" r="49.71"/>
   <circle className={classes.fil4} cx="2434.96" cy="373.92" r="49.71"/>

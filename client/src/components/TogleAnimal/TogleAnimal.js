@@ -40,100 +40,69 @@ const TogleAnimal = ({animal}) => {
              <> </>
           }
       </div>
-    
-      {animalLocal.map((el, index) =>       <div className={classes.icon}>
-        <svg
-          
-          xmlns="http://www.w3.org/2000/svg"
-          xmlSpace="preserve"
-          width="80mm"
-          height="auto"
-          version="1.1"
-          shape-rendering="geometricPrecision"
-          text-rendering="geometricPrecision"
-          image-rendering="optimizeQuality"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          viewBox="0 0 3553.52 893.46"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <linearGradient
-            id="id24"
-            gradientUnits="userSpaceOnUse"
-            x1="148.62"
-            y1="107.2"
-            x2="247.56"
-            y2="841.15"    
-          >
-            <stop offset="0" stop-opacity="1" stop-color="#A3A3A4" />
-            <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE" />
-            <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6" />
-            <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE" />
-            <stop offset="1" stop-opacity="1" stop-color="#858585" />
-          </linearGradient>
-          <symbol id="s-mask-circles">
-        <g>   
-        <ellipse  className={classes.fil1} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
-        </g>
-        </symbol>
-        <mask id="mask-circ">
-        <use xlinkHref="#s-mask-circles" />
-        </mask>
-        <symbol id="s-flower">
-        <image xlinkHref={ava||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="1200" height="950" />
-        </symbol>
-        <g mask="url(#mask-circ)">
-        <use xlinkHref="#s-flower"></use>
-        </g>
-          <path
-            className={classes.fil0}
-            d="M418.58 101.99c205.92,0 372.86,166.71 372.86,372.36 0,205.65 -166.93,372.36 -372.86,372.36 -205.92,0 -372.86,-166.71 -372.86,-372.36 0,-205.65 166.93,-372.36 372.86,-372.36zm0 18.64c195.63,0 354.22,158.36 354.22,353.71 0,195.35 -158.59,353.71 -354.22,353.71 -195.63,0 -354.22,-158.36 -354.22,-353.71 0,-195.35 158.59,-353.71 354.22,-353.71z"
-          />
-        <ellipse onClick={togleAnimal} id = {index} index = {el.index} className={classes.fil2} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
-        </svg>
-        <p>{el.name}</p></div>
-       )}
-       <svg
-          
-          xmlns="http://www.w3.org/2000/svg"
-          xmlSpace="preserve"
-          width="40mm"
-          height="auto"
-          version="1.1"
-          shape-rendering="geometricPrecision"
-          text-rendering="geometricPrecision"
-          image-rendering="optimizeQuality"
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          viewBox="0 0 3553.52 893.46"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-        >
-          <linearGradient
-            id="id24"
-            gradientUnits="userSpaceOnUse"
-            x1="148.62"
-            y1="107.2"
-            x2="247.56"  
-            y2="841.15"
-          >
-            <stop offset="0" stop-opacity="1" stop-color="#A3A3A4" />
-            <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE" />
-            <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6" />
-            <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE" />
-            <stop offset="1" stop-opacity="1" stop-color="#858585" />
-          </linearGradient>
+      <div className={classes.icon}>
+      {animalLocal.map((el, index) =><><svg className={classes.colco} xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 29.56 29.52"
+ xmlnsXlink="http://www.w3.org/1999/xlink">
+ <defs>
+ <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="5.32" y1="1.9" x2="8.79" y2="27.6">
+  <stop offset="0" stop-opacity="1" stop-color="#A3A3A4"/>
+  <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE"/>
+  <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6"/>
+  <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE"/>
+  <stop offset="1" stop-opacity="1" stop-color="#858585"/>
+ </linearGradient>
+ </defs>
+ <symbol id="s-mask-circl">
+        <g>
 
-          <path  
-            className={classes.fil0}
-            d="M418.58 101.99c205.92,0 372.86,166.71 372.86,372.36 0,205.65 -166.93,372.36 -372.86,372.36 -205.92,0 -372.86,-166.71 -372.86,-372.36 0,-205.65 166.93,-372.36 372.86,-372.36zm0 18.64c195.63,0 354.22,158.36 354.22,353.71 0,195.35 -158.59,353.71 -354.22,353.71 -195.63,0 -354.22,-158.36 -354.22,-353.71 0,-195.35 158.59,-353.71 354.22,-353.71z"
-          />
+  <ellipse className={classes.fil1} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
         
-        <ellipse onClick={addAnimal}  className={classes.fil4} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
-       
-        </svg>
+
+        </g>
+        </symbol>
+        <mask id="mask-ci">
+        <use xlinkHref="#s-mask-circl" />
+        </mask>
+        <symbol id="s-flow">
+        <image xlinkHref={ava||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="40" height="30" />
+        </symbol>
+        <g mask="url(#mask-ci)">
+        <use xlinkHref="#s-flow"></use>
+        </g>
+        <g id="Слой_x0020_1">
+
+  <path className={classes.fil0} d="M14.78 1.72c7.21,0 13.06,5.84 13.06,13.04 0,7.2 -5.85,13.04 -13.06,13.04 -7.21,0 -13.06,-5.84 -13.06,-13.04 0,-7.2 5.85,-13.04 13.06,-13.04zm0 -1.72c8.16,0 14.78,6.61 14.78,14.76 0,8.15 -6.62,14.76 -14.78,14.76 -8.16,0 -14.78,-6.61 -14.78,-14.76 0,-8.15 6.62,-14.76 14.78,-14.76z"/>
+  <ellipse onClick={togleAnimal} id = {index} index = {el.index} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
+ </g>
+</svg>
+<p>{el.name}</p></>
+       )}
+       <svg className={classes.colco} xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 29.56 29.52"
+ xmlnsXlink="http://www.w3.org/1999/xlink">
+ <defs>
+ <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="5.32" y1="1.9" x2="8.79" y2="27.6">
+  <stop offset="0" stop-opacity="1" stop-color="#A3A3A4"/>
+  <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE"/>
+  <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6"/>
+  <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE"/>
+  <stop offset="1" stop-opacity="1" stop-color="#858585"/>
+ </linearGradient>
+ </defs>
+
+ <g id="Слой_x0020_1">
+
+  <ellipse onClick={addAnimal}  className={classes.fil4} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
+  <path className={classes.fil0} d="M14.78 1.72c7.21,0 13.06,5.84 13.06,13.04 0,7.2 -5.85,13.04 -13.06,13.04 -7.21,0 -13.06,-5.84 -13.06,-13.04 0,-7.2 5.85,-13.04 13.06,-13.04zm0 -1.72c8.16,0 14.78,6.61 14.78,14.76 0,8.15 -6.62,14.76 -14.78,14.76 -8.16,0 -14.78,-6.61 -14.78,-14.76 0,-8.15 6.62,-14.76 14.78,-14.76z"/>
+  <path className={classes.fil0} d="M11.78 17.91l-1.38 0 -0.54 -1.44 -2.53 0 -0.52 1.44 -1.35 0 2.45 -6.31 1.35 0 2.53 6.31zm-2.33 -2.5l-0.88 -2.33 -0.85 2.33 1.73 0zm3.01 -3.81l2.32 0c0.52,0 0.92,0.04 1.2,0.12 0.37,0.11 0.69,0.3 0.95,0.58 0.26,0.28 0.46,0.62 0.6,1.02 0.14,0.4 0.21,0.9 0.21,1.49 0,0.52 -0.06,0.97 -0.19,1.34 -0.16,0.46 -0.38,0.83 -0.67,1.11 -0.22,0.22 -0.52,0.38 -0.89,0.5 -0.28,0.09 -0.65,0.13 -1.12,0.13l-2.39 0 0 -6.31zm1.28 1.07l0 4.18 0.95 0c0.35,0 0.61,-0.02 0.77,-0.06 0.21,-0.05 0.38,-0.14 0.51,-0.26 0.14,-0.12 0.25,-0.33 0.33,-0.61 0.09,-0.28 0.13,-0.67 0.13,-1.16 0,-0.49 -0.04,-0.86 -0.13,-1.12 -0.09,-0.26 -0.21,-0.46 -0.36,-0.61 -0.15,-0.15 -0.35,-0.25 -0.59,-0.3 -0.18,-0.04 -0.52,-0.06 -1.04,-0.06l-0.57 0zm5.08 -1.07l2.32 0c0.52,0 0.92,0.04 1.2,0.12 0.37,0.11 0.69,0.3 0.95,0.58 0.26,0.28 0.46,0.62 0.6,1.02 0.14,0.4 0.21,0.9 0.21,1.49 0,0.52 -0.06,0.97 -0.19,1.34 -0.16,0.46 -0.38,0.83 -0.67,1.11 -0.22,0.22 -0.52,0.38 -0.89,0.5 -0.28,0.09 -0.65,0.13 -1.12,0.13l-2.39 0 0 -6.31zm1.28 1.07l0 4.18 0.95 0c0.35,0 0.61,-0.02 0.77,-0.06 0.21,-0.05 0.38,-0.14 0.51,-0.26 0.14,-0.12 0.25,-0.33 0.33,-0.61 0.09,-0.28 0.13,-0.67 0.13,-1.16 0,-0.49 -0.04,-0.86 -0.13,-1.12 -0.09,-0.26 -0.21,-0.46 -0.36,-0.61 -0.15,-0.15 -0.35,-0.25 -0.59,-0.3 -0.18,-0.04 -0.52,-0.06 -1.04,-0.06l-0.57 0z"/>
+
+ </g>
+</svg>
 
 
 
+    </div>
     </div>
   );
 };

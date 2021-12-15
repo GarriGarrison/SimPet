@@ -1,8 +1,8 @@
 @charset "UTF-8";
 .bar{
-  position: absolute;
-  left: 0;
-  bottom: 0;
+  position: fixed;
+  left: 0.5rem;
+  bottom: 0.5rem;
 }
 .romb{
   
@@ -21,6 +21,10 @@
 .fil12 {fill:black}
 .fil4 {fill:#222848; transition: all 1s;}
 .fil4:hover {fill:#0026ff}
+<<<<<<< HEAD
+=======
+.fil4:active {fill:#ff00ff;transition: all 0.1s;}
+>>>>>>> 5ddb57bc03181bc995de029c6520e0bad458448e
 .fil6 {fill:#262D57}
 .fil2 {fill:#445C80}
 .fil1 {fill:#666666}
