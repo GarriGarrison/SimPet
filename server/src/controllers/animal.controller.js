@@ -58,6 +58,8 @@ const getAnimal = async (req, res) => {
 
 
 const editAnimal = async (req, res) => {
+  console.log('EDIT ANIMAL id: ', req.params);
+  console.log('EDIT ANIMAL body: ', req.body);
   try {
     // const { id } = req.params;
 
