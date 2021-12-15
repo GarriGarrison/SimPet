@@ -16,14 +16,19 @@ export function TodoWeek({anId}) {
     }
   },[todos])
 
+  const [animalID, setID] = useState(null)
+
   useEffect(() => {
-    dispatch(getTodoWeek(anId))
-    }, [anId])
+    if(anId){
+      setID(anId.id)
+      dispatch(getTodoWeek(anId.id))
+    }
+  },[anId])
   
     return (
       <div className={classes.container}> {todosLocal.map(el => 
       <>
-        <ToDo todo={el} period_id={3}/>
+        <ToDo todo={el} period_id={3} anId={animalID}/>
      </>
       )}
     
