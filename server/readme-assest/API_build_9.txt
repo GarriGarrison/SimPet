@@ -104,15 +104,15 @@ response ->  res.status(200).json([{ type, name, avatar, breed, sex, age, weight
 
 [POST] '/api/v1/animals'
 request ->  req.body = { type, name, avatar, breed, sex, age, weight, user_id }
-response ->  res.status(201).json({ type, name, avatar, breed, sex, age, weight, user_id })
+response ->  res.status(201).json({ type, avatar, name, breed, sex, age, weight, user_id })
 
 [GET] '/api/v1/animals/:id'  (id - животное)
 request ->  null
-response ->  res.status(200).json({ type, name, avatar, breed, sex, age, weight, user_id })
+response ->  res.status(200).json({ type, avatar, name, breed, sex, age, weight, user_id })
 
 [PATCH] '/api/v1/animals/:id'  (id - животное)
-request ->  req.body = { type*, name*, avatar*, breed*, sex*, age*, weight*, user_id* }
-response ->  res.status(200).json({ type*, name*, avatar*, breed*, sex*, age*, weight*, user_id* })
+request ->  req.body = { type*, avatar*, name*, breed*, sex*, age*, weight*, user_id* }
+response ->  res.status(200).json({ type*, avatar*, name*, breed*, sex*, age*, weight*, user_id* })
 
 [DELETE] '/api/v1/animals/:id'  (id - животное)
 request ->  null

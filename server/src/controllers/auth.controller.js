@@ -90,7 +90,7 @@ const signOut = async (req, res) => {
 
 
 const checkAuth = async (req, res) => {
-  const userIdN = req.session.user.id;
+  const userId = req.session.user.id;
 
   if (!userId) {
     return res.sendStatus(499);

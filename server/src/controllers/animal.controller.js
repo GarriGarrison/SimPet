@@ -18,9 +18,9 @@ const addAnimal = async (req, res) => {
   if (!req.body)
     return res.sendStatus(400);
   
-  const { type, name, breed, sex, age, weight, user_id } = req.body;
+  const { type, avatar, name, breed, sex, age, weight, user_id } = req.body;
 
-  if (type && name && breed && sex && age && weight && user_id) {
+  if (type && avatar && name && breed && sex && age && weight && user_id) {
     try {
       const addAnimal = await Animal.create(req.body);
       return res.status(201).json(addAnimal);
