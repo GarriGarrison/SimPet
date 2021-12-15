@@ -10,6 +10,7 @@ import { deleteTodo, editTodo } from "../../redux/actions/todoAll.action";
 
 
 export function ToDo({todo, period_id}) {
+
   if (!todo) console.log("netu");
   const [animal_id, setAnimal_id] = useState(3)
   
@@ -115,7 +116,7 @@ export function ToDo({todo, period_id}) {
 }
 
     return (
-      <div className={classes.container}> 
+      <> 
       {editClik?
         <>
       <form onSubmit={handleEdit} className={classes.form}>
@@ -154,7 +155,7 @@ export function ToDo({todo, period_id}) {
         </> }
 
          
-      </div> 
+      </> 
     );
   }
   
