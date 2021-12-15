@@ -1,0 +1,41 @@
+.container{
+  /* position: absolute; */
+  left: 1%;
+  top:7%;
+  display: flex;
+  flex-direction: column;
+  z-index: -1;
+
+}
+.icon{
+  
+  display: flex;
+  flex-direction: column;
+}
+.icon p{
+    padding-left:0.8rem;
+    color: #5c5c5c;
+    font-size: 12px;
+}
+
+.fil0 {fill:url(#id24);
+  filter: drop-shadow(0 0 30px black);
+}
+.fil1 {fill:#e2e2e2}
+.fil2 {
+  fill:rgba(0, 255, 255, 0); 
+  cursor: pointer;
+  
+}
+.fil2:hover {
+  fill:rgba(0, 47, 255, 0.281);
+}
+.fil4 {
+  fill:#222848; 
+  cursor: pointer;
+  
+}
+.fil4:hover {
+  fill:#0026ff;
+}
+
