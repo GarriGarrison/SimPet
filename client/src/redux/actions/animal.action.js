@@ -101,4 +101,3 @@ export const editAnimal = (animal) => async (dispatch) => {
     dispatch(editAnimalOk(animal))
   }
 }
-

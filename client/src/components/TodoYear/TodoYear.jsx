@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoYear } from "../../redux/actions/todoYear.action";
 import { ToDo } from "../ToDo/ToDo";
-
+import classes from '../ToDo/todo.module.css'
 
 export function TodoYear({anId}) {
 
@@ -22,7 +22,7 @@ export function TodoYear({anId}) {
     }, [anId])
 
     return (
-      <> 
+      <div className={classes.container}> 
       {/* {isToDo? <> */}
             {todosLocal.map(el => 
       <>
@@ -36,7 +36,7 @@ export function TodoYear({anId}) {
       </>
     
       } */}
-      </> 
+      </div> 
     );
   }
   

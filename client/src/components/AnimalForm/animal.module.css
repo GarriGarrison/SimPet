@@ -1,14 +1,13 @@
 .container{
   
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 .logo{
-  margin-top: 2rem;
-  width: 10vw;
+  margin-top: 5rem;
+  width: 8vw;
 }
 .form{
   margin: 1rem;
@@ -26,9 +25,9 @@
   width: 100%;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 13px;
   text-align: center;
   border-radius: 5px;
 }
@@ -39,9 +38,9 @@
   width: 100%;
   border: 0;
   margin: 0 0 15px;
-  padding: 15px;
+  padding: 10px;
   box-sizing: border-box;
-  font-size: 14px;
+  font-size: 13px;
   text-align: center;
   border-radius: 5px;
 }
