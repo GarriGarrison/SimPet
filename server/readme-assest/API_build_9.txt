@@ -130,6 +130,10 @@ response ->  res.status(200).json([{ id, date, time, status, action, category, a
 request ->  req.body = { action, categoryNum, periodNum, date, time }
 response ->  res.status(201).json({ id, action, categoryNum, periodNum, date, time })
 
+[PUT] '/api/v1/todos/:id'  (id - животное)
+request ->  req.body = { status }  !!!!! тело запроса пока не обязалено (делается реверс статуса)
+response ->  res.status(200).json([{ id, date, time, status, action, category, animalId }])
+
 [PATCH] '/api/v1/todos/:id'  (id - todo)
 request ->  req.body = { action*, categoryNum*, periodNum*, date*, time* }
 response ->  res.status(200).json({ action*, categoryNum*, periodNum,* date*, time* })

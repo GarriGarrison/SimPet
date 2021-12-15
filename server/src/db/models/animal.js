@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     avatar: {
       allowNull: false,
-      type: DateTypes.TEXT
+      type: DataTypes.TEXT
     },
     name: {
       allowNull: false,
