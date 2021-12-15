@@ -95,7 +95,9 @@ const statusTaskId = async (req, res) => {
     const { id } = req.params;
 
     const todo = await Todo.findByPk(Number(id));
+    console.log(todo);
     const statusRevers = !todo.status;
+    console.log(statusRevers);
     await Todo.update({ status: statusRevers }, {
       where: { id }
     });

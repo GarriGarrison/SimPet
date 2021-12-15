@@ -31,6 +31,7 @@ export function TodoDay({anId}) {
       <> {todosLocal.map(el => 
       <>
         <ToDo todo={el} period_id={2}/>
+         {/* <button onClick={handleStatus} id={el.id} data-category={el.title} class="done">✔</button> */}
      </>
       )}
     

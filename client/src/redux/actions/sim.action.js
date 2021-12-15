@@ -42,21 +42,27 @@ export const setSix = (num) => ({
     payload: num
 })
 
-// export const timeoutMedicine = (id) => async (dispatch) => {
-//   const response = await fetch(`http://localhost:3001/api/v1/category/medical/${id}`, { credentials: "include" })
-    
-//   const data = response.json()
-//   if(response.ok){
-// let end = data.finde(el => el.status=true)
-// let stsrtIndex = data.lastIndexOf(el=>el.status == false)
-// let satr = data[stsrtIndex]
+export const timeoutMedicine = (id) => async (dispatch) => {
+   await fetch(`http://localhost:3001/api/v1/category/medical/${id}`, { credentials: "include" })
+    .then(data => data.json())
+    .then(data => {
+        let endIndex = data.map(el => el= el.status).indexOf(false)
+        let stsrtIndex = data.lastIndexOf(el => el.status === true) 
+        let endObj = data[endIndex]
+        let satrObj = data[stsrtIndex]
+        // let end = 
+        
+        // console.log(satr, end)
+    })
+  
+
     
 
 
-//     }
+    }
 
 //   dispatch(setMedicine(num))
-// }
+
 
 // export const timeoutEat = () => async (dispatch) => {
 

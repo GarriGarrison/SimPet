@@ -24,6 +24,7 @@ import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
+import { timeoutMedicine } from "./redux/actions/sim.action";
 
 
 function App() {
@@ -68,6 +69,8 @@ function App() {
     }
   }, [curAn])
 
+  dispatch(timeoutMedicine(2))
+
 
   return (
     <>
@@ -98,6 +101,7 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
             <TodoDay anId={animalId}/>
             <RightBarMenu />
 
