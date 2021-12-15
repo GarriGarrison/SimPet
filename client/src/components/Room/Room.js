@@ -1,11 +1,33 @@
 import React,{useState} from 'react';
 import classes from './room.module.css'
 
+
 const Room = () => {
+  
   const [coord,setCoord] =useState({x:449.52,y:1090.36})
+  const [player,setPlayer] =useState("./room_Images/cat.png")
 
   function changePosition(e){
-
+    const audio = document.querySelector('.dance')
+    const may = document.querySelector('.may')
+    if(e.target.attributes.x.value==='800'&& e.target.attributes.y.value==='700'){
+      setPlayer("./room_Images/catDance.png")
+      audio.play()
+      may.load()
+    }
+    else if(e.target.attributes.x.value==='1050'&& e.target.attributes.y.value==='500'){
+      setPlayer("./room_Images/catMay.png")
+      may.loop = true;
+      may.play()
+      audio.load()
+      
+    }
+    else{
+      setPlayer("./room_Images/cat.png")
+      
+      may.load()
+      audio.load()
+    }
     setCoord({x:(e.target.attributes.x.value),y:(e.target.attributes.y.value)}) ;
   }
 
@@ -13,6 +35,8 @@ const Room = () => {
   return (
     <div className={classes.container}>
       
+                  
+                 
       <svg xmlns="http://www.w3.org/2000/svg"  xmlSpace="preserve" width="300mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 3053.1 2140.19"
  xmlnsXlink="http://www.w3.org/1999/xlink">
@@ -37,6 +61,9 @@ viewBox="0 0 3053.1 2140.19"
    </clipPath>
    <clipPath id="id5">
     <rect x="1475.23" y="642.15" width="305.99" height="256.43"/>
+   </clipPath>
+   <clipPath id="id55">
+    <rect x="684.4" y="592.58" width="463.29" height="362.02"/>
    </clipPath>
    <clipPath id="id6">
     <rect x="992.54" y="1226.11" width="663.69" height="568.88"/>
@@ -134,9 +161,6 @@ viewBox="0 0 3053.1 2140.19"
   <g clip-path="url(#id3)">
    <image x="2414.75" y="969.68" width="402.96" height="249.96" xlinkHref="./room_Images/room_ImgID4.png"/>
   </g>
-  <g clip-path="url(#id4)">
-   <image x="145.69" y="799.45" width="644.3" height="400.8" xlinkHref="./room_Images/room_ImgID5.png"/>
-  </g>
   <g clip-path="url(#id5)">
    <image x="1475.23" y="642.15" width="305.99" height="256.43" xlinkHref="./room_Images/room_ImgID6.png"/>
   </g>
@@ -146,6 +170,12 @@ viewBox="0 0 3053.1 2140.19"
   <g clip-path="url(#id7)">
    <image x="673.63" y="527.94" width="101.28" height="176.7" xlinkHref="./room_Images/room_ImgID8.png"/>
   </g>
+  <g clip-path="url(#id55)">
+   <image x="684.4" y="592.58" width="463.29" height="362.02" xlinkHref="./room_Images/room_ImgID55.png"/>
+  </g>
+  <g clip-path="url(#id4)">
+   <image x="145.69" y="799.45" width="644.3" height="400.8" xlinkHref="./room_Images/room_ImgID5.png"/>
+  </g>
   <g clip-path="url(#id8)">
    <image x="787.83" y="506.39" width="99.12" height="170.23" xlinkHref="./room_Images/room_ImgID9.png"/>
   </g>
@@ -153,10 +183,13 @@ viewBox="0 0 3053.1 2140.19"
    <image x="908.51" y="474.07" width="94.81" height="168.08" xlinkHref="./room_Images/room_ImgID10.png"/>
   </g>
   <g className={classes.cat} clip-path="url(#id44)">
-   <image x={coord.x} y={coord.y} width="644.3" height="400.8" xlinkHref="./room_Images/cat.png"/>
+   <image x={coord.x} y={coord.y} width="644.3" height="400.8" xlinkHref={player}/>
   </g>
  </g>
 </svg>
+<audio src="./room_Images/SOLNCE_MONAKO.mp3" type="audio/mp4" className="dance"/>
+<audio src="./room_Images/may.mp3" type="audio/mp4" className="may"/>
+
     </div>
   );
 };
