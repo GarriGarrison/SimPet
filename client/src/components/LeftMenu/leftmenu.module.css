@@ -1,0 +1,66 @@
+@charset "UTF-8";
+.bar{
+  position: fixed;
+  left: 0.5rem;
+  bottom: 0.5rem;
+}
+.romb{
+  
+  padding-left: 4rem;
+  
+}
+@font-face { font-family:"Century Gothic";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID1") format(svg)}
+@font-face { font-family:"Arial";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID0") format(svg)}
+.str0 {stroke:#2B2A29;stroke-width:2.35;stroke-miterlimit:22.9256}
+.str1 {stroke:black;stroke-width:2.35;stroke-miterlimit:22.9256}
+.fil5 {fill:#FEFEFE; pointer-events: none;}
+.fil55 {fill: white; pointer-events: none;}
+.fil10 {fill:#E31E24}
+.fil10:hover {fill:#00ff4c}
+.fil11 {fill:#ffffff}
+.fil12 {fill:black}
+.fil4 {fill:#222848; transition: all 1s;}
+.fil4:hover {fill:#0026ff}
+.fil4:active {fill:#ff00ff;transition: all 0.1s;}
+.fil6 {fill:#262D57}
+.fil2 {fill:#445C80}
+.fil1 {fill:#666666}
+.fil111 {fill:#ffffff}
+.fil8 {fill:#7EACFA}
+.fil3 {fill:#C6FAFF}
+.fil14 {fill:white}
+.fil15 {fill:#445C80;fill-rule:nonzero}
+.fil0 {fill:url(#id24)}
+.fil7 {fill:url(#id25)}
+.fil9 {fill:url(#id26)}
+.fil13 {fill:url(#id27)}
+.fnt2 {font-weight:bold;font-size:20.1px;font-family:'Century Gothic'}
+.fnt0 {font-weight:bold;font-size:23.9px;font-family:'Century Gothic'}
+.fnt1 {font-weight:bold;font-size:24px;font-family:'Century Gothic'}
+.fnt3 {font-weight:bold;font-size:56.53px;font-family:'Century Gothic'}
+
+.formAva{
+  position:absolute;
+  bottom:0;
+  width:100vw;
+  height: 100vh;
+  background-color: #222848be;
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
+ .formAva form{
+   display: flex;
+   width: 30%;
+   flex-direction: column;
+   
+ }
+ .formAva input{
+   height: 50px;
+   text-align: center;
+ }
+ .formAva button{
+   height: 50px;
+   text-align: center;
+ }
