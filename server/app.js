@@ -23,7 +23,6 @@ const animalRouter = require('./src/routes/animal.router');
 const todoRouter = require('./src/routes/todos.router');
 
 
-
 const app = express();
 const PORT = process.env.PORT || 3001;
 const { COOKIE_SECRET, COOKIE_NAME } = process.env;
