@@ -47,7 +47,7 @@ export const timeoutMedicine = (id) => async (dispatch) => {
     .then(data => data.json())
     .then(data => {
         let endIndex = data.map(el => el= el.status).indexOf(false)
-        let stsrtIndex = data.lastIndexOf(el => el.status === true) 
+        let stsrtIndex = data.map(el => el= el.status).lastIndexOf(true) 
         let endObj = data[endIndex]
         let satrObj = data[stsrtIndex]
         let satrDate = new Date(endObj.createdAt);
@@ -65,7 +65,8 @@ export const timeoutMedicine = (id) => async (dispatch) => {
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
+
 
     
         
@@ -87,9 +88,10 @@ export const timeoutEat = (id) => async (dispatch) => {
     .then(data => data.json())
     .then(data => {
         let endIndex = data.map(el => el= el.status).indexOf(false)
-        let stsrtIndex = data.lastIndexOf(el => el.status === true) 
+        let stsrtIndex = data.map(el => el= el.status).lastIndexOf(true) 
         let endObj = data[endIndex]
         let satrObj = data[stsrtIndex]
+        console.log(endObj,satrObj);
         let satrDate = new Date(endObj.createdAt);
         if(satrObj) {
         let startD = satrObj.date.split(".")
@@ -100,12 +102,13 @@ export const timeoutEat = (id) => async (dispatch) => {
         let endD = endObj.date.split(".")
         let endT = endObj.time.split(":")
         let endDate = new Date(endD[2],endD[0],endD[1],endT[0],endT[1]) //yy dd mm tt
-        let diff = Math.round(endDate - satrDate/ 1000); // разница в миллисекундах
-        let nowLat =  Math.round((endDate-now) / 1000)
+        let diff = Math.round(endDate - satrDate); // разница в миллисекундах
+        let nowLat =  Math.round((endDate-now) )
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
+
 
     
         
@@ -135,7 +138,7 @@ export const timeoutCommunication = (id) => async (dispatch) => {
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
 
     
         
@@ -165,7 +168,8 @@ export const timeoutComfort = (id) => async (dispatch) => {
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
+    
 
     
         
@@ -195,7 +199,8 @@ export const timeoutFive = (id) => async (dispatch) => {
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
+
 
     
         
@@ -225,7 +230,8 @@ export const timeoutSix = (id) => async (dispatch) => {
         let latitude = Math.floor((diff*100)/70)
         let timeout = latitude/100
         let prosent = Math.floor(nowLat*100/latitude)
-        console.log(endDate, satrDate);
+        console.log(prosent, timeout);
+
 
         
 })

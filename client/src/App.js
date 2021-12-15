@@ -24,7 +24,7 @@ import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
-import { timeoutMedicine } from "./redux/actions/sim.action";
+import { timeoutComfort, timeoutEat, timeoutMedicine } from "./redux/actions/sim.action";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
 
 
@@ -68,6 +68,8 @@ function App() {
   }, [curAn])
 
   dispatch(timeoutMedicine(2))
+  dispatch(timeoutComfort(2))
+  dispatch(timeoutEat(2))
 
 
   return (
