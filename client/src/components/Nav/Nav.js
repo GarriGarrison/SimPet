@@ -24,39 +24,53 @@ import { checkAuth } from '../../redux/actions/user.actions';
         </div>
       <div className={classes.navRight}>
         <div className={classes.navRightUp}>
-        <div className={classes.navRightUpMenu}>
-          <Link to='#'>Lk</Link>
-          <div className={classes.paw}><SimplePaw/></div>
-          <Link to='#'>Money</Link>
-          <div className={classes.paw}><SimplePaw/></div>
-          <Link to='#'>
-            {user.name }
-            </Link>
-          <div className={classes.paw}><SimplePaw/></div>
-          <Link to={"/exit"}>Exit</Link>
-        </div>
+
         </div>
         <div className={classes.navRightDown}>
-        <Link to={'/day'}>
-  <button size="lg" variant="secondary">
-      day
-  </button>
-    </Link>  
-    <Link to={'/week'}>
-  <button size="lg" variant="secondary">
-      Week
-  </button>
-    </Link>  
-    <Link to={'/month'}>
-  <button size="lg" variant="secondary">
-      Month
-  </button>
-  </Link> 
-    <Link to={'/year'}>
-  <button size="lg" variant="secondary">
-      Year
-  </button>
-    </Link>  
+        <div className={classes.navRightLeft}>
+          <Link to={'/day'}>
+            <button size="lg" variant="secondary">
+                day
+            </button>
+              </Link>  
+              <Link to={'/week'}>
+            <button size="lg" variant="secondary">
+                Week
+            </button>
+              </Link>  
+              <Link to={'/month'}>
+            <button size="lg" variant="secondary">
+                Month
+            </button>
+            </Link> 
+              <Link to={'/year'}>
+            <button size="lg" variant="secondary">
+                Year
+            </button>
+              </Link>
+        </div> 
+        <div className={classes.navRightUpMenu}>
+        <Link to={'#'}>
+            <button size="lg" variant="secondary">
+                LK
+            </button>
+              </Link>  
+              <Link to={'#'}>
+            <button size="lg" variant="secondary">
+                MONEY
+            </button>
+              </Link>  
+              <Link to={'#'}>
+            <button size="lg" variant="secondary">
+                {user.name}
+            </button>
+            </Link> 
+              <Link to={'/exit'}>
+            <button size="lg" variant="secondary">
+                EXIT
+            </button>
+              </Link>
+        </div> 
    
         </div>
       </div>
