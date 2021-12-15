@@ -83,7 +83,7 @@ function App() {
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
-            <Main anId={animalId}/>
+            {/* <Main anId={animalId}/> */}
             <RightBarMenu />
             <LeftMenu animal={currAnimal}/>
             </>

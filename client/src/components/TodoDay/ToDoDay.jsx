@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoDay } from "../../redux/actions/todoDay.action";
 import { ToDo } from "../ToDo/ToDo";
+import classes from '../ToDo/todo.module.css'
 
 
 export function TodoDay({anId}) {  
@@ -28,14 +29,14 @@ export function TodoDay({anId}) {
     console.log(todos);
 
     return (
-      <> {todosLocal.map(el => 
-      <>
+      <div className={classes.container}> {todosLocal.map(el => 
+        <> 
         <ToDo todo={el} period_id={2}/>
      </>
       )}
     
 
-      </> 
+      </div> 
     );
   }
   

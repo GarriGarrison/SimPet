@@ -13,7 +13,7 @@ const LeftMenu = ({animal}) => {
   const [animalName, setAnimalName] = useState(null)
   const [animalAge, setAnimalAge] = useState(null)
   const [animalWeight, setAnimalWeight] = useState(null)
-  
+  const [animalAvatar, setAnimalAvatar] = useState(null)
 
   useEffect(() => {
     if(animal){
@@ -21,6 +21,7 @@ const LeftMenu = ({animal}) => {
       setAnimalName(animal.name)
       setAnimalAge(animal.age)
       setAnimalWeight(animal.weight)
+      setAnimalAvatar(animal.avatar)
     }
   },[animal])
 
@@ -202,7 +203,7 @@ viewBox="0 0 3553.52 893.46"
 <use xlinkHref="#s-mask-circles" />
 </mask>
 <symbol id="s-flower-m">
-<image xlinkHref={avatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="1200" height="950" />
+<image xlinkHref={animalAvatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="800" height="950" />
 </symbol>
 <g mask="url(#mask-circles)">
 <use xlinkHref="#s-flower-m"></use>
