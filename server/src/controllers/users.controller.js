@@ -72,7 +72,7 @@ const editUser = async (req, res) => {
         id,
       },
     });
-    res.status(200).json(req.body);
+    res.status(200).json(req.body);  //sendStatus(200);
   } catch (error) {
     res.sendStatus(424);  //418
   }
