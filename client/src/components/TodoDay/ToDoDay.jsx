@@ -8,6 +8,7 @@ export function TodoDay({anId}) {
 
   console.log(anId, 'day');
   const todos = useSelector((state) => state.todoDay.all)
+
   const dispatch = useDispatch()
   
   const [todosLocal,setTodos] = useState([])

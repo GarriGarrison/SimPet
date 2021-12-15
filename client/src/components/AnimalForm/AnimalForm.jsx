@@ -44,6 +44,8 @@ const AnimalForm = ({redirect}) => {
 
   const submitHandlerIn = (e) => {
     e.preventDefault()
+    console.log(Object.entries(userSign));
+
     let payload = Object.entries(userSign).filter((el) => el[1] ? el[1].trim() : el[1])
     if (payload.length) {
       payload = Object.fromEntries(payload)
@@ -83,8 +85,7 @@ const AnimalForm = ({redirect}) => {
           <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
           <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
           <button type="submit">go</button>
-          
-         
+       
         </form>
       </div>
     )
