@@ -31,6 +31,8 @@ function App() {
   const [animalId, setAnimalId] = useState(null)
   const [animalAll, setAnimal] = useState(null)
 
+  const [currAnimal, setCurAnimal] = useState(null)
+
   useEffect(() => {
     dispatch(checkAuth());
   },[]);  
@@ -47,9 +49,9 @@ function App() {
   }, [id]);
 
   const animal = useSelector(state=>state.animal.all[0])
-  
-  
+
   const ani = useSelector(state=>state.animal.all)
+  const curAn = useSelector(state=>state.animal.currAnimal)
   
   useEffect(() => {
     if (animal) {
@@ -57,6 +59,15 @@ function App() {
       setAnimal(ani)
     }
   }, [animal])
+
+
+  useEffect(() => {
+    if (curAn) {
+      
+      setCurAnimal(curAn)
+    }
+  }, [curAn])
+
 
   return (
     <>
@@ -77,7 +88,8 @@ function App() {
             <Nav user={user}/>
             <Main anId={animalId}/>
             <RightBarMenu />
-            <LeftMenu/>
+
+            <LeftMenu animal={currAnimal}/>
             </>
         
         } />
