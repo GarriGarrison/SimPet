@@ -7,22 +7,25 @@ import classes from '../ToDo/todo.module.css'
 
 export function TodoDay({anId}) {  
 
-  console.log(anId, 'day');
+  
   const todos = useSelector((state) => state.todoDay.all)
   const dispatch = useDispatch()
   
   const [todosLocal,setTodos] = useState([])
+  useEffect(() => {
+    if(todos) {
+      setTodos(todos)
+    }
+  },[todos])
+  
+  
+  const [animalID, setID] = useState(null)
+
     useEffect(() => {
-      if(todos) {
-        setTodos(todos)
+      if(anId){
+        setID(anId.id)
+        dispatch(getTodoDay(anId.id))
       }
-    },[todos])
-
-
-    useEffect(() => {
-
-      dispatch(getTodoDay(anId))
-
     },[anId])
     
    
@@ -31,7 +34,7 @@ export function TodoDay({anId}) {
     return (
       <div className={classes.container}> {todosLocal.map(el => 
         <> 
-        <ToDo todo={el} period_id={2}/>
+        <ToDo todo={el} period_id={2} anId={animalID}/>
      </>
       )}
     
