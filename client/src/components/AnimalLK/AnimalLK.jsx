@@ -5,6 +5,7 @@ import { checkAuth } from "../../redux/actions/user.actions"
 import { editAnimal } from "../../redux/actions/animal.action"
 import classes from "./animallk.module.css"
 import Logo from "../UserForm/Logo/Logo"
+import AvatarModal from "../AvatarModal/AvatarModal"
 
 
 const AnimalLK = (props) => {
@@ -35,6 +36,8 @@ const AnimalLK = (props) => {
     id: props.id  //null
   })
 
+   const [modalAvatarView, setModalAvatarView] = useState(false)
+
 
   const changeHandler = (e) => {
     setAnimalData(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -59,24 +62,28 @@ const AnimalLK = (props) => {
     }
   }
 
-  const clickAvatar = (e) => {
-    const modal = document.getElementById('myModal');
-    const img = document.getElementById('myImg');
-    const modalImg = document.getElementById('img01');
-    const captionText = document.getElementById('caption');
+  // const clickAvatar = (e) => {
+//     const modal = document.getElementById('myModal');
+//     const img = document.getElementById('myImg');
+//     const modalImg = document.getElementById('img01');
+//     const captionText = document.getElementById('caption');
 
-    img.onclick = function () {
-	  modal.style.display = 'block';
-	  modalImg.src = this.src;
-	  captionText.innerHTML = this.alt;
-}
+//     img.onclick = function () {
+// 	  modal.style.display = 'block';
+// 	  modalImg.src = this.src;
+// 	  captionText.innerHTML = this.alt;
+// }
 
-const span = document.getElementByClassName('close')[0];
-span.onclick = function () {
-	console.log('click')
-	modal.style.display = 'none';
+// const span = document.getElementByClassName('close')[0];
+// span.onclick = function () {
+// 	console.log('click')
+// 	modal.style.display = 'none';
 
-}
+// }
+  // }
+
+    function clickAvatar() {
+    setModalAvatarView(!modalAvatarView)
   }
 
  
@@ -87,14 +94,21 @@ span.onclick = function () {
         <Logo />
       </div>
 
+      <div>
+        {modalAvatarView ?
+          <AvatarModal picture={animalData.avatar} /> : <> </>
+          
+        }
+      </div>
+
       <form onSubmit={submitHandlerEdit} className={classes.form}  id="form">
          
-        <img src={animalData.avatar} alt="avatar" onClick={clickAvatar} id="avatarImg" width="300" height="200" />
-        <div id="modalWindow" class="modal">
+        <img src={animalData.avatar} alt="avatar" onClick={clickAvatar} id="avatarImg" width="350" height="250" />
+        {/* <div id="modalWindow" class="modal">
 		      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 		      <img class="modal-content" id="img01" />
 		      < div id="caption"></div>
-	      </div>
+	      </div> */}
         <input type="file" placeholder="avatar" name="avatar" ref={upload} />
         
         <select onChange={changeHandler} placeholder="тип" value={animalData.type} name="type" form="form">
