@@ -20,6 +20,7 @@ const TogleAnimal = ({animal}) => {
   function togleAnimal(e){
     const index = e.target.attributes.id.value
     dispatch(switchActivAnimal(Number(index)))
+    
     // console.log(e.target.attributes.index.value);
 
   }
