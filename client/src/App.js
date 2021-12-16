@@ -101,7 +101,8 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
-            <TodoDay anId={currAnimal}/>
+            <TogleAnimal animal={animalAll}/>
+            <TodoDay anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
@@ -110,7 +111,7 @@ function App() {
           <Route path="/week" element={
             <>
             <Nav user={user}/>
-            <TodoWeek anId={currAnimal} />
+            <TodoWeek anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -120,7 +121,7 @@ function App() {
           <Route path="/month" element={
             <>
             <Nav user={user}/>
-            <TodoMonth anId={currAnimal} />
+            <TodoMonth anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -130,7 +131,7 @@ function App() {
           <Route path='/year'element={
             <>
             <Nav user={user}/>
-            <TodoYear anId={currAnimal}/>
+            <TodoYear anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
