@@ -5,7 +5,7 @@ import AnimalForm from "../AnimalForm/AnimalForm";
 import classes from "./togle.module.css";
 
 const TogleAnimal = ({animal}) => {
-  console.log(animal);
+  console.log(animal,'-------------------');
   const dispatch = useDispatch()
   
   const [animalLocal,setAnimal] = useState([])
@@ -25,17 +25,19 @@ const TogleAnimal = ({animal}) => {
   }
   function addAnimal(){
    
-    setClick(true)  
+    setClick(!click)  
     console.log("add animal");
   }
   
   const [ava, setAvatar] = useState('')
   return (
     <>
-          <div className={classes.addAnim}>
+          <div>
           {click?
-              <AnimalForm redirect ={"/"}/>
-    
+              <div className={classes.addAnim}>
+                <AnimalForm redirect ={"/"}/>
+                <button className={classes.but} onClick={addAnimal}  type="button">Выйти</button>
+              </div>
           :
              <> </>
           }
@@ -43,13 +45,13 @@ const TogleAnimal = ({animal}) => {
     
 
       <div className={classes.icon}>
-      {animalLocal.map((el, index) =><><svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+      {animalLocal.map((el, index) =><div key={index}>{el.id}<svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
  >
  
 
  
- <symbol id="s-mask-ci">
+ <symbol id={`${el.id}ss`}>
         <g>
 
   <ellipse className={classes.fil1} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
@@ -57,14 +59,14 @@ viewBox="0 0 29.56 29.52"
 
         </g>
         </symbol>
-        <mask id="mask-c">
-        <use xlinkHref="#s-mask-ci" />
+        <mask id={el.id}>
+        <use xlinkHref={`#${el.id}ss`} />
         </mask>
-        <symbol id="s-fl">
-        <image xlinkHref={el.avatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="30" height="30" />
+        <symbol id={`${el.id}dd`}>
+        <image xlinkHref={el.avatar} width="30" height="30" />
         </symbol>
-        <g mask="url(#mask-c)">
-        <use xlinkHref="#s-fl"></use>
+        <g mask={`url(#${el.id})`}>
+        <use xlinkHref={`#${el.id}dd`}></use>
         </g>
         <g id="Слой_x0020_1">
 
@@ -72,7 +74,7 @@ viewBox="0 0 29.56 29.52"
   <ellipse onClick={togleAnimal} id = {index} index = {el.index} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
  </g>
 </svg>
-<p>{el.name}</p></>
+<p>{el.name}</p></div>
        )}
        <svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"

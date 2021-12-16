@@ -86,13 +86,13 @@ function App() {
 
 
           <Route path="/reg" element={ <UserFormReg/>} />
-          <Route path="/animal_lk" element={ <AnimalLK/>} />
-          <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} />
+          {/* <Route path="/animal_lk" element={ <AnimalLK/>} /> */}
+          {/* <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} /> */}
 
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
-            <Main anId={animalId}/>
+            {/* <Main anId={animalId}/> */}
             <RightBarMenu />
             <LeftMenu animal={currAnimal}/>
             </>
@@ -100,6 +100,7 @@ function App() {
         } />
           <Route path="/start" element={ <Start/>} />
           <Route path="/exit" element={ <LogOut/>} />
+
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
@@ -112,7 +113,9 @@ function App() {
          } />
           <Route path="/week" element={
             <>
+
             <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
             <TodoWeek anId={animalId} />
             <RightBarMenu />
 
@@ -123,6 +126,7 @@ function App() {
           <Route path="/month" element={
             <>
             <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
             <TodoMonth anId={animalId} />
             <RightBarMenu />
 
@@ -133,6 +137,7 @@ function App() {
           <Route path='/year'element={
             <>
             <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
             <TodoYear anId={animalId}/>
             <RightBarMenu />
 
