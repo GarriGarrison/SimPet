@@ -8,9 +8,7 @@ import { useEffect, useState } from "react";
 import Main from "./components/Main/Main";
 import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
-import { TodoWeek } from "./components/TodoWeek/TodoWeek";
-import { TodoYear } from "./components/TodoYear/TodoYear";
-import  TodoDay  from "./components/TodoDay/ToDoDay";
+
 
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
@@ -18,7 +16,6 @@ import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
 import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
-import { TodoMonth } from "./components/TodoMonth/TodoMonth";
 import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
@@ -27,6 +24,8 @@ import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 import { timeoutCare,  timeoutFeed, timeoutMedical } from "./redux/actions/sim.action";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
 import AddTodo from "./components/AddTodo/AddTodo";
+import { todoAllReduser } from "./redux/reducers/todoAll.reducer";
+import ToDoList from "./components/TodoList/ToDoList";
 
 
 function App() {
@@ -35,9 +34,9 @@ function App() {
   const [animalAll, setAnimal] = useState(null)
   const [currAnimal, setCurAnimal] = useState(null)
 
-  useEffect(() => {
-    dispatch(checkAuth());
-  },[]);  
+  // useEffect(() => {
+  //   dispatch(checkAuth());
+  // },[]);  
 
   const user = useSelector(state=>state.user)
   const {id} = useSelector(state=>state.user)
@@ -48,16 +47,27 @@ function App() {
     if (id){
       dispatch(getAnimal(id))
     }
-  }, [id]);
+  }, [id, user]);
 
   const animal = useSelector(state=>state.animal.all[0])
   const ani = useSelector(state=>state.animal.all)
   const curAn = useSelector(state=>state.animal.currAnimal)
+
+  useEffect(() => {
+    if (ani) {
+      setCurAnimal(ani[0])
+      setAnimalId(ani[0].id)
+      setAnimal(ani)
+    }
+  }, [])
+
+
   
   useEffect(() => {
     if (animal) {
       setAnimalId(animal.id)
       setAnimal(ani)
+      
     }
   }, [animal])
 
@@ -89,19 +99,21 @@ function App() {
           {/* <Route path="/animal_lk" element={ <AnimalLK/>} /> */}
           {/* <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} /> */}
 
-          <Route path="/" element={ <>
-            <TogleAnimal animal={animalAll}/>
-            <Nav user={user}/>
-            {/* <Main anId={animalId}/> */}
-            <RightBarMenu />
-            <LeftMenu animal={currAnimal}/>
-            </>
-        
-        } />
           <Route path="/start" element={ <Start/>} />
           <Route path="/exit" element={ <LogOut/>} />
 
-          <Route path="/day" element={            
+             <Route path="/" element={            
+            <>
+            <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
+            <ToDoList anId={animalId}/>
+            <RightBarMenu />
+
+            <LeftMenu animal={currAnimal}/>
+            </>
+         } />
+
+          {/* <Route path="/day" element={            
             <>
             <Nav user={user}/>
             <TogleAnimal animal={animalAll}/>
@@ -143,7 +155,7 @@ function App() {
 
             <LeftMenu animal={currAnimal}/>
             </>
-            }/>
+            }/> */}
           </Routes>  
           
           {/* <RightBarMenu />

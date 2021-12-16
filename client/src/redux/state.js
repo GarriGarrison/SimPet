@@ -13,21 +13,8 @@ export const initialState = {
     party: 100,
     hygeine: 100,
   },
-  todoAll: [],
-  todoDay: {
-    last: null,
-    all:[]
-  },
-  todoWeek: {
-    last: null,
-    all:[]
-  },
-  todoMonth: {
-    last: null,
-    all:[]
-  },
-  todoYear: {
-    last: null,
-    all:[]
+  todoAll: {
+    period: '',
+    value:[]
   },
 }

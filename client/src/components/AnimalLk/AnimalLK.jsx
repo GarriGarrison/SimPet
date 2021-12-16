@@ -13,9 +13,9 @@ const AnimalLK = (props) => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  useEffect(() => {
-    dispatch(checkAuth())
-  }, [])
+  // useEffect(() => {
+  //   dispatch(checkAuth())
+  // }, [])
 
   if (!user) {
     navigate('/')

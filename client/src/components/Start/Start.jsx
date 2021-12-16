@@ -18,7 +18,7 @@ const Start = () => {
   let user = useSelector((state) => state.user);
 
   if (user) {
-    navigate("/");
+    navigate("/?period=day");
   }
 
   return (
