@@ -81,6 +81,7 @@ const signIn = async (req, res) => {
 
 
 const signOut = async (req, res) => {
+  console.log(0,'00000000000000000000000000000000000000000000000000000000000000000000')
   req.session.destroy((error) => {
     if (error) return res.sendStatus(500);
     res.clearCookie(req.app.get('cookieName'));

@@ -87,14 +87,16 @@ export const startAnimal = (animal)=>({
 
 
 export const editAnimal = (animal) => async (dispatch) => {
-  console.log('EDIT ANIMAL dispath: ', animal);
+  const formData = new FormData()
+
+  for (let key in animal) {
+    formData.append(key, animal[key])
+  }
+
   const response = await fetch(`http://localhost:3001/api/v1/animals/${animal.id}`,{
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
     credentials: 'include',
-    body: JSON.stringify(animal)
+    body: formData,
   })
 
   if (response.ok) {
