@@ -18,18 +18,12 @@ const TogleAnimal = ({animal}) => {
     }  
   },[animal])  
 
-  function togleAnimal(e){
-    const index = e.target.attributes.index.value
-    const id = e.target.attributes.value
-
+  function togleAnimal(id, index){
     dispatch(switchActivAnimal(Number(index)))
-
     dispatch(getTodoAll(id))
-
-
   }
+
   function addAnimal(){
-   
     setClick(!click)  
     console.log("add animal");
   }
@@ -76,7 +70,7 @@ viewBox="0 0 29.56 29.52"
         <g id="Слой_x0020_1">
 
   <path className={classes.fil0} d="M14.78 1.72c7.21,0 13.06,5.84 13.06,13.04 0,7.2 -5.85,13.04 -13.06,13.04 -7.21,0 -13.06,-5.84 -13.06,-13.04 0,-7.2 5.85,-13.04 13.06,-13.04zm0 -1.72c8.16,0 14.78,6.61 14.78,14.76 0,8.15 -6.62,14.76 -14.78,14.76 -8.16,0 -14.78,-6.61 -14.78,-14.76 0,-8.15 6.62,-14.76 14.78,-14.76z"/>
-  <ellipse onClick={togleAnimal} id = {el.id} index = {index} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
+  <ellipse onClick={() => togleAnimal(el.id, index)} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
  </g>
 </svg>
 <p>{el.name}</p></div>

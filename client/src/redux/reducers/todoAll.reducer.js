@@ -1,4 +1,4 @@
-import { ADD_TODO, GET_TODO, DEL_TODO, EDIT_TODO, EDIT_STATUS_TODO } from '../types/todo.types'
+import { ADD_TODO, GET_TODO, DEL_TODO, EDIT_TODO, EDIT_STATUS_TODO, CLEAR_TODO_ALL } from '../types/todo.types'
 
 export const todoAllReduser = (state = {}, action) => {
   const {type} = action
@@ -24,6 +24,12 @@ export const todoAllReduser = (state = {}, action) => {
           ...state,
           value: state.value.filter(el => el.id !== id)
         }
+    }
+    case CLEAR_TODO_ALL:{
+      return {
+        period: '',
+        value:[]
+      }
     }
 
     case EDIT_TODO:{
