@@ -8,7 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { addAnimal } from "../../redux/actions/animal.action";
 import { checkAuth } from "../../redux/actions/user.actions";
 
-const AnimalForm = ({redirect}) => {
+const AnimalForm = ({hideForm,redirect}) => {
   let user = useSelector(state => state.user);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -55,6 +55,9 @@ const AnimalForm = ({redirect}) => {
     
       dispatch(addAnimal(payload)) 
       navigate(redirect)
+      if(hideForm){
+        hideForm(false)
+      }
     }
   }  
 

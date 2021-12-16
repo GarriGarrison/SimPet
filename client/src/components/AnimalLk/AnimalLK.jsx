@@ -44,15 +44,18 @@ const AnimalLK = (props) => {
     e.preventDefault()
     // let payload = Object.entries(animalData).filter((el) => el[1] ? el[1].trim() : el[1])
     let payload = Object.entries(animalData)
+    console.log(payload);
     if (payload.length) {
       payload = Object.fromEntries(payload)
       payload.user_id = user.id
       payload.age = +payload.age
       payload.weight = +payload.weight
       payload.file = upload.current.files[0]
-
+      payload.avatar = upload.current.files[0].name
+      
+      console.log(payload,'+++++++++++++++++++');
       dispatch(editAnimal(payload)) 
-      navigate('/')  //navigate(redirect)
+      props.hideLk(false)
     }
   } 
 
@@ -73,11 +76,11 @@ const AnimalLK = (props) => {
           <option value="snek">Змея</option>
           <option value="turtle">Черепахи</option>
         </select>
-        <input onChange={changeHandler} type="text" placeholder="имя" name="name" />
+        <input onChange={changeHandler} type="text" value={animalData.name} placeholder="имя" name="name" />
         {/* <input onChange={changeHandler} type="text" placeholder="avatar" name="avatar" /> */}
         <input type="file" placeholder="avatar" name="avatar" ref={upload} />
-        <input onChange={changeHandler} type="text" placeholder="порода" name="breed" />
-        <select onChange={changeHandler} name="sex" form="form">
+        <input onChange={changeHandler} type="text" value={animalData.breed} placeholder="порода" name="breed" />
+        <select onChange={changeHandler} name="sex" value={animalData.sex} form="form">
           <option value="1">Мальчик(самец)</option>
           <option value="2">Девочка(самка)</option>
         </select>

@@ -112,9 +112,13 @@ const editAnimal = async (req, res) => {
   const fullname = `${new Date().getTime()}_${fileName}`;
   const uploadPath = `${process.env.PWD}/public/uploads/`;
   sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
+
     if (err) {
+      
       return res.status(500).send(err);
+      
     }
+
     try {
       await Animal.update({
         ...req.body,
@@ -122,8 +126,8 @@ const editAnimal = async (req, res) => {
       }, {
         where: { id: req.params.id }
       });
-
-      res.status(200).json(req.body); //sendStatus(200);
+      const updateAnimal = await Animal.findByPk(req.params.id)
+      res.status(200).json(updateAnimal); //sendStatus(200);
     } catch (err) {
       console.error(err);
       res.sendStatus(424);  //418

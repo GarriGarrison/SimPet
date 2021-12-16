@@ -52,7 +52,7 @@ const TogleAnimal = ({animal}) => {
           <div>
           {click?
               <div className={classes.addAnim}>
-                <AnimalForm redirect ={"/"}/>
+                <AnimalForm  hideForm={setClick} redirect={'/'}/>
                 <button className={classes.but} onClick={addAnimal}  type="button">Выйти</button>
               </div>
           :
