@@ -21,7 +21,7 @@ export function TodoWeek({anId}) {
   useEffect(() => {
     if(anId){
       setID(animalID)
-      dispatch(getTodoWeek(animalID))
+      // dispatch(getTodoWeek(animalID))
     }
   },[anId])
   
