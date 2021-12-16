@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 
 import { addTodo } from '../../redux/actions/todoAll.action';
 import { checkAuth } from "../../redux/actions/user.actions"
+import Logo from '../UserForm/Logo/Logo';
+import classes from './addtodo.module.css'
 
 
-
-const AddTodo = ({anId}) => {
-
+const AddTodo = ({anId,show,setShow}) => {
+  
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -19,6 +20,7 @@ const AddTodo = ({anId}) => {
 
 
     const [animal_id, setAnimal_id] = useState(anId)
+    console.log(animal_id,anId);
 
     useEffect(() => {
       setAnimal_id(anId)
@@ -50,38 +52,45 @@ const AddTodo = ({anId}) => {
     }
   }  
 
+  function hideTodo(){
+    setShow(!show)
+  }
+
 
   return (
     <>
-     <form onSubmit={submitHandlerIn}  id="form">
-         
-         <select onChange={changeHandler} placeholder="Выбери категорию" name="categoryNum" form="form">
-         
-           <option value="1">Еда</option>
-           <option value="2">Гигиена</option>
-           <option value="3">Медицина</option>
-           <option value="4">Общение</option>
-           <option value="5">Уход</option>
-           <option value="6">Событие</option>
-           </select>
-
-           <input onChange={changeHandler} type="text" placeholder="Что именно будем делать?" name="action" />
-           <input onChange={changeHandler} type="date" placeholder="Дата" name="date" />
-           <input onChange={changeHandler} type="time" placeholder="Время" name="time" />
-             <p>
-              Когда нужно сделать?
-             </p>
-           <select onChange={changeHandler} name="periodNum" form="form">
-           <option value="2">Ближайшее время</option>
-           <option value="3">Ближайшую неделю</option>
-           <option value="4">В течении месяца</option>
-           <option value="5">в течении года</option>
-           </select>
+     <div className={classes.container}>
+    <div className={classes.logo}><Logo/></div>
+       <form onSubmit={submitHandlerIn}  id="form" className={classes.form}>
        
-           <button type="submit">go</button>
-           
-          
-         </form>
+           <select onChange={changeHandler} placeholder="Выбери категорию" name="categoryNum" form="form">
+       
+             <option value="1">Еда</option>
+             <option value="2">Гигиена</option>
+             <option value="3">Медицина</option>
+             <option value="4">Общение</option>
+             <option value="5">Уход</option>
+             <option value="6">Событие</option>
+             </select>
+             <input onChange={changeHandler} type="text" placeholder="Что именно будем делать?" name="action" />
+             <input onChange={changeHandler} type="date" placeholder="Дата" name="date" />
+             <input onChange={changeHandler} type="time" placeholder="Время" name="time" />
+               <p className={classes.message}>
+                Когда нужно сделать?
+               </p>
+             <select onChange={changeHandler} name="periodNum" form="form">
+             <option value="2">Ближайшее время</option>
+             <option value="3">Ближайшую неделю</option>
+             <option value="4">В течении месяца</option>
+             <option value="5">в течении года</option>
+             </select>
+       
+       
+             <button type="submit">go</button>
+             <button onClick={hideTodo} type="button">выйти</button>
+       
+           </form>
+     </div>
     </>
   );
 };

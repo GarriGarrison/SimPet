@@ -25,6 +25,7 @@ import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
+import AddTodo from "./components/AddTodo/AddTodo";
 
 
 function App() {
@@ -81,11 +82,12 @@ function App() {
 
           <Route path="/reg" element={ <UserFormReg/>} />
           <Route path="/animal_lk" element={ <AnimalLK/>} />
+          <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} />
 
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
-            {/* <Main anId={animalId}/> */}
+            <Main anId={animalId}/>
             <RightBarMenu />
             <LeftMenu animal={currAnimal}/>
             </>
