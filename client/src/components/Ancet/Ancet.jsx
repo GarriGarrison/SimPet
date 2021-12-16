@@ -9,13 +9,15 @@ const Ancet = () => {
     let user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
-    const anId = useSelector(state => state.animal.currAnimal.id)
+    const anId = useSelector(state => state.animal.currAnimal)
 
 
     const [animal_id, setAnimal_id] = useState()
 
     useEffect(() => {
-      setAnimal_id(anId)
+      if(anId){
+        setAnimal_id(anId.id)
+      }
     },[anId])
 
     const [eat, setEat] = useState({

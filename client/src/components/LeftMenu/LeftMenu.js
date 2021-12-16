@@ -32,12 +32,12 @@ const LeftMenu = () => {
       setAnimalName(animal.name)
       setAnimalAge(animal.age)
       setAnimalWeight(animal.weight)
-      setAnimalAvatar(allanimal.currAnimal.avatar)
+      setAnimalAvatar(animal.avatar)
       setAnimalId(animal.id)
       setSex(animal.sex)
       setBreed(animal.breed)
       setUserId(animal.user_id)
-      console.log(animalAvatar, '+++++++++++++++++');
+
     }
   },[animal, allanimal])
 
@@ -232,19 +232,19 @@ viewBox="0 0 3553.52 893.46"
  </linearGradient>
  </g>
 
- <symbol id={`${animalName}`}>
+ <symbol id="s-mask-circles">
 <g>   
 <ellipse className={classes.fil111} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
 </g>
 </symbol>
 <mask id="mask-circles">
-<use xlinkHref={`#${animalName}`} />
+<use xlinkHref="#s-mask-circles" />
 </mask>
-<symbol id={`${animalName}dd`}>
+<symbol id="s-flower-m">
 <image xlinkHref={animalAvatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="800" height="950" />
 </symbol>
 <g mask="url(#mask-circles)">
-<use xlinkHref={`#${animalName}dd`}></use>
+<use xlinkHref="#s-flower-m"></use>
 </g>
 
  <g id="Слой_x0020_1">
