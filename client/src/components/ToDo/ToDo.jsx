@@ -29,6 +29,30 @@ function ToDo({todo, period_id, anId}) {
     setValue(todoLoc.action)
     setDay(todoLoc.date)
     setTime(todoLoc.time)
+
+    // switch (period_id) {
+
+    //       case 2:{
+    //           return dispatch(getTodoMonth(animal_id))
+    //       }
+          
+    //       case 3:{
+    //           return dispatch(getTodoWeek(animal_id))
+    //       }
+    
+    //       case 4:{
+    //           return dispatch(getTodoMonth(animal_id))
+    //       }
+          
+    //       case 5:{
+    //           return dispatch(getTodoYear(animal_id))
+    //       }
+    //       default: {
+    //           return console.log('err');
+    //       }
+    //     }
+
+    
   },[todo])
   
   
@@ -112,29 +136,30 @@ function ToDo({todo, period_id, anId}) {
     dispatch(editTodo(form))
     setEditClick(false)
     // setTimeout(() => {
-      
+      switch (period_id) {
+
+        case 2:{
+            return dispatch(getTodoMonth(animal_id))
+        }
+        
+        case 3:{
+            return dispatch(getTodoWeek(animal_id))
+        }
+  
+        case 4:{
+            return dispatch(getTodoMonth(animal_id))
+        }
+        
+        case 5:{
+            return dispatch(getTodoYear(animal_id))
+        }
+        default: {
+            return console.log('err');
+        }
+      }
+
    
-  //   switch (period_id) {
-
-  //     case 2:{
-  //         return dispatch(getTodoMonth(animal_id))
-  //     }
-      
-  //     case 3:{
-  //         return dispatch(getTodoWeek(animal_id))
-  //     }
-
-  //     case 4:{
-  //         return dispatch(getTodoMonth(animal_id))
-  //     }
-      
-  //     case 5:{
-  //         return dispatch(getTodoYear(animal_id))
-  //     }
-  //     default: {
-  //         return console.log('err');
-  //     }
-  //   }
+  //   
   // // }, 100);
   }
 
