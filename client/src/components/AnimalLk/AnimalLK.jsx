@@ -7,12 +7,11 @@ import classes from "./animallk.module.css"
 import Logo from "../UserForm/Logo/Logo"
 
 
-const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
+const AnimalLK = (props) => {
 
   const upload = useRef()
 
   const user = useSelector(state => state.user)
-  const animal = useSelector(state => state.animal.currAnimal)
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
@@ -25,15 +24,15 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
   }
 
   const [animalData, setAnimalData] = useState({
-    type: animal.type, //'cat',
-    avatar: animal.avatar, //'https://yandex-images.clstorage.net/5AD6iM086/939b47W04D/ph4Ugj8rTksEMU3oTrsFv8SOIlhWdkNFq5fH-4Y0zc1YE4AsPt8HrKCCdwZgnIvXLP2Ei0SxC2voCzg3wEJXW-JIWM4kNQFBBTFO5UegDLjPhi1QUmJER_PA3P_fd8DJF1uMJATiJ9WE7Qw3GeLyoWyt3YkT8UEtqjABOrQ5CCa6FgKtPQ0KfAgGEPtmpQat9O8FfmgRRDiql7jrwGy96hpc1lg5-jXnsv4sKDrM4atsjv6cOM0uGZcYK2ymGAA7ljMptyAXClcSMCfkdqAZtPHQCmhXDU8djIGT_NFdrdgYUv1CD8sF87fiDAgx0c6kW4XqvSD9PSemCCdfkQE4CJYSMaYcMQdLAi4p41iFCJTvxz5WRyptHK6xg_v8Xa3BOn3dYizMH9iE1i4WP8zRvH-027kM0R4Plz07d5cFIi6cMiKVBzINbCwTNNZtmAq81M4aXFUvfw2Qu4za-EuY4h5ByGE59zH-qN4LFiXs3bxZpv28FecGC5k7DVe0ECQguTkGlxw8KmUPBCziZZoTjvrpNHZkP2AKhISuxv9ons8qU_xnHdYNwLHVMyEl9dG_QZjfgxTzIhClBjJ3mzMgFaU2K7QFKgdrOSgK22qwC77IxxVTURxcCa24tOrAb5PFHEHgegvTJ8OxwCcvN-7rln24y70s4zcHqC0kTLAuIyuCPimoGD0SQSYPCtRYghi7yuUZa1oDfBurspfTx2ySyytlyWEq6RbshfQJFwLA4qVwg8O7He4sPZAkPHWMMysbpCUEoD8gCmUuOBTebK8NrdnvFXRRK34SoIqJ_dNMntYdSPBaIvYlxKz5FQ8a9dy6UorShhPMJjKRPStYnzsRI7sOGYU5ASdlLzME2myDIK3O9hZESi9MLaqJrtHibI39NlvXfz3kFsKV-Q8fI_b5hlKB5540zAsTrhYZbr8XIzOpEDG7GwgMQjQJBuVmoCuL7tAcek8IQxmJtozr40k',
-    name: animal.name, //'',
-    breed: animal.breed,  //'',
-    sex: animal.sex, //'1',
-    age: animal.age, //'',
-    weight: animal.weight,  //'',
-    user_id: animal.user_id,  //null,
-    id: animal.id  //null
+    type: props.type, //'cat',
+    avatar: props.ava, //'https://yandex-images.clstorage.net/5AD6iM086/939b47W04D/ph4Ugj8rTksEMU3oTrsFv8SOIlhWdkNFq5fH-4Y0zc1YE4AsPt8HrKCCdwZgnIvXLP2Ei0SxC2voCzg3wEJXW-JIWM4kNQFBBTFO5UegDLjPhi1QUmJER_PA3P_fd8DJF1uMJATiJ9WE7Qw3GeLyoWyt3YkT8UEtqjABOrQ5CCa6FgKtPQ0KfAgGEPtmpQat9O8FfmgRRDiql7jrwGy96hpc1lg5-jXnsv4sKDrM4atsjv6cOM0uGZcYK2ymGAA7ljMptyAXClcSMCfkdqAZtPHQCmhXDU8djIGT_NFdrdgYUv1CD8sF87fiDAgx0c6kW4XqvSD9PSemCCdfkQE4CJYSMaYcMQdLAi4p41iFCJTvxz5WRyptHK6xg_v8Xa3BOn3dYizMH9iE1i4WP8zRvH-027kM0R4Plz07d5cFIi6cMiKVBzINbCwTNNZtmAq81M4aXFUvfw2Qu4za-EuY4h5ByGE59zH-qN4LFiXs3bxZpv28FecGC5k7DVe0ECQguTkGlxw8KmUPBCziZZoTjvrpNHZkP2AKhISuxv9ons8qU_xnHdYNwLHVMyEl9dG_QZjfgxTzIhClBjJ3mzMgFaU2K7QFKgdrOSgK22qwC77IxxVTURxcCa24tOrAb5PFHEHgegvTJ8OxwCcvN-7rln24y70s4zcHqC0kTLAuIyuCPimoGD0SQSYPCtRYghi7yuUZa1oDfBurspfTx2ySyytlyWEq6RbshfQJFwLA4qVwg8O7He4sPZAkPHWMMysbpCUEoD8gCmUuOBTebK8NrdnvFXRRK34SoIqJ_dNMntYdSPBaIvYlxKz5FQ8a9dy6UorShhPMJjKRPStYnzsRI7sOGYU5ASdlLzME2myDIK3O9hZESi9MLaqJrtHibI39NlvXfz3kFsKV-Q8fI_b5hlKB5540zAsTrhYZbr8XIzOpEDG7GwgMQjQJBuVmoCuL7tAcek8IQxmJtozr40k',
+    name: props.name, //'',
+    breed: props.breed,  //'',
+    sex: props.sex, //'1',
+    age: props.age, //'',
+    weight: props.weight,  //'',
+    user_id: props.idUser,  //null,
+    id: props.id  //null
   })
 
 
@@ -57,15 +56,17 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
     }
   } 
 
+ 
+
   return (
     <div className={classes.container}>
       <div className={classes.logo}>
         <Logo />
       </div>
 
-      <form onSubmit={submitHandlerEdit} className={classes.form} id="form">
+      <form onSubmit={submitHandlerEdit} className={classes.form}  id="form">
          
-        <select onChange={changeHandler} placeholder="тип" name="type" form="form">
+        <select onChange={changeHandler} placeholder="тип" value={animalData.type} name="type" form="form">
           <option value="cat">Кошка</option>
           <option value="dog">Собака</option>
           <option value="hamster">Хомяк</option>
@@ -80,13 +81,11 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
           <option value="1">Мальчик(самец)</option>
           <option value="2">Девочка(самка)</option>
         </select>
-        <input onChange={changeHandler} type="text" placeholder="возраст" name="age" />
-        <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
+        <input onChange={changeHandler} type="text" value={animalData.age} placeholder="возраст" name="age" />
+        <input onChange={changeHandler} type="number" value={animalData.weight} placeholder="вес в грм" name="weight" />
         <button type="submit">Изменить данные</button>
 
-        <Link to={'/'}>
-          <button type="button">Выйти</button>
-        </Link>
+        
           
       </form>
     </div>

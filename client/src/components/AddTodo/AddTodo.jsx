@@ -8,7 +8,7 @@ import Logo from '../UserForm/Logo/Logo';
 import classes from './addtodo.module.css'
 
 
-const AddTodo = ({anId,show,setShow}) => {
+const AddTodo = ({anId}) => {
   
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -52,9 +52,7 @@ const AddTodo = ({anId,show,setShow}) => {
     }
   }  
 
-  function hideTodo(){
-    setShow(!show)
-  }
+  
 
 
   return (
@@ -87,7 +85,7 @@ const AddTodo = ({anId,show,setShow}) => {
        
        
              <button type="submit">go</button>
-             <button onClick={hideTodo} type="button">выйти</button>
+             
        
            </form>
      </div>

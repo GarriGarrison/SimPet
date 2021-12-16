@@ -22,7 +22,7 @@ export function TodoMonth({anId}) {
   useEffect(() => {
     if(anId){
       setID(animalID)
-      dispatch(getTodoMonth(animalID))
+      // dispatch(getTodoMonth(animalID))
     }
   },[anId])
    

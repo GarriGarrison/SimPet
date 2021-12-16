@@ -1,11 +1,16 @@
 import React,{useState,useEffect} from "react";
 import { useDispatch } from "react-redux";
 import { switchActivAnimal } from "../../redux/actions/animal.action";
+import { getTodoAll } from "../../redux/actions/todoAll.action";
+import { getTodoDay } from "../../redux/actions/todoDay.action";
+import { getTodoMonth } from "../../redux/actions/todoMonth.action";
+import { getTodoWeek } from "../../redux/actions/todoWeek.action";
+import { getTodoYear } from "../../redux/actions/todoYear.action";
 import AnimalForm from "../AnimalForm/AnimalForm";
 import classes from "./togle.module.css";
 
 const TogleAnimal = ({animal}) => {
-  console.log(animal);
+  console.log(animal,'-------------------');
   const dispatch = useDispatch()
   
   const [animalLocal,setAnimal] = useState([])
@@ -19,23 +24,37 @@ const TogleAnimal = ({animal}) => {
 
   function togleAnimal(e){
     const index = e.target.attributes.id.value
+    const id = e.target.attributes.index.value
+
     dispatch(switchActivAnimal(Number(index)))
+
+    dispatch(getTodoAll(id))
+    dispatch(getTodoDay(id))
+    dispatch(getTodoMonth(id))
+    dispatch(getTodoYear(id))
+    dispatch(getTodoWeek(id))
+
+    
+
+
     // console.log(e.target.attributes.index.value);
 
   }
   function addAnimal(){
    
-    setClick(true)  
+    setClick(!click)  
     console.log("add animal");
   }
   
   const [ava, setAvatar] = useState('')
   return (
     <>
-          <div className={classes.addAnim}>
+          <div>
           {click?
-              <AnimalForm redirect ={"/"}/>
-    
+              <div className={classes.addAnim}>
+                <AnimalForm redirect ={"/"}/>
+                <button className={classes.but} onClick={addAnimal}  type="button">Выйти</button>
+              </div>
           :
              <> </>
           }
@@ -43,13 +62,13 @@ const TogleAnimal = ({animal}) => {
     
 
       <div className={classes.icon}>
-      {animalLocal.map((el, index) =><><svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+      {animalLocal.map((el, index) =><div key={index}><svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
  >
  
 
  
- <symbol id="s-mask-ci">
+ <symbol id={`${el.id}ss`}>
         <g>
 
   <ellipse className={classes.fil1} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
@@ -57,22 +76,22 @@ viewBox="0 0 29.56 29.52"
 
         </g>
         </symbol>
-        <mask id="mask-c">
-        <use xlinkHref="#s-mask-ci" />
+        <mask id={el.id}>
+        <use xlinkHref={`#${el.id}ss`} />
         </mask>
-        <symbol id="s-fl">
-        <image xlinkHref={el.avatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="30" height="30" />
+        <symbol id={`${el.id}dd`}>
+        <image xlinkHref={el.avatar} width="30" height="30" />
         </symbol>
-        <g mask="url(#mask-c)">
-        <use xlinkHref="#s-fl"></use>
+        <g mask={`url(#${el.id})`}>
+        <use xlinkHref={`#${el.id}dd`}></use>
         </g>
         <g id="Слой_x0020_1">
 
   <path className={classes.fil0} d="M14.78 1.72c7.21,0 13.06,5.84 13.06,13.04 0,7.2 -5.85,13.04 -13.06,13.04 -7.21,0 -13.06,-5.84 -13.06,-13.04 0,-7.2 5.85,-13.04 13.06,-13.04zm0 -1.72c8.16,0 14.78,6.61 14.78,14.76 0,8.15 -6.62,14.76 -14.78,14.76 -8.16,0 -14.78,-6.61 -14.78,-14.76 0,-8.15 6.62,-14.76 14.78,-14.76z"/>
-  <ellipse onClick={togleAnimal} id = {index} index = {el.index} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
+  <ellipse onClick={togleAnimal} id = {index} index = {el.id} className={classes.fil2} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
  </g>
 </svg>
-<p>{el.name}</p></>
+<p>{el.name}</p></div>
        )}
        <svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
