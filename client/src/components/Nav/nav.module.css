@@ -5,6 +5,7 @@
     width:100vw;
     display: flex;
     justify-content: space-between;
+    z-index: 100;
   }
   .logo{
     width:7%;

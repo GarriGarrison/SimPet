@@ -44,11 +44,10 @@ export const clearAnimal = () =>({type: CLEAR_ANIMAL})
      .then(response => response.json())
      .then(animal => {
        dispatch(getAnimalOk(animal))
-       console.log(animal[0]);
        if(animal[0])dispatch(startAnimal(animal[0]))
        
       })
-    //  .then(data => )
+
      
 
 

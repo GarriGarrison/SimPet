@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
-import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone } from "../../redux/actions/sim.action"
+import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone, setStatus } from "../../redux/actions/sim.action"
 
 import classes from './todo.module.css'
 
@@ -27,37 +27,38 @@ function ToDo({todo, period_id, anId}) {
     event.preventDefault()
     setEditClick(true)    
   }
-  const handleStatus = async (event) => {
-    event.preventDefault()
-    let {category} = event.target.dataset
-
+  const handleStatus = async (category,categoryNum) => {
+     dispatch(setStatus(false, true))
 
     dispatch(editStatusTodo(todoLoc.id))
+    console.log(category);
+    let switc = null
+    category?switc=category:switc=categoryNum
+    switch (switc) {
 
-    switch (category) {
-
-      case 'Medical':
+      case 'Medical'||3:
            dispatch(medicinDone())
            break
       
       
-      case 'Feed':
+      
+      case 'Feed'||1:
            dispatch(feedDone())
            break
       
-      case 'Contact':
+      case 'Contact'||4:
           dispatch(contactDone())
           break
       
-      case 'Hygiene':
+      case 'Hygiene'||2:
            dispatch(hygeineDone())
            break
       
-       case 'Care':
+       case 'Care'||5:
            dispatch(careDone())
            break
       
-      case 'Party':
+      case 'Party'||6:
            dispatch(partyDone())
            break
       
@@ -123,9 +124,9 @@ function ToDo({todo, period_id, anId}) {
 
 
                 <div>
-                  <button onClick={handleStatus} data-category={todo.title} className="done">✔</button>
-                  <button onClick={handleEditClick}>✏️</button>
-                  <button onClick={handleDelClick}>x</button>
+                  <button type="button" onClick={()=>{handleStatus(todo.title, todo.categoryNum)}} class="done">✔</button>
+                  <button type="button" onClick={handleEditClick}>✏️</button>
+                  <button type="button" onClick={handleDelClick}>x</button>
                 </div>
 
             
