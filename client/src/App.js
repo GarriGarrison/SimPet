@@ -65,7 +65,10 @@ function App() {
   
   useEffect(() => {
     if (ani) {
-      setAnimalId(curAn.id)
+      if(curAn){
+
+        setAnimalId(curAn.id)
+      }
       setAnimal(ani)
       
     }
@@ -93,77 +96,22 @@ function App() {
           <Route path="/log" element={ <UserFormLog/>} />
           <Route path="/animal_reg" element={ <StartAnimalForm redirect={'/animal_reg/ancet'}/>} />
           <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
-
-
           <Route path="/reg" element={ <UserFormReg/>} />
-          {/* <Route path="/animal_lk" element={ <AnimalLK/>} /> */}
-          {/* <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} /> */}
-
           <Route path="/start" element={ <Start/>} />
           <Route path="/exit" element={ <LogOut/>} />
 
-             <Route path="/" element={            
+          <Route path="/" element={           
             <>
             <Nav user={user}/>
             <TogleAnimal animal={animalAll}/>
-            <ToDoList anId={animalId}/>
+            <ToDoList/>
             <RightBarMenu />
 
-            <LeftMenu animal={currAnimal}/>
+            <LeftMenu/>
             </>
          } />
-
-          {/* <Route path="/day" element={            
-            <>
-            <Nav user={user}/>
-            <TogleAnimal animal={animalAll}/>
-            <TodoDay anId={animalId}/>
-            <RightBarMenu />
-
-            <LeftMenu animal={currAnimal}/>
-            </>
-         } />
-          <Route path="/week" element={
-            <>
-
-            <Nav user={user}/>
-            <TogleAnimal animal={animalAll}/>
-            <TodoWeek anId={animalId} />
-            <RightBarMenu />
-
-            <LeftMenu animal={currAnimal}/>
-            </>
-         
-          } />
-          <Route path="/month" element={
-            <>
-            <Nav user={user}/>
-            <TogleAnimal animal={animalAll}/>
-            <TodoMonth anId={animalId} />
-            <RightBarMenu />
-
-            <LeftMenu animal={currAnimal}/>
-            </>
-         
-          } />
-          <Route path='/year'element={
-            <>
-            <Nav user={user}/>
-            <TogleAnimal animal={animalAll}/>
-            <TodoYear anId={animalId}/>
-            <RightBarMenu />
-
-            <LeftMenu animal={currAnimal}/>
-            </>
-            }/> */}
           </Routes>  
-          
-          {/* <RightBarMenu />
-          <LeftBarMenu />
-           */}
-      
       </div>
-        
    </>
   );
 }

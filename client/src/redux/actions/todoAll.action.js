@@ -1,4 +1,4 @@
-import { GET_TODO, ADD_TODO, DEL_TODO, EDIT_TODO, EDIT_STATUS_TODO} from '../types/todo.types'
+import { GET_TODO, ADD_TODO, DEL_TODO, EDIT_TODO, EDIT_STATUS_TODO,CLEAR_TODO_ALL} from '../types/todo.types'
 
 export const getAll = (todo) => ({
     type: GET_TODO,
@@ -19,6 +19,8 @@ export const getTodoAll = (period, animalId) => async (dispatch) =>{
     console.log(err);
   }
 }
+
+export const clearTodoAll = () =>({type: CLEAR_TODO_ALL})
 
 
 export const newTodo = (newTodo) => ({

@@ -50,7 +50,7 @@ import { checkAuth } from '../../redux/actions/user.actions';
               </Link>
         </div> 
         <div className={classes.navRightUpMenu}>
-        <Link to={'#'}>
+        {/* <Link to={'#'}>
             <button size="lg" variant="secondary">
                 LK
             </button>
@@ -59,7 +59,7 @@ import { checkAuth } from '../../redux/actions/user.actions';
             <button size="lg" variant="secondary">
                 MONEY
             </button>
-              </Link>  
+              </Link>   */}
               <Link to={'#'}>
             <button size="lg" variant="secondary">
                 {user.name}
