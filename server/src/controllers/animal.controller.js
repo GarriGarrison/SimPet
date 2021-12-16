@@ -19,11 +19,24 @@ const addAnimal = async (req, res) => {
     return res.sendStatus(400);
   
   const { type, name, breed, sex, age, weight, user_id } = req.body;
+  const { HOST, PORT } = process.env;
 
   if (type && name && breed && sex && age && weight && user_id) {
     if (!req.files || Object.keys(req.files).length === 0) {
       try {
-        const addAnimal = await Animal.create(req.body);
+        // const createAnimal = req.bo
+        // const addAnimal = await Animal.create(req.body);
+        const addAnimal = await Animal.create({
+          type,
+          avatar: `${HOST}:${PORT}/uploads/avatar.webp`,
+          name,
+          breed,
+          sex,
+          age,
+          weight,
+          user_id
+        });
+
         return res.status(201).json(addAnimal);
       } catch (err) {
         console.error(err);
@@ -93,6 +106,7 @@ const editAnimal = async (req, res) => {
     }
   }
 
+  const { HOST, PORT } = process.env;
   const sampleFile = req.files.file;
   const fileName = sampleFile.name.split(' ').join('');
   const fullname = `${new Date().getTime()}_${fileName}`;
@@ -104,7 +118,7 @@ const editAnimal = async (req, res) => {
     try {
       await Animal.update({
         ...req.body,
-        avatar: fullname
+        avatar: `${HOST}:${PORT}/uploads/${fullname}`   //fullname
       }, {
         where: { id: req.params.id }
       });
