@@ -9,8 +9,8 @@ import AnimalLK from '../AnimalLk/AnimalLK';
 const LeftMenu = ({animal}) => {
   const [zoom, setZoom] = useState(170)
   const [isChangeAva, setChangeAva] = useState(false)
-  const [avatar, setAvatar] = useState('')
   const navigate = useNavigate()
+  const [animalId, setAnimalId] = useState(null)
   const [animalType, setAnimalType] = useState(null)
   const [animalName, setAnimalName] = useState(null)
   const [animalAge, setAnimalAge] = useState(null)
@@ -18,6 +18,9 @@ const LeftMenu = ({animal}) => {
   const [animalAvatar, setAnimalAvatar] = useState(null)
   const [addTodo, setAddTodo] = useState(false)
   const [addLk, setLk] = useState(false)
+  const [animalSex, setSex] = useState(null)
+  const [animalBreed, setBreed] = useState(null)
+  const [animalUserId, setUserId] = useState(null)
 
   useEffect(() => {
     if(animal){
@@ -26,6 +29,10 @@ const LeftMenu = ({animal}) => {
       setAnimalAge(animal.age)
       setAnimalWeight(animal.weight)
       setAnimalAvatar(animal.avatar)
+      setAnimalId(animal.id)
+      setSex(animal.sex)
+      setBreed(animal.breed)
+      setUserId(animal.user_id)
     }
   },[animal])
 
@@ -79,7 +86,7 @@ console.log('btn1');
   }
   function submitAva(e){
     e.preventDefault();
-    setAvatar(Object.fromEntries(new FormData(e.target)).img)
+    
     setChangeAva(false)
   }
   function cancelChangeAva(){
@@ -90,7 +97,7 @@ console.log('btn1');
     <div >
           {addTodo?
                 <div className={classes.addAnim}>
-                  <AddTodo   redirect ={"/"}/>
+                  <AddTodo anId={animalId}  redirect ={"/"}/>
                   <button className={classes.but} onClick={btnAnimalTodo}  type="button">Выйти</button>
                 </div>
     
@@ -101,7 +108,7 @@ console.log('btn1');
       <div >
           {addLk?
               <div className={classes.addAnim}>
-                <AnimalLK   redirect ={"/"}/>
+                <AnimalLK  type={animalType} name={animalName} age={animalAge} ava={animalAvatar} weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
                 <button className={classes.but} onClick={btnAnimalLK}   type="button">Выйти</button>
               </div>
     

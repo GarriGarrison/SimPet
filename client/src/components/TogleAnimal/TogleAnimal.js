@@ -5,7 +5,7 @@ import AnimalForm from "../AnimalForm/AnimalForm";
 import classes from "./togle.module.css";
 
 const TogleAnimal = ({animal}) => {
-  console.log(animal);
+  console.log(animal,'-------------------');
   const dispatch = useDispatch()
   
   const [animalLocal,setAnimal] = useState([])
