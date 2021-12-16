@@ -112,10 +112,10 @@ const statusTaskId = async (req, res) => {
 const editTaskId = async (req, res) => {
   if (!req.body)
     return res.sendStatus(400);
-  
   try {
     const { id  } = req.params;
     const { action, categoryNum, periodNum, date, time } = req.body;
+    console.log(1111);
 
     if (action) {
       const { task_id: taskId } = await Todo.findByPk(id);

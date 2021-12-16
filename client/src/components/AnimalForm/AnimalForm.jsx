@@ -11,10 +11,10 @@ import { checkAuth } from "../../redux/actions/user.actions";
 const AnimalForm = ({hideForm,redirect}) => {
   let user = useSelector(state => state.user);
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(checkAuth());
-    console.log("проверка");
-  }, []);
+  // useEffect(() => {
+  //   dispatch(checkAuth());
+  //   console.log("проверка");
+  // }, []);
   const navigate = useNavigate()
 
 

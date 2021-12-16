@@ -7,13 +7,9 @@ import classes from './todo.module.css'
 
 
 import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAll.action";
-import { getTodoMonth } from "../../redux/actions/todoMonth.action"
-import { getTodoWeek } from "../../redux/actions/todoWeek.action"
-import { getTodoYear } from "../../redux/actions/todoYear.action"
 
 
-
-function ToDo({todo, period_id, anId}) {
+function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
   console.log(todo);
   const dispatch = useDispatch()
   
@@ -29,30 +25,6 @@ function ToDo({todo, period_id, anId}) {
     setValue(todoLoc.action)
     setDay(todoLoc.date)
     setTime(todoLoc.time)
-
-    // switch (period_id) {
-
-    //       case 2:{
-    //           return dispatch(getTodoMonth(animal_id))
-    //       }
-          
-    //       case 3:{
-    //           return dispatch(getTodoWeek(animal_id))
-    //       }
-    
-    //       case 4:{
-    //           return dispatch(getTodoMonth(animal_id))
-    //       }
-          
-    //       case 5:{
-    //           return dispatch(getTodoYear(animal_id))
-    //       }
-    //       default: {
-    //           return console.log('err');
-    //       }
-    //     }
-
-    
   },[todo])
   
   
@@ -62,8 +34,8 @@ function ToDo({todo, period_id, anId}) {
 
   const inputs = [
     useInput({ type:'text', id: 'body', defaultValue: todoLoc.action }),
-    useInput({ type:'text', id: 'date', defaultValue: todoLoc.time }),
-    useInput({ type:'text', id: 'time', defaultValue: todoLoc.date }),
+    useInput({ type:'time', id: 'time', defaultValue: todoLoc.time }),
+    useInput({ type:'date', id: 'date', defaultValue: todoLoc.date }),
   ]
   const handleEditClick = async (event) => {
     event.preventDefault()
@@ -130,39 +102,14 @@ function ToDo({todo, period_id, anId}) {
       animal_id,
       id: todoLoc.id,
       periodNum: period_id,
-      categoryNum
+      categoryNum,
+      title: todoLoc.title
     }
     console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
 
     
     setEditClick(false)
-    // setTimeout(() => {
-      switch (period_id) {
-
-        case 2:{
-            return dispatch(getTodoMonth(animal_id))
-        }
-        
-        case 3:{
-            return dispatch(getTodoWeek(animal_id))
-        }
-  
-        case 4:{
-            return dispatch(getTodoMonth(animal_id))
-        }
-        
-        case 5:{
-            return dispatch(getTodoYear(animal_id))
-        }
-        default: {
-            return console.log('err');
-        }
-      }
-
-   
-  //   
-  // // }, 100);
   }
 
     
@@ -193,13 +140,13 @@ function ToDo({todo, period_id, anId}) {
           
           <div id={todo.id} class={classes.list}>
             {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
-          <span >{value}</span>
-          { period_id == 3 && <span> {day}</span> }
-          { period_id == 4 && <span> {day}</span> }
-          { period_id == 5 && <span> {day}</span> }
+          <span >{todo.action}</span>
+          { period_id == 3 && <span> {todo.day}</span> }
+          { period_id == 4 && <span> {todo.day}</span> }
+          { period_id == 5 && <span> {todo.day}</span> }
 
 
-          <span > {time}</span>
+          <span > {todo.time}</span>
 
 
                 <div>

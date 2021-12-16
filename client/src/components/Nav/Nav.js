@@ -28,22 +28,22 @@ import { checkAuth } from '../../redux/actions/user.actions';
         </div>
         <div className={classes.navRightDown}>
         <div className={classes.navRightLeft}>
-          <Link to={'/day'}>
+          <Link to={'/?period=day'}>
             <button size="lg" variant="secondary">
                 day
             </button>
               </Link>  
-              <Link to={'/week'}>
+              <Link to={'/?period=week'}>
             <button size="lg" variant="secondary">
                 Week
             </button>
               </Link>  
-              <Link to={'/month'}>
+              <Link to={'/?period=month'}>
             <button size="lg" variant="secondary">
                 Month
             </button>
             </Link> 
-              <Link to={'/year'}>
+              <Link to={'/?period=year'}>
             <button size="lg" variant="secondary">
                 Year
             </button>

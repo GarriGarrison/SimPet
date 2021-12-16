@@ -10,9 +10,9 @@ const Main = ({anId}) => {
 
   const dispatch = useDispatch()
 
-  useEffect(()=>{
-    dispatch(checkAuth())
-  },[])
+  // useEffect(()=>{
+  //   dispatch(checkAuth())
+  // },[])
 
 
   const [click, setClick] = useState(true)
