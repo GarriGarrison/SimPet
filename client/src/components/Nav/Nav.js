@@ -54,12 +54,12 @@ import { checkAuth } from '../../redux/actions/user.actions';
             <button size="lg" variant="secondary">
                 LK
             </button>
-              </Link>  
-              <Link to={'#'}>
-            <button size="lg" variant="secondary">
-                MONEY
-            </button>
               </Link>   */}
+              <Link to={'/catroom'}>
+            <button size="lg" variant="secondary">
+                КОМНАТА КОТИКА
+            </button>
+              </Link>  
               <Link to={'#'}>
             <button size="lg" variant="secondary">
                 {user.name}
