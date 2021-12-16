@@ -41,10 +41,10 @@ const RightBarMenu = () => {
 // let latitude = ((end-start)*100)/70 //вряемя проходждения прогрессбара( время от последнего до дедлайна + 30%)
 // const timeout = latitude/100
 let timeout = {
-  feed: 100,
-  care: 7000000,
-  contact: 1500,
-  medical: 2000,
+  feed: 10000000,
+  care: 700000000,
+  contact: 150000,
+  medical: 200000,
   party: 5000000,
   hygeine: 600000
 }
