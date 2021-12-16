@@ -55,6 +55,8 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
     }
   } 
 
+ 
+
   return (
     <div className={classes.container}>
       <div className={classes.logo}>
@@ -81,9 +83,7 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
         <input onChange={changeHandler} type="number" placeholder="вес в грм" name="weight" />
         <button type="submit">Изменить данные</button>
 
-        <Link to={'/'}>
-          <button type="button">Выйти</button>
-        </Link>
+        
           
       </form>
     </div>

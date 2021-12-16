@@ -25,17 +25,19 @@ const TogleAnimal = ({animal}) => {
   }
   function addAnimal(){
    
-    setClick(true)  
+    setClick(!click)  
     console.log("add animal");
   }
   
   const [ava, setAvatar] = useState('')
   return (
     <>
-          <div className={classes.addAnim}>
+          <div>
           {click?
-              <AnimalForm redirect ={"/"}/>
-    
+              <div className={classes.addAnim}>
+                <AnimalForm redirect ={"/"}/>
+                <button className={classes.but} onClick={addAnimal}  type="button">Выйти</button>
+              </div>
           :
              <> </>
           }

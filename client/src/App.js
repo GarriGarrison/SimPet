@@ -81,13 +81,13 @@ function App() {
 
 
           <Route path="/reg" element={ <UserFormReg/>} />
-          <Route path="/animal_lk" element={ <AnimalLK/>} />
-          <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} />
+          {/* <Route path="/animal_lk" element={ <AnimalLK/>} /> */}
+          {/* <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} /> */}
 
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>
             <Nav user={user}/>
-            <Main anId={animalId}/>
+            {/* <Main anId={animalId}/> */}
             <RightBarMenu />
             <LeftMenu animal={currAnimal}/>
             </>

@@ -3,6 +3,7 @@ import classes from './leftmenu.module.css';
 import {SimStatus} from '../SimStatus/SimStatus'
 import { useNavigate } from "react-router-dom"
 import AddTodo from '../AddTodo/AddTodo';
+import AnimalLK from '../AnimalLk/AnimalLK';
 
 
 const LeftMenu = ({animal}) => {
@@ -16,6 +17,7 @@ const LeftMenu = ({animal}) => {
   const [animalWeight, setAnimalWeight] = useState(null)
   const [animalAvatar, setAnimalAvatar] = useState(null)
   const [addTodo, setAddTodo] = useState(false)
+  const [addLk, setLk] = useState(false)
 
   useEffect(() => {
     if(animal){
@@ -34,7 +36,7 @@ const LeftMenu = ({animal}) => {
     setZoom(zoom-5)
   }
   function btnAnimalLK() {
-    navigate('/animal_lk')
+    setLk(!addLk)
   }
   function btnAnimalTodo(){
     setAddTodo(!addTodo)
@@ -85,9 +87,23 @@ console.log('btn1');
   }
   return (
     <>
-    <div className={classes.addAnim}>
+    <div >
           {addTodo?
-              <AddTodo show={addTodo} setShow={setAddTodo}  redirect ={"/"}/>
+                <div className={classes.addAnim}>
+                  <AddTodo   redirect ={"/"}/>
+                  <button className={classes.but} onClick={btnAnimalTodo}  type="button">Выйти</button>
+                </div>
+    
+    :
+    <> </>
+  }
+      </div>
+      <div >
+          {addLk?
+              <div className={classes.addAnim}>
+                <AnimalLK   redirect ={"/"}/>
+                <button className={classes.but} onClick={btnAnimalLK}   type="button">Выйти</button>
+              </div>
     
           :
              <> </>
