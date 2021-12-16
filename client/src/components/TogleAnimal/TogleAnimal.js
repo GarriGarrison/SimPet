@@ -45,7 +45,7 @@ const TogleAnimal = ({animal}) => {
     
 
       <div className={classes.icon}>
-      {animalLocal.map((el, index) =><div key={index}>{el.id}<svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+      {animalLocal.map((el, index) =><div key={index}><svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
  >
  
