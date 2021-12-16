@@ -39,6 +39,7 @@ build/Release
 
 # Dependency directories
 server/node_modules/
+server/static/uploads/
 node_modules/
 jspm_packages/
 
@@ -104,7 +105,4 @@ dist
 
 # TernJS port file
 .tern-port
-<<<<<<< HEAD
 
-=======
->>>>>>> 44ae4f2606e2115de428e4a48706e6306f488dbc

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { useSelector, useDispatch } from "react-redux"
 import { checkAuth } from "../../redux/actions/user.actions"
@@ -8,6 +8,8 @@ import Logo from "../UserForm/Logo/Logo"
 
 
 const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
+
+  const upload = useRef()
 
   const user = useSelector(state => state.user)
   const animal = useSelector(state => state.animal.currAnimal)
@@ -48,8 +50,8 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
       payload.user_id = user.id
       payload.age = +payload.age
       payload.weight = +payload.weight
-      console.log('FORM data', payload); ///*
-    
+      payload.file = upload.current.files[0]
+
       dispatch(editAnimal(payload)) 
       navigate('/')  //navigate(redirect)
     }
@@ -72,7 +74,7 @@ const AnimalLK = (/*{ /*anId  /*redirect*}*/) => {
         </select>
         <input onChange={changeHandler} type="text" placeholder="имя" name="name" />
         {/* <input onChange={changeHandler} type="text" placeholder="avatar" name="avatar" /> */}
-        <input type="file" placeholder="avatar" name="avatar" />
+        <input type="file" placeholder="avatar" name="avatar" ref={upload} />
         <input onChange={changeHandler} type="text" placeholder="порода" name="breed" />
         <select onChange={changeHandler} name="sex" form="form">
           <option value="1">Мальчик(самец)</option>

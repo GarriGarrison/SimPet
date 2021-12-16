@@ -104,6 +104,8 @@ export function ToDo({todo, period_id}) {
     }
     console.log(form);
     dispatch(editTodo(form))
+
+    
     setEditClick(false)
 }
 
