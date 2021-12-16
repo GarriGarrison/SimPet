@@ -6,41 +6,92 @@ export const getStatus = (color) => ({
     payload: color
 })
 
-export const setStatus = (color) => ({
+export const setStatus = (color, status) => ({
     type: GET_STATUS,
-    payload: color
-})
-
-export const setMedical = (num) => ({
-    type: ADD_MEDICAL,
-    payload: num
-})
-
-export const setFeed = (num) => ({
-    type: ADD_FEED,
-    payload: num
-})
-
-export const setContact = (num) => ({
-    type: ADD_CONTACT,
-    payload: num
-})
-
-export const setCare = (num) => ({
-    type: ADD_CARE,
-    payload: num
-})
-
-export const setParty = (num) => ({
-    type: ADD_PARTY,
-    payload: num
+    payload: {color, status}
 })
 
 
-export const setHygeine = (num) => ({
-    type: ADD_HYGEINE,
-    payload: num
-})
+
+export const setMedical = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_MEDICAL,
+        payload: num
+    })
+}
+
+
+export const setFeed = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_FEED,
+        payload: num
+    })
+}
+
+export const setContact = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_CONTACT,
+        payload: num
+    })
+}
+
+export const setCare = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_CARE,
+        payload: num
+    })
+}
+
+export const setParty = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_PARTY,
+        payload: num
+    })
+}
+
+
+export const setHygeine = (num) => async (dispatch) => {
+    let color = 'green'
+    if(num < 30) {color = '#ffcb11'}
+    if(num < 10) {color = 'red'}
+
+    dispatch(setStatus(color))
+
+    dispatch({
+        type: ADD_HYGEINE,
+        payload: num
+    })
+}
 
 export const timeoutMedical = (id) => async (dispatch) => {
    await fetch(`http://localhost:3001/api/v1/category/medical/${id}`, { credentials: "include" })
@@ -238,12 +289,12 @@ export const timeoutHygeine = (id) => async (dispatch) => {
 }
 
 export const medicinDone = ()=> ({
-    type: GET_MEDICAL,
+    type: ADD_MEDICAL,
     payload: 100
 })
 
 export const feedDone = ()=> ({
-    type: GET_FEED,
+    type: ADD_FEED,
     payload: 100
 })
 

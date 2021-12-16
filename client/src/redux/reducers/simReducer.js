@@ -5,68 +5,118 @@ export const simReducer = (state = {}, action) => {
   switch (type) {
 
     case GET_STATUS:{
-        return { ...state,
-          status: action.payload}
+      
+      let color = action.payload.color
+      if(action.payload.color == 'green'&& state.status == '#ffcb11') color = '#ffcb11'
+      if(action.payload.color == 'green'&& state.status == 'red') color = 'red'
+      if(action.payload.color == '#ffcb11'&& state.status == 'red') color = 'red'
+      if(action.payload.status) color = 'green'
+      return { ...state, 
+        status: color}
+      
     }
 
     case GET_MEDICAL:{
-      return { ...state,
-        medical: action.payload}
+      return { status: 'green',
+        medical: {num:100, color:'green'}}
     }
 
     case GET_FEED:{
-      return { ...state,
-        feed: action.payload}
+      return { status: 'green',
+        feed: {num:100, color:'green'}}
     }
 
     case GET_CONTACT:{
-      return { ...state,
-        contact: action.payload}
+      return { status: 'green',
+        contact: {num:100, color:'green'}}
     }
 
     case GET_CARE:{
-      return { ...state,
-        care: action.payload}
+      return { status: 'green',
+        care: {num:100, color:'green'}}
     }
 
     case GET_PARTY:{
-      return { ...state,
-        party: action.payload}
+      return { status: 'green',
+        party: {num:100, color:'green'}}
     }
 
     case GET_HYGEINE:{
-      return { ...state,
-        hygeine: action.payload}
+      return { status: 'green',
+        hygeine: {num:100, color:'green'}}
     }
     
     case ADD_MEDICAL:{
-      return { ...state,
-        medical: action.payload}
-    }
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
+      return {
+        ...state,
+        medical: {
+          num :action.payload,
+        color}
+      }
+      }
+    
 
     case ADD_FEED:{
-      return { ...state,
-        feed: action.payload}
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
+      return {
+        ...state,
+        feed: {
+          num :action.payload,
+        color}
+      }
     }
 
     case ADD_CONTACT:{
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
       return { ...state,
-        contact: action.payload}
+        contact: {num :action.payload,
+        color}}
     }
 
     case ADD_CARE:{
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
       return { ...state,
-        care: action.payload}
+        care: {num :action.payload,
+        color}}
     }
 
     case ADD_PARTY:{
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
       return { ...state,
-        party: action.payload}
+        party: {num :action.payload,
+        color}}
     }
 
     case ADD_HYGEINE:{
+      let num = action.payload
+      let color = 'green'
+      if(num < 30) {color = '#ffcb11'}
+      if(num < 10) {color = 'red'}
+
       return { ...state,
-        hygeine: action.payload}
+        hygeine: {num :action.payload,
+        color}}
     }
 
     default: {

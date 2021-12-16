@@ -44,7 +44,6 @@ function App() {
 
   
   useEffect(() => {
-    console.log(id);
     if (id){
       dispatch(getAnimal(id))
     }
