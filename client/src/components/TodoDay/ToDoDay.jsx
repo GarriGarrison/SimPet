@@ -1,41 +1,43 @@
-import { useEffect,useState } from "react";
+import { useEffect,useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoDay } from "../../redux/actions/todoDay.action";
-import { ToDo } from "../ToDo/ToDo";
+import  ToDo  from "../ToDo/ToDo";
+import classes from '../ToDo/todo.module.css'
 
 
-export function TodoDay({anId}) {  
-
-  console.log(anId, 'day');
+function TodoDay({anId}) {  
   const todos = useSelector((state) => state.todoDay.all)
   const dispatch = useDispatch()
-  
+
   const [todosLocal,setTodos] = useState([])
+  useEffect(() => {
+    if(todos) {
+      setTodos(todos)
+      // dispatch(getTodoDay(animalID))
+    }
+  },[todos])
+  
+  
+  const [animalID, setID] = useState(anId)
+
     useEffect(() => {
-      if(todos) {
-        setTodos(todos)
+      if(anId){
+        setID(animalID)
+        dispatch(getTodoDay(animalID))
       }
-    },[todos])
-
-
-    useEffect(() => {
-
-      dispatch(getTodoDay(anId))
-
     },[anId])
-    
-   
-    console.log(todos);
 
     return (
-      <> {todosLocal.map(el => 
-      <>
-        <ToDo todo={el} period_id={2}/>
+      <div className={classes.container}> {todosLocal.map(el => 
+        <> 
+        <ToDo todo={el} period_id={2} anId={animalID}/>
      </>
       )}
     
 
-      </> 
+      </div> 
     );
   }
   
+
+  export default memo(TodoDay)

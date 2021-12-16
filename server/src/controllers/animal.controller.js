@@ -1,53 +1,6 @@
 const { Animal, Todo, Task, Action, Category } = require('../db/models');
 
 
-/*---------------------------------------------------------------------------*/
-const createAnimal = async (animal, res) => {
-  try {
-    const addAnimal = await Animal.create(animal);
-    return res.status(201).json(addAnimal);
-  } catch (err) {
-    console.error(err);
-    return null;
-  }
-}
-
-const createAnimalWhithAvatar = async (request, res) => {
-  console.log('createAnimalWhithAvatar files ', request.files);
-  console.log('createAnimalWhithAvatar bode ', request.body);
-  const sampleFile = request.files.file;
-  const fileName = sampleFile.name.split(' ').join('');
-  const fullname = `${new Date().getTime()}_${fileName}`;
-  const uploadPath = `${process.env.PWD}/src/uploads/`;
-
-  sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
-    if (err) {
-      console.log('createAnimalWhithAvatar ERROR', request);
-      return res.status(500).send(err);
-    }
-
-    try {
-      const addAnimal = await Animal.create({
-        type: request.body.type,
-        avatar: fullname,
-        name: request.body.name,
-        breed: request.body.breed,
-        sex: request.body.sex,
-        age: request.body.age,
-        weight: request.body.weight,
-        user_id: request.body.user_id
-      });
-  
-      return res.status(201).json(addAnimal);
-    } catch (err) {
-      console.error(err);
-      return res.sendStatus(500);
-    }
-  });
-}
-/*---------------------------------------------------------------------------*/
-
-
 const getAllAnimal = async (req, res) => {
   try {
     const animals = await Animal.findAll({
@@ -77,8 +30,6 @@ const addAnimal = async (req, res) => {
         return res.sendStatus(500);
       }
     }
-
-    // await createAnimalWhithAvatar(req, res);
 
     const sampleFile = req.files.file;
     const fileName = sampleFile.name.split(' ').join('');
@@ -147,13 +98,9 @@ const editAnimal = async (req, res) => {
   const fullname = `${new Date().getTime()}_${fileName}`;
   const uploadPath = `${process.env.PWD}/public/uploads/`;
   sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
-    console.log('try load file');
-    console.log('load path ', `${uploadPath}/${fullname}`);
     if (err) {
       return res.status(500).send(err);
     }
-    
-    console.log('file is load');
     try {
       await Animal.update({
         ...req.body,

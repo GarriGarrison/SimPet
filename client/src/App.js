@@ -10,7 +10,7 @@ import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
 import { TodoWeek } from "./components/TodoWeek/TodoWeek";
 import { TodoYear } from "./components/TodoYear/TodoYear";
-import { TodoDay } from "./components/TodoDay/ToDoDay";
+import  TodoDay  from "./components/TodoDay/ToDoDay";
 
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
@@ -24,7 +24,9 @@ import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
+import { timeoutComfort, timeoutEat, timeoutMedicine } from "./redux/actions/sim.action";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
+import AddTodo from "./components/AddTodo/AddTodo";
 
 
 function App() {
@@ -66,6 +68,10 @@ function App() {
     }
   }, [curAn])
 
+  dispatch(timeoutMedicine(2))
+  dispatch(timeoutComfort(2))
+  dispatch(timeoutEat(2))
+
 
   return (
     <>
@@ -79,8 +85,9 @@ function App() {
           <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
 
 
-          <Route path="/reg" element={<UserFormReg />} />
-          <Route path='/animal_lk' element={ <AnimalLK /> }/>
+          <Route path="/reg" element={ <UserFormReg/>} />
+          <Route path="/animal_lk" element={ <AnimalLK/>} />
+          <Route path="/animal_todo" element={ <AddTodo anId={currAnimal? currAnimal.id: 1}/>} />
 
           <Route path="/" element={ <>
             <TogleAnimal animal={animalAll}/>
@@ -96,6 +103,7 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
+            <TogleAnimal animal={animalAll}/>
             <TodoDay anId={animalId}/>
             <RightBarMenu />
 

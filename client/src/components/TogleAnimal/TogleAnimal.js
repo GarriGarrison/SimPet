@@ -31,8 +31,8 @@ const TogleAnimal = ({animal}) => {
   
   const [ava, setAvatar] = useState('')
   return (
-    <div className={classes.container}>
-      <div>
+    <>
+          <div className={classes.addAnim}>
           {click?
               <AnimalForm redirect ={"/"}/>
     
@@ -40,20 +40,16 @@ const TogleAnimal = ({animal}) => {
              <> </>
           }
       </div>
+    
+
       <div className={classes.icon}>
-      {animalLocal.map((el, index) =><><svg className={classes.colco} xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+      {animalLocal.map((el, index) =><><svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
- xmlnsXlink="http://www.w3.org/1999/xlink">
- <defs>
- <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="5.32" y1="1.9" x2="8.79" y2="27.6">
-  <stop offset="0" stop-opacity="1" stop-color="#A3A3A4"/>
-  <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE"/>
-  <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6"/>
-  <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE"/>
-  <stop offset="1" stop-opacity="1" stop-color="#858585"/>
- </linearGradient>
- </defs>
- <symbol id="s-mask-circl">
+ >
+ 
+
+ 
+ <symbol id="s-mask-ci">
         <g>
 
   <ellipse className={classes.fil1} cx="14.78" cy="14.76" rx="14.04" ry="14.02"/>
@@ -61,14 +57,14 @@ viewBox="0 0 29.56 29.52"
 
         </g>
         </symbol>
-        <mask id="mask-ci">
-        <use xlinkHref="#s-mask-circl" />
+        <mask id="mask-c">
+        <use xlinkHref="#s-mask-ci" />
         </mask>
-        <symbol id="s-flow">
-        <image xlinkHref={ava||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="40" height="30" />
+        <symbol id="s-fl">
+        <image xlinkHref={el.avatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="30" height="30" />
         </symbol>
-        <g mask="url(#mask-ci)">
-        <use xlinkHref="#s-flow"></use>
+        <g mask="url(#mask-c)">
+        <use xlinkHref="#s-fl"></use>
         </g>
         <g id="Слой_x0020_1">
 
@@ -78,18 +74,10 @@ viewBox="0 0 29.56 29.52"
 </svg>
 <p>{el.name}</p></>
        )}
-       <svg className={classes.colco} xmlns="http://www.w3.org/2000/svg" xmlSpace="preserve" width="15mm" height="auto" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+       <svg className={classes.colco}  xmlSpace="preserve" width="auto" height="auto"  shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
 viewBox="0 0 29.56 29.52"
- xmlnsXlink="http://www.w3.org/1999/xlink">
- <defs>
- <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="5.32" y1="1.9" x2="8.79" y2="27.6">
-  <stop offset="0" stop-opacity="1" stop-color="#A3A3A4"/>
-  <stop offset="0.458824" stop-opacity="1" stop-color="#FEFEFE"/>
-  <stop offset="0.639216" stop-opacity="1" stop-color="#B6B6B6"/>
-  <stop offset="0.831373" stop-opacity="1" stop-color="#FEFEFE"/>
-  <stop offset="1" stop-opacity="1" stop-color="#858585"/>
- </linearGradient>
- </defs>
+ >
+ 
 
  <g id="Слой_x0020_1">
 
@@ -103,7 +91,8 @@ viewBox="0 0 29.56 29.52"
 
 
     </div>
-    </div>
+    
+    </>
   );
 };
 

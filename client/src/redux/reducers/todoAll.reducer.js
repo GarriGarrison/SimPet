@@ -18,9 +18,11 @@ export const todoAllReduser = (state = [], action) => {
     }
 
     case EDIT_TODO:{
-      let newTodo = action.payload
-      console.log(state);
-          return state.map((el) => el.id === newTodo.id ? newTodo : el)
+        let newTodo = action.payload
+          return state.map((el) => {
+            if (el.id === newTodo.id) return newTodo
+            return el
+          })
     }
     
     default: {
