@@ -10,7 +10,7 @@ import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
 import { TodoWeek } from "./components/TodoWeek/TodoWeek";
 import { TodoYear } from "./components/TodoYear/TodoYear";
-import { TodoDay } from "./components/TodoDay/ToDoDay";
+import  TodoDay  from "./components/TodoDay/ToDoDay";
 
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";
@@ -19,11 +19,12 @@ import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
 import { TodoMonth } from "./components/TodoMonth/TodoMonth";
-import { getAnimal, switchActivAnimal } from "./redux/actions/animal.action";
+import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
+import { timeoutCare,  timeoutFeed, timeoutMedical } from "./redux/actions/sim.action";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
 import AddTodo from "./components/AddTodo/AddTodo";
 
@@ -67,6 +68,10 @@ function App() {
     }
   }, [curAn])
 
+  // dispatch(timeoutMedical(2))
+  // dispatch(timeoutCare(2))
+  // dispatch(timeoutFeed(2))
+
 
   return (
     <>
@@ -98,7 +103,8 @@ function App() {
           <Route path="/day" element={            
             <>
             <Nav user={user}/>
-            <TodoDay anId={currAnimal}/>
+            <TogleAnimal animal={animalAll}/>
+            <TodoDay anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>
@@ -107,7 +113,7 @@ function App() {
           <Route path="/week" element={
             <>
             <Nav user={user}/>
-            <TodoWeek anId={currAnimal} />
+            <TodoWeek anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -117,7 +123,7 @@ function App() {
           <Route path="/month" element={
             <>
             <Nav user={user}/>
-            <TodoMonth anId={currAnimal} />
+            <TodoMonth anId={animalId} />
             <RightBarMenu />
 
             <LeftMenu/>
@@ -127,7 +133,7 @@ function App() {
           <Route path='/year'element={
             <>
             <Nav user={user}/>
-            <TodoYear anId={currAnimal}/>
+            <TodoYear anId={animalId}/>
             <RightBarMenu />
 
             <LeftMenu/>

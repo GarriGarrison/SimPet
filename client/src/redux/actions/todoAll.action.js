@@ -59,18 +59,18 @@ export const todoEdit = (newTodo) => ({
 });
 
 export const editStatusTodo = (id) => async (dispatch) => {
-  fetch(`${process.env.REACT_APP_API_URL}/todo/${id}`, {
-    method: "PATCH",
+  fetch(`http://localhost:3001/api/v1/todos/${id}`, {
+    method: "PUT",
     credentials: "include",
-    body: JSON.stringify(id),
   })
-    .then((response) => response.json())
-    .then((data) => dispatch(todoEdit(data)))
+    // .then((response) => response.json())
+    // .then((data) => dispatch(todoEdit(data)))
     .catch((err) => console.log(err));
 };
 
 export const editTodo = (todo) => async (dispatch) => {
   let {id} = todo
+  console.log("Форма, прилетающая в action:",todo);
   fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "PATCH",
     credentials: "include",
@@ -81,6 +81,7 @@ export const editTodo = (todo) => async (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log("Ответ с ручки PATCH всех постов(редактирование):", data);
       dispatch(todoEdit(data));
     })
     .catch((err) => console.log(err));
