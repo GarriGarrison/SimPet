@@ -107,6 +107,8 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
     }
     console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
+
+    
     setEditClick(false)
   }
 

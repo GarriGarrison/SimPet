@@ -49,14 +49,14 @@ function App() {
     }
   }, [id, user]);
 
-  const animal = useSelector(state=>state.animal.all[0])
+  // const animal = useSelector(state=>state.animal.all[0])
   const ani = useSelector(state=>state.animal.all)
   const curAn = useSelector(state=>state.animal.currAnimal)
 
   useEffect(() => {
     if (ani) {
       setCurAnimal(ani[0])
-      setAnimalId(ani[0].id)
+      // setAnimalId(ani[0].id)
       setAnimal(ani)
     }
   }, [])
@@ -64,12 +64,12 @@ function App() {
 
   
   useEffect(() => {
-    if (animal) {
-      setAnimalId(animal.id)
+    if (ani) {
+      setAnimalId(curAn.id)
       setAnimal(ani)
       
     }
-  }, [animal])
+  }, [ani])
 
   useEffect(() => {
     if (curAn) {

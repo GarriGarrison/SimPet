@@ -108,7 +108,7 @@ console.log('btn1');
       <div >
           {addLk?
               <div className={classes.addAnim}>
-                <AnimalLK  type={animalType} name={animalName} age={animalAge} ava={animalAvatar} weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
+                <AnimalLK hideLk={setLk}  type={animalType} name={animalName} age={animalAge} ava={animalAvatar} weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
                 <button className={classes.but} onClick={btnAnimalLK}   type="button">Выйти</button>
               </div>
     
