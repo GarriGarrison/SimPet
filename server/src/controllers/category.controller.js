@@ -32,7 +32,8 @@ const getFromCategory = async (categoryId, animalId) => {
         action: categoryDB[i]['Action.title'],
         date: categoryDB[i]['Todos.date'],
         time: categoryDB[i]['Todos.time'],
-        status: categoryDB[i]['Todos.status']
+        status: categoryDB[i]['Todos.status'],
+        createdAt: categoryDB[i]['Todos.createdAt'],
       };
       result.push(category);
     }

@@ -1,32 +1,45 @@
-import { useState } from "react"
+import { useEffect, useState, memo } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
 import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
 
 import classes from './todo.module.css'
 
-import { deleteTodo, editTodo } from "../../redux/actions/todoAll.action";
+
+import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAll.action";
+import { getTodoMonth } from "../../redux/actions/todoMonth.action"
+import { getTodoWeek } from "../../redux/actions/todoWeek.action"
+import { getTodoYear } from "../../redux/actions/todoYear.action"
 
 
 
-export function ToDo({todo, period_id,anId}) {
-
-  if (!todo) console.log("netu");
-  const [animal_id, setAnimal_id] = useState(anId)
-  
-  
-  const [value, setValue ] = useState(todo.action ?? ' ')
-  const [day, setDay ] = useState(todo.date ?? ' ')
-  const [time, setTime ] = useState(todo.time ?? ' ')
-
-  const [editClik, setEditClick] = useState(false)
-
+function ToDo({todo, period_id, anId}) {
+  console.log(todo);
   const dispatch = useDispatch()
+  
+  if (!todo) console.log("Тудушка не пришла");
+  const [animal_id, setAnimal_id] = useState(anId)
+  const [todoLoc, setTodo] = useState(todo)
+ const [value, setValue ] = useState(todoLoc.action)
+  const [day, setDay ] = useState(todoLoc.date)
+  const [time, setTime ] = useState(todoLoc.time)
+  const [editClik, setEditClick] = useState(false)
+  useEffect(() =>{
+    setTodo(todo)
+    setValue(todoLoc.action)
+    setDay(todoLoc.date)
+    setTime(todoLoc.time)
+  },[todo])
+  
+  
+ 
+
+
 
   const inputs = [
-    useInput({ type:'text', id: 'body', defaultValue: todo.action }),
-    useInput({ type:'text', id: 'date', defaultValue: todo.time }),
-    useInput({ type:'text', id: 'time', defaultValue: todo.date }),
+    useInput({ type:'text', id: 'body', defaultValue: todoLoc.action }),
+    useInput({ type:'text', id: 'date', defaultValue: todoLoc.time }),
+    useInput({ type:'text', id: 'time', defaultValue: todoLoc.date }),
   ]
   const handleEditClick = async (event) => {
     event.preventDefault()
@@ -35,25 +48,10 @@ export function ToDo({todo, period_id,anId}) {
   const handleStatus = async (event) => {
     event.preventDefault()
     let {category} = event.target.dataset
-    let categoryNum = 0
-    todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
-    
-    const form ={
-      action: todo.action,
-      time: todo.time,
-      date: todo.date,
-      status: true,
-      animal_id,
-      id: todo.id,
-      periodNum: period_id,
-      categoryNum
-    }
-    console.log(form);
-    dispatch(editTodo(form))
 
 
+    dispatch(editStatusTodo(todoLoc.id))
 
-    
     switch (category) {
 
       case 'Medical':{
@@ -91,7 +89,7 @@ export function ToDo({todo, period_id,anId}) {
   const handleEdit = async (event) => {
     event.preventDefault()
     let categoryNum = 0
-    todo.title == "Feed"? categoryNum = 1 : todo.title == "Hygiene"? categoryNum=2:todo.title == "Contact"?categoryNum = 4:todo.title == "Care"? categoryNum = 5:categoryNum = 6
+    todoLoc.title == "Feed"? categoryNum = 1 : todoLoc.title == "Hygiene"? categoryNum=2:todoLoc.title == "Contact"?categoryNum = 4:todoLoc.title == "Care"? categoryNum = 5:categoryNum = 6
     
     const form ={
       action: inputs[0].getValue(),
@@ -99,19 +97,46 @@ export function ToDo({todo, period_id,anId}) {
       date: inputs[2].getValue(),
       status: false,
       animal_id,
-      id: todo.id,
+      id: todoLoc.id,
       periodNum: period_id,
       categoryNum
     }
-    console.log(form);
+    console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
     setEditClick(false)
-}
+    // setTimeout(() => {
+      
+   
+  //   switch (period_id) {
+
+  //     case 2:{
+  //         return dispatch(getTodoMonth(animal_id))
+  //     }
+      
+  //     case 3:{
+  //         return dispatch(getTodoWeek(animal_id))
+  //     }
+
+  //     case 4:{
+  //         return dispatch(getTodoMonth(animal_id))
+  //     }
+      
+  //     case 5:{
+  //         return dispatch(getTodoYear(animal_id))
+  //     }
+  //     default: {
+  //         return console.log('err');
+  //     }
+  //   }
+  // // }, 100);
+  }
+
+    
 
   const handleDelClick = async (event) => {
     event.preventDefault()
-    console.log(todo.id, typeof todo.id);
-    dispatch(deleteTodo(todo.id))
+    console.log(todoLoc.id, typeof todoLoc.id);
+    dispatch(deleteTodo(todoLoc.id))
 
 }
 
@@ -120,7 +145,7 @@ export function ToDo({todo, period_id,anId}) {
       {editClik?
         <>
       <form onSubmit={handleEdit} className={classes.form}>
-      {todo.title  === 'Feed' &&  <span>Покормить: </span> }
+      {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
       {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
           Ok
@@ -133,7 +158,7 @@ export function ToDo({todo, period_id,anId}) {
         <> 
           
           <div id={todo.id} class={classes.list}>
-            {todo.title  === 'Feed' &&  <span>Покормить: </span> }
+            {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{value}</span>
           { period_id == 3 && <span> {day}</span> }
           { period_id == 4 && <span> {day}</span> }
@@ -160,3 +185,4 @@ export function ToDo({todo, period_id,anId}) {
   }
   
  
+  export default memo(ToDo)

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoYear } from "../../redux/actions/todoYear.action";
-import { ToDo } from "../ToDo/ToDo";
+import  ToDo  from "../ToDo/ToDo";
 import classes from '../ToDo/todo.module.css'
 
 export function TodoYear({anId}) {
@@ -17,13 +17,12 @@ export function TodoYear({anId}) {
   },[todos])
 
 
-  const [animalID, setID] = useState(null)
+  const [animalID, setID] = useState(anId)
 
   useEffect(() => {
     if(anId){
-      setID(anId.id)
-      console.log(anId.id);
-      dispatch(getTodoYear(anId.id))
+      setID(animalID)
+      dispatch(getTodoYear(animalID))
     }
   },[anId])
 
