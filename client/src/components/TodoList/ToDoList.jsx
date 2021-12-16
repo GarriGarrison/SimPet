@@ -6,24 +6,26 @@ import classes from '../ToDo/todo.module.css'
 import {useLocation, useSearchParams} from 'react-router-dom'
 
 
-function ToDoList({anId}) {
+function ToDoList() {
   let [searchParams, setSearchParams] = useSearchParams();
   const [period, setPeriod] = useState(searchParams.get("period"))
-  const [animalID, setID] = useState(anId)
+  const [animalID, setID] = useState(null)
   const todos = useSelector((state) => state.todoAll.value)
+  const {currAnimal} = useSelector(state => state.animal)
   const dispatch = useDispatch()
 
   let location = useLocation();
 
   useEffect(() => {
+    console.log('check');
     setPeriod(searchParams.get("period"))
   }, [location]);
 
   useEffect(() => {
-    if(anId){
-      setID(anId)
+    if(currAnimal){
+      setID(currAnimal.id)
     }
-  },[anId])
+  },[currAnimal])
 
   useEffect(() => {
     if(animalID && period) {

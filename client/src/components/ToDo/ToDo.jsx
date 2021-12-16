@@ -9,28 +9,14 @@ import classes from './todo.module.css'
 import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAll.action";
 
 
-function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
+function ToDo({todo, period_id, anId}) {
   console.log(todo);
   const dispatch = useDispatch()
   
   if (!todo) console.log("Тудушка не пришла");
   const [animal_id, setAnimal_id] = useState(anId)
   const [todoLoc, setTodo] = useState(todo)
- const [value, setValue ] = useState(todoLoc.action)
-  const [day, setDay ] = useState(todoLoc.date)
-  const [time, setTime ] = useState(todoLoc.time)
   const [editClik, setEditClick] = useState(false)
-  useEffect(() =>{
-    setTodo(todo)
-    setValue(todoLoc.action)
-    setDay(todoLoc.date)
-    setTime(todoLoc.time)
-  },[todo])
-  
-  
- 
-
-
 
   const inputs = [
     useInput({ type:'text', id: 'body', defaultValue: todoLoc.action }),
@@ -47,7 +33,6 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
 
 
     dispatch(editStatusTodo(todoLoc.id))
-    console.log(category);
 
     switch (category) {
 
@@ -60,7 +45,6 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
            dispatch(feedDone())
            break
       
-
       case 'Contact':
           dispatch(contactDone())
           break
@@ -69,24 +53,18 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
            dispatch(hygeineDone())
            break
       
-
        case 'Care':
            dispatch(careDone())
            break
-      
       
       case 'Party':
            dispatch(partyDone())
            break
       
-      
-      
       default: 
          console.log('err');
          break
-      
     }
-     
   }
 
   const handleEdit = async (event) => {
@@ -107,18 +85,13 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
     }
     console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
-
-    
     setEditClick(false)
   }
-
-    
 
   const handleDelClick = async (event) => {
     event.preventDefault()
     console.log(todoLoc.id, typeof todoLoc.id);
     dispatch(deleteTodo(todoLoc.id))
-
 }
 
     return (
@@ -138,7 +111,7 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
         : 
         <> 
           
-          <div id={todo.id} class={classes.list}>
+          <div id={todo.id} className={classes.list}>
             {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
           <span >{todo.action}</span>
           { period_id == 3 && <span> {todo.day}</span> }
@@ -150,7 +123,7 @@ function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
 
 
                 <div>
-                  <button onClick={handleStatus} data-category={todo.title} class="done">✔</button>
+                  <button onClick={handleStatus} data-category={todo.title} className="done">✔</button>
                   <button onClick={handleEditClick}>✏️</button>
                   <button onClick={handleDelClick}>x</button>
                 </div>

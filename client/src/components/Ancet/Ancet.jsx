@@ -5,10 +5,11 @@ import classes from './startanimal.module.css'
 import Logo from '../UserForm/Logo/Logo'
 import { useNavigate } from "react-router-dom";
 
-const Ancet = ({anId}) => {
+const Ancet = () => {
     let user = useSelector(state => state.user);
     const dispatch = useDispatch();
     const navigate = useNavigate()
+    const anId = useSelector(state => state.animal.currAnimal.id)
 
 
     const [animal_id, setAnimal_id] = useState()

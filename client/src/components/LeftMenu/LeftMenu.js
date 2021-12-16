@@ -4,9 +4,13 @@ import {SimStatus} from '../SimStatus/SimStatus'
 import { useNavigate } from "react-router-dom"
 import AddTodo from '../AddTodo/AddTodo';
 import AnimalLK from '../AnimalLk/AnimalLK';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const LeftMenu = ({animal}) => {
+const LeftMenu = () => {
+  const animal = useSelector(state=>state.animal.currAnimal)
+  const allanimal = useSelector(state=>state.animal)
+
   const [zoom, setZoom] = useState(170)
   const [isChangeAva, setChangeAva] = useState(false)
   const navigate = useNavigate()
@@ -28,13 +32,14 @@ const LeftMenu = ({animal}) => {
       setAnimalName(animal.name)
       setAnimalAge(animal.age)
       setAnimalWeight(animal.weight)
-      setAnimalAvatar(animal.avatar)
+      setAnimalAvatar(allanimal.currAnimal.avatar)
       setAnimalId(animal.id)
       setSex(animal.sex)
       setBreed(animal.breed)
       setUserId(animal.user_id)
+      console.log(animalAvatar, '+++++++++++++++++');
     }
-  },[animal])
+  },[animal, allanimal])
 
   function ZoomUp(){
     setZoom(zoom + 5)
@@ -108,7 +113,7 @@ console.log('btn1');
       <div >
           {addLk?
               <div className={classes.addAnim}>
-                <AnimalLK hideLk={setLk}  type={animalType} name={animalName} age={animalAge} ava={animalAvatar} weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
+                <AnimalLK hideLk={setLk}  type={animalType} name={animalName} age={animalAge} ava={animalAvatar}  weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
                 <button className={classes.but} onClick={btnAnimalLK}   type="button">Выйти</button>
               </div>
     
@@ -227,19 +232,19 @@ viewBox="0 0 3553.52 893.46"
  </linearGradient>
  </g>
 
- <symbol id="s-mask-circles">
+ <symbol id={`${animalName}`}>
 <g>   
 <ellipse className={classes.fil111} cx="418.58" cy="474.34" rx="354.22" ry="353.71"/>
 </g>
 </symbol>
 <mask id="mask-circles">
-<use xlinkHref="#s-mask-circles" />
+<use xlinkHref={`#${animalName}`} />
 </mask>
-<symbol id="s-flower-m">
+<symbol id={`${animalName}dd`}>
 <image xlinkHref={animalAvatar||"https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg"} width="800" height="950" />
 </symbol>
 <g mask="url(#mask-circles)">
-<use xlinkHref="#s-flower-m"></use>
+<use xlinkHref={`#${animalName}dd`}></use>
 </g>
 
  <g id="Слой_x0020_1">
