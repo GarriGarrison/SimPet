@@ -26,6 +26,7 @@ import AnimalLK from "./components/AnimalLk/AnimalLK";
 import AddTodo from "./components/AddTodo/AddTodo";
 import { todoAllReduser } from "./redux/reducers/todoAll.reducer";
 import ToDoList from "./components/TodoList/ToDoList";
+import Room from "./components/Room/Room";
 
 
 function App() {
@@ -99,6 +100,17 @@ function App() {
           <Route path="/reg" element={ <UserFormReg/>} />
           <Route path="/start" element={ <Start/>} />
           <Route path="/exit" element={ <LogOut/>} />
+
+          <Route path="/catroom" element={
+            <> 
+          <Nav user={user}/>
+            <div className="rom">
+            <Room/>
+            </div>
+          
+
+          </>
+          } />
 
           <Route path="/" element={           
             <>

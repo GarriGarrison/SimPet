@@ -1,16 +1,17 @@
 .bar{
   position: fixed;
   right: 0.5rem;
-  bottom: 0.5rem;
+  bottom: 0;
   z-index: 2000;
 }
-.fil4 {fill:#E31E24}
-.fil4:hover {fill:#00ff4c}
+.fil4 {fill:#6C8CD5}
+.fil4:hover {fill:#72A7DD}
 .fil5 {fill:#ffffff}
-.fil7 {fill:#213884}
+.fil7 {fill:#42b637}
 .fil0 {fill:#445C80}
 .fil1 {fill:#5C77B8}
-.fil2 {fill:#6C8CD5}
+.fil2 {fill:#ff0000}
+.fil2:hover {fill:#00ff15}
 .fil6 {fill:#72A7DD}
 .fil6:hover {fill:#92c8ff}
 .fil3 {fill:#D3EAFC;
