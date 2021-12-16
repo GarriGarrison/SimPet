@@ -8,7 +8,12 @@ import { setCare, setContact, setFeed, setParty, setHygeine, setStatus, setMedic
 
 
 const RightBarMenu = () => {
-  const [zoom, setZoom] = useState(100)
+
+  let size =100
+  if(localStorage.size) size = localStorage.size
+  console.log(size);
+  const [zoom, setZoom] = useState(size)
+  const [local, setLocal] = useState(localStorage.size)
   const [isStat,setStat] = useState(true)
   const [activPosition, setPosition] = useState('M2217.2 223.85l272.71 0 0 -33.61 0 -173.43c0,-9.26 -7.55,-16.81 -16.81,-16.81l-239.1 0 -0.21 0c-9.16,0.11 -16.6,7.62 -16.6,16.8l0 207.05z')
 
@@ -112,9 +117,12 @@ useEffect(()=>{
 
   function ZoomUp(){
     setZoom(zoom+5)
+    localStorage.size = zoom
   }
   function ZoomDown(){
     setZoom(zoom-5)
+    localStorage.size = zoom
+
   }
   function toggleStat(e){
     setPosition(e.target.attributes[1].value)

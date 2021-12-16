@@ -32,11 +32,11 @@ function ToDo({todo, period_id, anId}) {
 
     dispatch(editStatusTodo(todoLoc.id))
     console.log(category);
-    const switc = null
+    let switc = null
     category?switc=category:switc=categoryNum
     switch (switc) {
 
-      case 'Medical':
+      case 'Medical'||3:
            dispatch(medicinDone())
            break
       
@@ -46,19 +46,19 @@ function ToDo({todo, period_id, anId}) {
            dispatch(feedDone())
            break
       
-      case 'Contact':
+      case 'Contact'||4:
           dispatch(contactDone())
           break
       
-      case 'Hygiene':
+      case 'Hygiene'||2:
            dispatch(hygeineDone())
            break
       
-       case 'Care':
+       case 'Care'||5:
            dispatch(careDone())
            break
       
-      case 'Party':
+      case 'Party'||6:
            dispatch(partyDone())
            break
       
