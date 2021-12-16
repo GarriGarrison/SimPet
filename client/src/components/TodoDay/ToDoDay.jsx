@@ -23,7 +23,7 @@ function TodoDay({anId}) {
     useEffect(() => {
       if(anId){
         setID(animalID)
-        dispatch(getTodoDay(animalID))
+        // dispatch(getTodoDay(animalID))
       }
     },[anId])
 
