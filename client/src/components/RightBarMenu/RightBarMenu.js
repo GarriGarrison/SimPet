@@ -13,12 +13,22 @@ const RightBarMenu = () => {
   const [activPosition, setPosition] = useState('M2217.2 223.85l272.71 0 0 -33.61 0 -173.43c0,-9.26 -7.55,-16.81 -16.81,-16.81l-239.1 0 -0.21 0c-9.16,0.11 -16.6,7.62 -16.6,16.8l0 207.05z')
 
   const dispatch = useDispatch()
-  const feedProgress = useSelector((state) => state.sim.feed)
-  const contactProgress = useSelector((state) => state.sim.contact)
-  const medicalProgress = useSelector((state) => state.sim.medical)
-  const careProgress = useSelector((state) => state.sim.care)
-  const partyProgress = useSelector((state) => state.sim.party)
-  const hygeineProgress = useSelector((state) => state.sim.hygeine)
+  const sim = useSelector((state) => state.sim.status)
+  const contactProgress = useSelector((state) => state.sim.contact.num)
+  const medicalProgress = useSelector((state) => state.sim.medical.num)
+  const careProgress = useSelector((state) => state.sim.care.num)
+  const partyProgress = useSelector((state) => state.sim.party.num)
+  const feedProgress= useSelector((state) => state.sim.feed.num)
+  const hygeineProgress = useSelector((state) => state.sim.hygeine.num)
+
+  const feedColor = useSelector((state) => state.sim.feed.color)
+  const contactColor = useSelector((state) => state.sim.contact.color)
+  const medicalColor = useSelector((state) => state.sim.medical.color)
+  const careColor = useSelector((state) => state.sim.care.color)
+  const partyColor = useSelector((state) => state.sim.party.color)
+  const hygeineColor = useSelector((state) => state.sim.hygeine.color)
+
+  
 
 //   let start = 12*60*60*1000
 //  let end = 12.008*60*60*1000
@@ -26,12 +36,12 @@ const RightBarMenu = () => {
 // let latitude = ((end-start)*100)/70 //вряемя проходждения прогрессбара( время от последнего до дедлайна + 30%)
 // const timeout = latitude/100
 let timeout = {
-  feed: 50000000000,
-  care: 7000000000,
-  contact: 15000000000,
-  medical: 20000000000,
-  party: 50000000000,
-  hygeine: 6000000000
+  feed: 100,
+  care: 7000000,
+  contact: 1500,
+  medical: 2000,
+  party: 5000000,
+  hygeine: 600000
 }
 
 
@@ -42,189 +52,60 @@ let timeout = {
   // const [partyProgress, setParty] = useState(100)
   // const [hygeineProgress, setHygeine] = useState(100)
 
-  const [feedColor, setFeedColor] = useState('green')
-  const [contactColor, setContactColor] = useState('green')
-  const [medicalColor, setMedicalColor] = useState('green')
-  const [careColor, setCareColor] = useState('green')
-  const [partyColor, setPartyColor] = useState('green')
-  const [hygeineColor, setHygeineColor] = useState('green')
+  // const [feedColor, setFeedColor] = useState('green')
+  // const [contactColor, setContactColor] = useState('green')
+  // const [medicalColor, setMedicalColor] = useState('green')
+  // const [careColor, setCareColor] = useState('green')
+  // const [partyColor, setPartyColor] = useState('green')
+  // const [hygeineColor, setHygeineColor] = useState('green')
 
+// useEffect(()=>{
+// if(contact&&medical&&care&&party&&feed&&hygeine)
+// setFeed(feed)
+// setContact(contact)
+// setMedical(medical)
+// setCare(care)
+// setParty(party)
+// setHygeine(hygeine)
 
+// },[])
 
   
   useEffect(()=>{
-  
-
-        if(feedProgress >= 30){
-          setTimeout(() => dispatch(setFeed(feedProgress - 1)), timeout.feed);
-        }else{
-           dispatch(setStatus('green'))
-             if(feedProgress >= 10){
-               
-               setTimeout(() => {
-                dispatch(setFeed(feedProgress - 1))
-                setFeedColor("#ffcb11")
-                }, timeout.feed)
+    if (feedProgress>0){
+    setTimeout(() => dispatch(setFeed(feedProgress - 1)), timeout.feed)
+  }
     
-                dispatch(setStatus("#ffcb11"))
-              }else{
-                if(feedProgress >= 0){
-                 
-    
-                   setTimeout(() => {
-                    dispatch(setFeed(feedProgress - 1))
-                    setFeedColor("red")
-                   }, timeout.feed); 
-                  }
-                  dispatch(setStatus("red"))
-                }
-        }
-    
-    }, [feedProgress])
+    }, [feedProgress, sim])
 
 
 useEffect(()=>{
-
-  if(contactProgress >= 30){
-    setTimeout(() => dispatch(setContact(contactProgress - 1)), timeout.contact);
-  }else{
-     dispatch(setStatus('green'))
-       if(contactProgress >= 10){
-         
-         setTimeout(() => {
-          dispatch(setContact(contactProgress - 1))
-           setContactColor("#ffcb11")
-          }, timeout.contact)
-
-          dispatch(setStatus("#ffcb11"))
-        }else{
-          if(contactProgress >= 0){
-           
-
-             setTimeout(() => {
-              dispatch(setContact(contactProgress - 1))
-              setContactColor("red")
-             }, timeout.contact); 
-            }
-            dispatch(setStatus("red"))
-          }
-  }
-
+    if (contactProgress>0)setTimeout(() => dispatch(setContact(contactProgress - 1)), timeout.contact);
 }, [contactProgress])
 
 useEffect(()=>{
 
-  if(careProgress >= 30){
-    setTimeout(() => dispatch(setCare(careProgress - 1)), timeout.care);
-  }else{
-     dispatch(setStatus('green'))
-       if(careProgress >= 10){
-         
-         setTimeout(() => {
-          dispatch(setCare(careProgress - 1))
-           setCareColor("#ffcb11")
-          }, timeout.care)
-
-          dispatch(setStatus("#ffcb11"))
-        }else{
-          if(careProgress >= 0){
-           
-
-             setTimeout(() => {
-              dispatch(setCare(careProgress - 1))
-                  setCareColor("red")
-             }, timeout.care); 
-            }
-            dispatch(setStatus("red"))
-          }
-  }
+  if (careProgress>0)setTimeout(() => dispatch(setCare(careProgress - 1)), timeout.care);
 
 }, [careProgress])
 
 useEffect(()=>{
 
-  if(medicalProgress >= 30){
-    setTimeout(() => dispatch(setMedical(medicalProgress - 1)), timeout.medical);
-  }else{
-     dispatch(setStatus('green'))
-       if(medicalProgress >= 10){
-         
-         setTimeout(() => {
-          dispatch(setMedical(medicalProgress - 1))
-           setMedicalColor("#ffcb11")
-          }, timeout.medical)
-
-          dispatch(setStatus("#ffcb11"))
-        }else{
-          if(medicalProgress >= 0){
-           
-
-             setTimeout(() => {
-              dispatch(setMedical(medicalProgress - 1))
-                  setMedicalColor("red")
-             }, timeout.medical); 
-            }
-            dispatch(setStatus("red"))
-          }
-  }
+    if(medicalProgress>0)setTimeout(() => dispatch(setMedical(medicalProgress - 1)), timeout.medical);
 
 }, [medicalProgress])
 
 useEffect(()=>{
 
-  if(partyProgress >= 30){
-    setTimeout(() => dispatch(setParty(partyProgress - 1)), timeout.party);
-  }else{
-     dispatch(setStatus('green'))
-       if(partyProgress >= 10){
-         
-         setTimeout(() => {
-          dispatch(setParty(partyProgress - 1))
-           setPartyColor("#ffcb11")
-          }, timeout.party)
-
-          dispatch(setStatus("#ffcb11"))
-        }else{
-          if(partyProgress >= 0){
-           
-
-             setTimeout(() => {
-              dispatch(setParty(partyProgress - 1))
-                   setPartyColor("red")
-             }, timeout.party); 
-            }
-            dispatch(setStatus("red"))
-          }
-  }
+ 
+    if(partyProgress>0)setTimeout(() => dispatch(setParty(partyProgress - 1)), timeout.party);
 
 }, [partyProgress])
 
 useEffect(()=>{
 
-  if(hygeineProgress >= 30){
-    setTimeout(() => dispatch(setHygeine(hygeineProgress - 1)), timeout.hygeine);
-  }else{
-     dispatch(setStatus('green'))
-       if(hygeineProgress >= 10){
-         
-         setTimeout(() => {
-          dispatch(setHygeine(hygeineProgress - 1))
-           setHygeineColor("#ffcb11")
-          }, timeout.hygeine)
 
-          dispatch(setStatus("#ffcb11"))
-        }else{
-          if(hygeineProgress >= 0){
-           
-
-             setTimeout(() => {
-              dispatch(setHygeine(hygeineProgress - 1))
-                  setHygeineColor("red")
-             }, timeout.hygeine); 
-            }
-            dispatch(setStatus("red"))
-          }
-  }
+    if(hygeineProgress>0)setTimeout(() => dispatch(setHygeine(hygeineProgress - 1)), timeout.hygeine);
 
 }, [hygeineProgress])
 

@@ -31,10 +31,12 @@ function ToDoList({anId}) {
     }
   }, [animalID, period])
 
-  return (
-    <div className={classes.container}>
+  return ( 
+  <>
+    {todos?.length && <div className={classes.container}>
       {todos.map(el => <ToDo key={el.id} todo={el} anId={animalID}/>)}
-    </div> 
+    </div> }
+  </>  
   );
 }
   

@@ -3,10 +3,12 @@
   position: fixed;
   left: 0.5rem;
   bottom: 0.5rem;
+  z-index: 100;
 }
 .romb{
   
   padding-left: 4rem;
+  z-index: 100;
   
 }
 @font-face { font-family:"Century Gothic";font-variant:normal;font-style:normal;font-weight:bold;src:url("#FontID1") format(svg)}

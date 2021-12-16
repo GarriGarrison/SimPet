@@ -43,7 +43,6 @@ export const animalReducer = (state = {}, action) => {
           }
         }
         case START_ANIMAL:{
-          console.log(action.payload)
           return {
             ...state,
             currAnimal: state.all[0]

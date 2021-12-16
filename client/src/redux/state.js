@@ -6,12 +6,12 @@ export const initialState = {
   },
   sim:  {
     status: 'green',
-    medical: 100,
-    feed: 100,
-    contact: 100,
-    care: 100,
-    party: 100,
-    hygeine: 100,
+    medical: {num:100, color:'green'},
+    feed: {num:100, color:'green'},
+    contact: {num:100, color:'green'},
+    care: {num:100, color:'green'},
+    party: {num:100, color:'green'},
+    hygeine: {num:100, color:'green'},
   },
   todoAll: {
     period: '',
