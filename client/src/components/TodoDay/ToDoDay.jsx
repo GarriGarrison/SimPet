@@ -30,7 +30,7 @@ function TodoDay({anId}) {
     return (
       <div className={classes.container}> {todosLocal.map(el => 
         <> 
-        <ToDo todo={el} period_id={2} anId={animalID}/>
+        <ToDo todo={el} period_id={2} todosLocal={todosLocal} setTodos={setTodos} anId={animalID}/>
      </>
       )}
     

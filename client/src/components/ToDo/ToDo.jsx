@@ -13,7 +13,7 @@ import { getTodoYear } from "../../redux/actions/todoYear.action"
 
 
 
-function ToDo({todo, period_id, anId}) {
+function ToDo({todo, period_id, setTodos, todosLocal, anId}) {
   console.log(todo);
   const dispatch = useDispatch()
   
@@ -30,27 +30,6 @@ function ToDo({todo, period_id, anId}) {
     setDay(todoLoc.date)
     setTime(todoLoc.time)
 
-    // switch (period_id) {
-
-    //       case 2:{
-    //           return dispatch(getTodoMonth(animal_id))
-    //       }
-          
-    //       case 3:{
-    //           return dispatch(getTodoWeek(animal_id))
-    //       }
-    
-    //       case 4:{
-    //           return dispatch(getTodoMonth(animal_id))
-    //       }
-          
-    //       case 5:{
-    //           return dispatch(getTodoYear(animal_id))
-    //       }
-    //       default: {
-    //           return console.log('err');
-    //       }
-    //     }
 
     
   },[todo])
@@ -135,6 +114,17 @@ function ToDo({todo, period_id, anId}) {
     console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
     setEditClick(false)
+
+
+
+
+
+    // let newTodo = todosLocal.map(el=>{
+    //  if (el.id === form.id) return form
+    //  return el 
+    // })
+    // console.log(newTodo,"-----", todosLocal);
+    // setTodos(newTodo)
     // setTimeout(() => {
       switch (period_id) {
 

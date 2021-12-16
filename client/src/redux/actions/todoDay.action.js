@@ -16,7 +16,7 @@ export const getTodoDay = (id) => async (dispatch) => {
       const todo = data.filter(el => el.status == false)
       console.log(data, "all");
       console.log(todo, "false");
-      dispatch(AllTodoDay(data)
+      dispatch(AllTodoDay(todo)
       )})
     .catch((err) => console.log(err));
 };
