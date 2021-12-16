@@ -1,4 +1,4 @@
-import { GET_STATUS, GET_MEDICINE, GET_EAT, GET_COMMUNICATION, GET_COMFORT, GET_FIVE, GET_SIX, ADD_SIX, ADD_FIVE, ADD_COMFORT, ADD_COMMUNICATION, ADD_EAT, ADD_MEDICINE } from '../types/sim.types'
+import { GET_STATUS, GET_MEDICAL, GET_FEED, GET_CONTACT, GET_CARE, GET_PARTY, GET_HYGEINE, ADD_HYGEINE, ADD_PARTY, ADD_CARE, ADD_CONTACT, ADD_FEED, ADD_MEDICAL } from '../types/sim.types'
 
 export const simReducer = (state = {}, action) => {
   const {type} = action
@@ -9,64 +9,64 @@ export const simReducer = (state = {}, action) => {
           status: action.payload}
     }
 
-    case GET_MEDICINE:{
+    case GET_MEDICAL:{
       return { ...state,
-        medicine: action.payload}
+        medical: action.payload}
     }
 
-    case GET_EAT:{
+    case GET_FEED:{
       return { ...state,
-        eat: action.payload}
+        feed: action.payload}
     }
 
-    case GET_COMMUNICATION:{
+    case GET_CONTACT:{
       return { ...state,
-        communication: action.payload}
+        contact: action.payload}
     }
 
-    case GET_COMFORT:{
+    case GET_CARE:{
       return { ...state,
-        comfort: action.payload}
+        care: action.payload}
     }
 
-    case GET_FIVE:{
+    case GET_PARTY:{
       return { ...state,
-        five: action.payload}
+        party: action.payload}
     }
 
-    case GET_SIX:{
+    case GET_HYGEINE:{
       return { ...state,
-        six: action.payload}
+        hygeine: action.payload}
     }
     
-    case ADD_MEDICINE:{
+    case ADD_MEDICAL:{
       return { ...state,
-        medicine: action.payload}
+        medical: action.payload}
     }
 
-    case ADD_EAT:{
+    case ADD_FEED:{
       return { ...state,
-        eat: action.payload}
+        feed: action.payload}
     }
 
-    case ADD_COMMUNICATION:{
+    case ADD_CONTACT:{
       return { ...state,
-        communication: action.payload}
+        contact: action.payload}
     }
 
-    case ADD_COMFORT:{
+    case ADD_CARE:{
       return { ...state,
-        comfort: action.payload}
+        care: action.payload}
     }
 
-    case ADD_FIVE:{
+    case ADD_PARTY:{
       return { ...state,
-        five: action.payload}
+        party: action.payload}
     }
 
-    case ADD_SIX:{
+    case ADD_HYGEINE:{
       return { ...state,
-        six: action.payload}
+        hygeine: action.payload}
     }
 
     default: {

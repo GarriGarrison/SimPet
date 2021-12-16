@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
-import { comfortDone, communDone, eatDone, fiveDone, medicinDone, sixDone } from "../../redux/actions/sim.action"
+import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone } from "../../redux/actions/sim.action"
 
 import classes from './todo.module.css'
 
@@ -51,37 +51,44 @@ function ToDo({todo, period_id, anId}) {
 
 
     dispatch(editStatusTodo(todoLoc.id))
+    console.log(category);
 
     switch (category) {
 
-      case 'Medical':{
-          return dispatch(medicinDone())
-      }
+      case 'Medical':
+           dispatch(medicinDone())
+           break
       
-      case 'Feed':{
-          return dispatch(eatDone())
-      }
+      
+      case 'Feed':
+           dispatch(feedDone())
+           break
+      
 
-      case 'Contact':{
-          return dispatch(communDone())
-      }
+      case 'Contact':
+          dispatch(contactDone())
+          break
       
-      case 'Hygiene':{
-          return dispatch(comfortDone())
-      }
+      case 'Hygiene':
+           dispatch(hygeineDone())
+           break
+      
 
-       case 'Care':{
-          return dispatch(fiveDone())
-      }
-      
-      case 'Party':{
-          return dispatch(sixDone())
-      }
+       case 'Care':
+           dispatch(careDone())
+           break
       
       
-      default: {
-          return console.log('err');
-      }
+      case 'Party':
+           dispatch(partyDone())
+           break
+      
+      
+      
+      default: 
+         console.log('err');
+         break
+      
     }
      
   }

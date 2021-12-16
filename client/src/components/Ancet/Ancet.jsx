@@ -75,7 +75,7 @@ const Ancet = ({anId}) => {
       if (contactForm.length) {
         contactForm = Object.fromEntries(contactForm)
         contactForm.animal_id = animal_id
-        contactForm.categoryNum = 1
+        contactForm.categoryNum = 4
         contactForm.periodNum = Number(contactForm.periodNum)
         contactForm.time = "12:00"
         let today = new Date();
@@ -114,7 +114,7 @@ const Ancet = ({anId}) => {
         let date = dat.toLocaleDateString();
 
       let medicalF = {
-        categoryNum: 5,
+        categoryNum: 3,
         periodNum: 5,
         action:"Пора проверить здоровье",
         time: "12:00",

@@ -19,12 +19,12 @@ import Start from "./components/Start/Start";
 import UserFormLog from "./components/UserForm/UserFormLog";
 import UserFormReg from "./components/UserForm/UserFormReg";
 import { TodoMonth } from "./components/TodoMonth/TodoMonth";
-import { getAnimal, switchActivAnimal } from "./redux/actions/animal.action";
+import { getAnimal } from "./redux/actions/animal.action";
 import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
-import { timeoutComfort, timeoutEat, timeoutMedicine } from "./redux/actions/sim.action";
+import { timeoutCare,  timeoutFeed, timeoutMedical } from "./redux/actions/sim.action";
 import AnimalLK from "./components/AnimalLk/AnimalLK";
 import AddTodo from "./components/AddTodo/AddTodo";
 
@@ -68,9 +68,9 @@ function App() {
     }
   }, [curAn])
 
-  dispatch(timeoutMedicine(2))
-  dispatch(timeoutComfort(2))
-  dispatch(timeoutEat(2))
+  // dispatch(timeoutMedical(2))
+  // dispatch(timeoutCare(2))
+  // dispatch(timeoutFeed(2))
 
 
   return (
