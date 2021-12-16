@@ -6,12 +6,12 @@ export const initialState = {
   },
   sim:  {
     status: 'green',
-    medicine: 100,
-    eat: 100,
-    communication: 100,
-    comfort: 100,
-    five: 100,
-    six: 100,
+    medical: 100,
+    feed: 100,
+    contact: 100,
+    care: 100,
+    party: 100,
+    hygeine: 100,
   },
   todoAll: [],
   todoDay: {
