@@ -1,4 +1,4 @@
-import {SET_ANIMAL,ADD_ANIMAL, GET_ANIMAL, DELL_ANIMAL, SWITCH_ACTIV, START_ANIMAL} from '../types/animal.types'
+import {SET_ANIMAL,ADD_ANIMAL, GET_ANIMAL, DELL_ANIMAL, SWITCH_ACTIV, START_ANIMAL,CLEAR_ANIMAL,NEW_ADD_ACTIV} from '../types/animal.types'
 
 export const editAnimalOk = (animal) => ({ 
     type: SET_ANIMAL,
@@ -23,12 +23,17 @@ export const editAnimalOk = (animal) => ({
     type: SWITCH_ACTIV,
     payload: index
   })
+  export const newAddAnimal = () =>({
+    type: NEW_ADD_ACTIV,
+    
+  })
+  
 
 export const startAnimal = (animal)=>({
   type: START_ANIMAL,
   payload: animal
 })
-
+export const clearAnimal = () =>({type: CLEAR_ANIMAL})
 
 
   export const getAnimal = (id_user) => async (dispatch) =>{
@@ -64,6 +69,8 @@ export const startAnimal = (animal)=>({
       const newAnimal = await response.json()
       console.log(newAnimal);
       dispatch(addAanimalOk(newAnimal))
+      dispatch(newAddAnimal());
+
       
 
     } else {
@@ -87,17 +94,20 @@ export const startAnimal = (animal)=>({
 
 
 export const editAnimal = (animal) => async (dispatch) => {
-  console.log('EDIT ANIMAL dispath: ', animal);
+  const formData = new FormData()
+
+  for (let key in animal) {
+    formData.append(key, animal[key])
+  }
+
   const response = await fetch(`http://localhost:3001/api/v1/animals/${animal.id}`,{
     method: 'PATCH',
-    headers: {
-      'Content-Type': 'application/json'
-    },
     credentials: 'include',
-    body: JSON.stringify(animal)
+    body: formData,
   })
 
   if (response.ok) {
-    dispatch(editAnimalOk(animal))
+    const res = await response.json()
+    dispatch(editAnimalOk(res))
   }
 }

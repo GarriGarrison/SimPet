@@ -134,6 +134,8 @@ function ToDo({todo, period_id, anId}) {
     }
     console.log("Форма редактирования:",form);
     dispatch(editTodo(form))
+
+    
     setEditClick(false)
     // setTimeout(() => {
       switch (period_id) {

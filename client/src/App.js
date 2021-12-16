@@ -50,16 +50,18 @@ function App() {
     }
   }, [id]);
 
-  const animal = useSelector(state=>state.animal.all[0])
+  // const animal = useSelector(state=>state.animal.all[0])
   const ani = useSelector(state=>state.animal.all)
   const curAn = useSelector(state=>state.animal.currAnimal)
+
   
   useEffect(() => {
-    if (animal) {
-      setAnimalId(animal.id)
+    if (ani) {
+      setAnimalId(curAn.id)
       setAnimal(ani)
+      setCurAnimal(curAn)
     }
-  }, [animal])
+  }, [ani])
 
   useEffect(() => {
     if (curAn) {
@@ -99,7 +101,7 @@ function App() {
         
         } />
           <Route path="/start" element={ <Start/>} />
-          <Route path="/exit" element={ <LogOut/>} />
+          <Route path="/exit" element={ <LogOut />} />
 
           <Route path="/day" element={            
             <>
