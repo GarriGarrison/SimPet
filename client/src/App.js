@@ -22,7 +22,7 @@ import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
 import { timeoutCare,  timeoutFeed, timeoutMedical } from "./redux/actions/sim.action";
-import AnimalLK from "./components/AnimalLk/AnimalLK";
+import AnimalLK from "./components/AnimalLK/AnimalLK";
 import AddTodo from "./components/AddTodo/AddTodo";
 import { todoAllReduser } from "./redux/reducers/todoAll.reducer";
 import ToDoList from "./components/TodoList/ToDoList";
