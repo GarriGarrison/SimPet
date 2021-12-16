@@ -4,9 +4,13 @@ import {SimStatus} from '../SimStatus/SimStatus'
 import { useNavigate } from "react-router-dom"
 import AddTodo from '../AddTodo/AddTodo';
 import AnimalLK from '../AnimalLk/AnimalLK';
+import { useDispatch, useSelector } from 'react-redux';
 
 
-const LeftMenu = ({animal}) => {
+const LeftMenu = () => {
+  const animal = useSelector(state=>state.animal.currAnimal)
+  const allanimal = useSelector(state=>state.animal)
+
   const [zoom, setZoom] = useState(170)
   const [isChangeAva, setChangeAva] = useState(false)
   const navigate = useNavigate()
@@ -33,8 +37,9 @@ const LeftMenu = ({animal}) => {
       setSex(animal.sex)
       setBreed(animal.breed)
       setUserId(animal.user_id)
+
     }
-  },[animal])
+  },[animal, allanimal])
 
   function ZoomUp(){
     setZoom(zoom + 5)
@@ -108,7 +113,7 @@ console.log('btn1');
       <div >
           {addLk?
               <div className={classes.addAnim}>
-                <AnimalLK hideLk={setLk}  type={animalType} name={animalName} age={animalAge} ava={animalAvatar} weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
+                <AnimalLK hideLk={setLk}  type={animalType} name={animalName} age={animalAge} ava={animalAvatar}  weight={animalWeight} sex={animalSex} breed={animalBreed} id={animalId} idUser={animalUserId}   redirect ={"/"}/>
                 <button className={classes.but} onClick={btnAnimalLK}   type="button">Выйти</button>
               </div>
     

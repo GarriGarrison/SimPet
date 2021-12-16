@@ -5,9 +5,11 @@ export const animalReducer = (state = {}, action) => {
           let animal = action.payload
             return {
               ...state,
+              currAnimal:animal,
               all: state.all.map((el) => {
               if (el.id === animal.id) el = animal
-              return el}
+              return el},
+              
             )}
         }
         
