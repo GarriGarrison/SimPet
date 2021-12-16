@@ -10,7 +10,7 @@ import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
 import { TodoWeek } from "./components/TodoWeek/TodoWeek";
 import { TodoYear } from "./components/TodoYear/TodoYear";
-import { TodoDay } from "./components/TodoDay/ToDoDay";
+import  TodoDay  from "./components/TodoDay/ToDoDay";
 
 import Nav from "./components/Nav/Nav";
 import RightBarMenu from "./components/RightBarMenu/RightBarMenu";

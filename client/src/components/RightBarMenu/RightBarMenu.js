@@ -27,10 +27,10 @@ const RightBarMenu = () => {
 // const timeout = latitude/100
 let timeout = {
   eat: 50000000,
-  comfort: 700000000,
-  communication: 15000,
-  medicin: 2000000,
-  five: 50000000,
+  comfort: 700000000000000,
+  communication: 15000000000000,
+  medicin: 2000000000000,
+  five: 500000000000,
   six: 6000000000
 }
 

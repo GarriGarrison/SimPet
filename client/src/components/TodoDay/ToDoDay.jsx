@@ -1,29 +1,29 @@
-import { useEffect,useState } from "react";
+import { useEffect,useState, memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoDay } from "../../redux/actions/todoDay.action";
-import { ToDo } from "../ToDo/ToDo";
+import  ToDo  from "../ToDo/ToDo";
 import classes from '../ToDo/todo.module.css'
 
 
-export function TodoDay({anId}) {  
+function TodoDay({anId}) {  
   const todos = useSelector((state) => state.todoDay.all)
   const dispatch = useDispatch()
-  // dispatch(getTodoDay(anId))
-  
+
   const [todosLocal,setTodos] = useState([])
   useEffect(() => {
     if(todos) {
       setTodos(todos)
+      // dispatch(getTodoDay(animalID))
     }
   },[todos])
   
   
-  const [animalID, setID] = useState(null)
+  const [animalID, setID] = useState(anId)
 
     useEffect(() => {
       if(anId){
-        setID(anId.id)
-        dispatch(getTodoDay(anId.id))
+        setID(animalID)
+        dispatch(getTodoDay(animalID))
       }
     },[anId])
 
@@ -39,3 +39,5 @@ export function TodoDay({anId}) {
     );
   }
   
+
+  export default memo(TodoDay)

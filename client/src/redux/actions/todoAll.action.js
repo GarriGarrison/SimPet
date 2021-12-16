@@ -70,6 +70,7 @@ export const editStatusTodo = (id) => async (dispatch) => {
 
 export const editTodo = (todo) => async (dispatch) => {
   let {id} = todo
+  console.log("Форма, прилетающая в action:",todo);
   fetch(`http://localhost:3001/api/v1/todos/${id}`, {
     method: "PATCH",
     credentials: "include",
@@ -80,6 +81,7 @@ export const editTodo = (todo) => async (dispatch) => {
   })
     .then((response) => response.json())
     .then((data) => {
+      console.log("Ответ с ручки PATCH всех постов(редактирование):", data);
       dispatch(todoEdit(data));
     })
     .catch((err) => console.log(err));

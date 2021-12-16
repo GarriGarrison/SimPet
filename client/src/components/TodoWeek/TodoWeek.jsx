@@ -1,14 +1,14 @@
 import { useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getTodoWeek } from "../../redux/actions/todoWeek.action";
-import { ToDo } from "../ToDo/ToDo";
+import  ToDo  from "../ToDo/ToDo";
 import classes from '../ToDo/todo.module.css'
 
 export function TodoWeek({anId}) {
   const todos = useSelector((state) => state.todoWeek.all)
   const dispatch = useDispatch()
   
-  const [todosLocal,setTodos] = useState([])
+  const [todosLocal, setTodos] = useState([])
 
   useEffect(() => {
     if(todos) {
@@ -16,12 +16,12 @@ export function TodoWeek({anId}) {
     }
   },[todos])
 
-  const [animalID, setID] = useState(null)
+  const [animalID, setID] = useState(anId)
 
   useEffect(() => {
     if(anId){
-      setID(anId.id)
-      dispatch(getTodoWeek(anId.id))
+      setID(animalID)
+      dispatch(getTodoWeek(animalID))
     }
   },[anId])
   

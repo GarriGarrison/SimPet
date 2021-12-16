@@ -20,7 +20,7 @@ export const todoAllReduser = (state = [], action) => {
     case EDIT_TODO:{
         let newTodo = action.payload
           return state.map((el) => {
-            if (el.id === newTodo.id) el = newTodo
+            if (el.id === newTodo.id) return newTodo
             return el
           })
     }
