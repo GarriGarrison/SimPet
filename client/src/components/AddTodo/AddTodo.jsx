@@ -8,7 +8,7 @@ import Logo from '../UserForm/Logo/Logo';
 import classes from './addtodo.module.css'
 
 
-const AddTodo = ({anId}) => {
+const AddTodo = ({anId, hideAddTodo}) => {
   
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -48,7 +48,8 @@ const AddTodo = ({anId}) => {
     if (newTodo.length) {
       newTodo = Object.fromEntries(newTodo)    
       dispatch(addTodo(newTodo)) 
-      navigate('/')
+      // navigate('/')
+      hideAddTodo(false)
     }
   }  
 

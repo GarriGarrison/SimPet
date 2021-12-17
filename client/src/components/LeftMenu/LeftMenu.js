@@ -111,7 +111,7 @@ console.log('btn1');
     <div >
           {addTodo?
                 <div className={classes.addAnim}>
-                  <AddTodo anId={animalId}  redirect ={"/"}/>
+            <AddTodo anId={animalId} hideAddTodo={setAddTodo} />
                   <button className={classes.but} onClick={btnAnimalTodo}  type="button">Выйти</button>
                 </div>
     
