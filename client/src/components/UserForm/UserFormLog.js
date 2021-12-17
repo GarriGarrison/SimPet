@@ -9,7 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import Logo from "./Logo/Logo.jsx"
 
 
-const UserFormLog = () => {
+const UserFormLog = (props) => {
   const navigate = useNavigate()
   let location = useLocation()
   const dispatch = useDispatch()

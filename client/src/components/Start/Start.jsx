@@ -5,7 +5,7 @@ import { checkAuth } from "../../redux/actions/user.actions";
 import Room from "../Room/Room";
 import classes from './start.module.css'
 
-const Start = () => {
+const Start = (props) => {
 
   const navigate = useNavigate();
 
@@ -22,15 +22,18 @@ const Start = () => {
   }
 
   const playAudioReg = () => {
-       const audio = new Audio()
-    audio.src = "./sims_audio/редактор.mp3"
-    audio.play()
+    //    const audioReg = new Audio()
+    // audioReg.src = "./sims_audio/редактор.mp3"
+    // audio.play()
+    props.audReg.play()
   }
 
-   const playAudioLog = () => {
-       const audio = new Audio()
-    audio.src = "./sims_audio/редактор.mp3"
-    audio.play()
+  const playAudioLog = () => {
+    //  console.log('clic');
+    //    const audio = new Audio()
+    // audio.src = "./sims_audio/питомцы.mp3"
+    // audio.play()
+    props.audReg.play()
   }
 
   return (
