@@ -9,7 +9,7 @@ import classes from './todo.module.css'
 import { deleteTodo, editStatusTodo, editTodo } from "../../redux/actions/todoAll.action";
 
 
-function ToDo({todo, period_id, anId}) {
+function ToDo({todo, period_id, period, anId}) {
   console.log(todo);
   const dispatch = useDispatch()
   
@@ -119,6 +119,10 @@ function ToDo({todo, period_id, anId}) {
           { period_id == 3 && <span> {todo.day}</span> }
           { period_id == 4 && <span> {todo.day}</span> }
           { period_id == 5 && <span> {todo.day}</span> }
+          { period == "year" && <span> {todo.day}</span> }
+          { period == "week" && <span> {todo.day}</span> }
+          { period == "month" && <span> {todo.day}</span> }
+
 
 
           <span > {todo.time}</span>

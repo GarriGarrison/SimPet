@@ -36,7 +36,7 @@ function ToDoList() {
   return ( 
   <>
     {todos?.length && <div className={classes.container}>
-      {todos.map(el => <ToDo key={el.id} todo={el} anId={animalID}/>)}
+      {todos.map(el => <ToDo key={el.id} todo={el} anId={animalID} period={period}/>)}
     </div> }
   </>  
   );
