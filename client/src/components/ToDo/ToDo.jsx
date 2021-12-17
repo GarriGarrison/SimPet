@@ -124,7 +124,7 @@ function ToDo({todo, period_id, anId}) {
           <span > {todo.time}</span>
 
 
-                <div>
+                <div className={classes.btnbox}>
                   <button type="button" onClick={()=>{handleStatus(todo.title, todo.categoryNum)}} class="done">✔</button>
                   <button type="button" onClick={handleEditClick}>✏️</button>
                   <button type="button" onClick={handleDelClick}>x</button>

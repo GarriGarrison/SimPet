@@ -3,7 +3,7 @@ import classes from './leftmenu.module.css';
 import {SimStatus} from '../SimStatus/SimStatus'
 import { useNavigate } from "react-router-dom"
 import AddTodo from '../AddTodo/AddTodo';
-import AnimalLK from '../AnimalLK/AnimalLK';
+import AnimalLK from '../AnimalLk/AnimalLK';
 import { useDispatch, useSelector } from 'react-redux';
 
 

@@ -3,9 +3,9 @@ import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { checkAuth } from "./redux/actions/user.actions";
+
 import { useEffect, useState } from "react";
-import Main from "./components/Main/Main";
+
 import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
 

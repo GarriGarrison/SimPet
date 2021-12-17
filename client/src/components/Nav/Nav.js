@@ -18,35 +18,30 @@ import { checkAuth } from '../../redux/actions/user.actions';
     return (<>
     <div className={classes.nav}>
       <div className={classes.logo}>
-      <Link to={'/'}>
+      <Link to={'/'} className={classes.logoImg}>
         <Logo/>
       </Link>
         </div>
-      <div className={classes.navRight}>
-        <div className={classes.navRightUp}>
-
-        </div>
+      {/* <div className={classes.navRight}> */}
         <div className={classes.navRightDown}>
         <div className={classes.navRightLeft}>
-          <Link to={'/?period=day'}>
-            <button size="lg" variant="secondary">
+          <Link to={'/?period=day'} size="lg" variant="secondary">
                 day
-            </button>
               </Link>  
-              <Link to={'/?period=week'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'/?period=week'}>
+          
                 Week
-            </button>
+         
               </Link>  
-              <Link to={'/?period=month'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'/?period=month'}>
+           
                 Month
-            </button>
+     
             </Link> 
-              <Link to={'/?period=year'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'/?period=year'}>
+         
                 Year
-            </button>
+         
               </Link>
         </div> 
         <div className={classes.navRightUpMenu}>
@@ -55,25 +50,25 @@ import { checkAuth } from '../../redux/actions/user.actions';
                 LK
             </button>
               </Link>   */}
-              <Link to={'/catroom'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'/catroom'}>
+        
                 КОМНАТА КОТИКА
-            </button>
+       
               </Link>  
-              <Link to={'#'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'#'}>
+          
                 {user.name}
-            </button>
+           
             </Link> 
-              <Link to={'/exit'}>
-            <button size="lg" variant="secondary">
+              <Link size="lg" variant="secondary" to={'/exit'}>
+        
                 EXIT
-            </button>
+          
               </Link>
         </div> 
    
         </div>
-      </div>
+      {/* </div> */}
     </div>
     </>
   );
