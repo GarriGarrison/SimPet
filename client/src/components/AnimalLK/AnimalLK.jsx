@@ -9,6 +9,7 @@ import AvatarModal from "../AvatarModal/AvatarModal"
 
 
 const AnimalLK = (props) => {
+  const [reader, setReader] = useState(new FileReader())
 
   const upload = useRef()
 
@@ -36,7 +37,9 @@ const AnimalLK = (props) => {
     id: props.id  //null
   })
 
-   const [modalAvatarView, setModalAvatarView] = useState(false)
+  const [modalAvatarView, setModalAvatarView] = useState(false)
+  const [preAvatarView, setPreAvatarView] = useState(props.ava)
+
 
 
   const changeHandler = (e) => {
@@ -86,6 +89,19 @@ const AnimalLK = (props) => {
     setModalAvatarView(!modalAvatarView)
   }
 
+
+
+
+  const preAvatar = () => {
+    const file = upload.current.files[0]
+    reader.readAsDataURL(file); 
+
+    reader.addEventListener('load', function () {
+      setPreAvatarView(reader.result)
+    });
+  }
+  
+
  
 
   return (
@@ -103,13 +119,13 @@ const AnimalLK = (props) => {
 
       <form onSubmit={submitHandlerEdit} className={classes.form}  id="form">
          
-        <img src={animalData.avatar} alt="avatar" onClick={clickAvatar} id="avatarImg" width="350" height="250" />
+        <img src={preAvatarView} alt="avatar" onClick={clickAvatar} id="avatarImg" width="350" height="250" />
         {/* <div id="modalWindow" class="modal">
 		      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 		      <img class="modal-content" id="img01" />
 		      < div id="caption"></div>
 	      </div> */}
-        <input type="file" placeholder="avatar" name="avatar" ref={upload} />
+        <input type="file" placeholder="avatar" name="avatar" ref={upload} onChange={preAvatar} />
         
         <select onChange={changeHandler} placeholder="тип" value={animalData.type} name="type" form="form">
           <option value="cat">Кошка</option>
