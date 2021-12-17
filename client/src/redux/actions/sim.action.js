@@ -299,21 +299,21 @@ export const feedDone = ()=> ({
 })
 
 export const contactDone = ()=> ({
-    type: GET_CONTACT,
+    type: ADD_CONTACT,
     payload: 100
 })
 
 export const careDone = ()=> ({
-    type: GET_CARE,
+    type: ADD_CARE,
     payload: 100
 })
 
 export const partyDone = ()=> ({
-    type: GET_PARTY,
+    type: ADD_PARTY,
     payload: 100
 })
 
 export const hygeineDone = ()=> ({
-    type: GET_HYGEINE,
+    type: ADD_HYGEINE,
     payload: 100
 })

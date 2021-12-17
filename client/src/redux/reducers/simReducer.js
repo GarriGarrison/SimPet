@@ -70,7 +70,7 @@ export const simReducer = (state = {}, action) => {
       return {
         ...state,
         feed: {
-          num :action.payload,
+          num: action.payload,
         color}
       }
     }

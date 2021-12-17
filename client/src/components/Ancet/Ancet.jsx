@@ -55,6 +55,7 @@ const Ancet = () => {
       let eatForm = Object.entries(eat).filter((el) => el[1] ? el[1].trim() : el[1])
       if (eatForm.length) {
         eatForm = Object.fromEntries(eatForm)
+        eatForm.action = "Покормить:  "+eatForm.action
         eatForm.animal_id = animal_id
         eatForm.periodNum = 2
         eatForm.categoryNum = 1
@@ -84,7 +85,7 @@ const Ancet = () => {
         let today = new Date();
         let dat = new Date();
         dat.setDate(today.getDate()+1);
-        contactForm.periodNum == 1?dat.setDate(today.getDate()+1):contactForm.periodNum == 2?dat.setDate(today.getDate()+8):contactForm.periodNum == 3?dat.setDate(today.getMonth()+1):dat.setDate(today.getMonth()+1)
+        contactForm.periodNum == 2?dat.setDate(today.getDate()+1):contactForm.periodNum == 3?dat.setDate(today.getDate()+8):contactForm.periodNum == 4?dat.setDate(today.getMonth()+1):dat.setDate(today.getMonth()+9)
         let date = dat.toLocaleDateString();
         contactForm.date = date
         contactForm.action = "Время общаться!"
@@ -154,7 +155,7 @@ const Ancet = () => {
         
           <select onChange={changeContact} name="periodNum" form="form">
           <option value="3"> Любит иногда няшкаться</option>
-          <option value="2"> безумно общительный</option>
+          <option value="2"> Безумно общительный</option>
           <option value="4"> Лишний раз лучше не трогать</option>
           <option value="5">Интроверт</option>
           </select>
