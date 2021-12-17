@@ -6,11 +6,32 @@
     display: flex;
     justify-content: space-between;
     z-index: 100;
+    background: linear-gradient(to top, #12A6EE, #2151B5);
   }
+
   .logo{
     width:7%;
     padding-top: 3px;
     padding-left: 3px;
+    padding: 6px 0;
+    position: relative;
+  }
+  
+  .logoImg {    
+    position: relative;
+    z-index: 1;
+  }
+  
+  .logo::before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 0;
+    width: 140%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: linear-gradient(to right, #ffffff, rgba(255,255,255,0.7), rgba(255,255,255,0));
   }
   .navRight{
     width: 92%;
@@ -38,19 +59,21 @@
       font-weight: bold;
     }
   .navRightDown{
-    height: 75%;
-    width: 100%;
-    background: linear-gradient(to top, #12A6EE, #2151B5);
+    /* height: 75%; */
+    /* width: 100%; */
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-left: 1rem;
+    position: relative;
   }
   .navRightLeft{
     display: flex;
     justify-content: center;
   }
-  .navRightDown button{
+  .navRightDown a{
+    white-space: nowrap;
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -58,16 +81,23 @@
     /* background: #06B445; */
     width: 100%;
     border: 0;
-    padding: 15px;
+    padding: 10px;
     color: #FFFFFF;
     font-size: 14px;
-    -webkit-transition: all 1 ease;
-    transition: all 0.3s;
+    transition: 0.3s;
     cursor: pointer;
     text-align: center;
     border-radius: 5px;
+    margin-right: 7px;
+    text-decoration: none;
+
   }
-  .navRightDown button:hover,.form button:active,.form button:focus {
+
+  .navRightDown a:last-child {
+    margin-right: 0;
+  }
+
+  .navRightDown a:hover{
     background: #43A047;
   }
   .navRightUpMenu{
