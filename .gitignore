@@ -38,8 +38,12 @@ bower_components
 build/Release
 
 # Dependency directories
+server/node_modules/
+server/static/uploads/
+server/public/uploads/
 node_modules/
 jspm_packages/
+
 
 # TypeScript v1 declaration files
 typings/
@@ -93,6 +97,7 @@ dist
 
 # Serverless directories
 .serverless/
+sessions/
 
 # FuseBox cache
 .fusebox/

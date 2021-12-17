@@ -1,0 +1,16 @@
+export const GET_STATUS ="GET_STATUS"
+export const ADD_STATUS ="ADD_STATUS"
+
+export const GET_MEDICAL ="GET_MEDICAL"
+export const GET_FEED ="GET_FEED"
+export const GET_CONTACT ="GET_CONTACT"
+export const GET_CARE ="GET_CARE"
+export const GET_PARTY ="GET_PARTY"
+export const GET_HYGEINE ="GET_HYGEINE"
+
+export const ADD_MEDICAL ="ADD_MEDICAL"
+export const ADD_FEED ="ADD_FEED"
+export const ADD_CONTACT ="ADD_CONTACT"
+export const ADD_CARE ="ADD_CARE"
+export const ADD_PARTY ="ADD_PARTY"
+export const ADD_HYGEINE ="ADD_HYGEINE"
