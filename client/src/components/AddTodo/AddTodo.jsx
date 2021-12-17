@@ -46,8 +46,12 @@ const AddTodo = ({anId, hideAddTodo}) => {
     console.log(e.target);
     let newTodo = Object.entries(todo)
     if (newTodo.length) {
-      newTodo = Object.fromEntries(newTodo)    
-      newTodo.action = "Покормить:  "+newTodo.action
+      newTodo = Object.fromEntries(newTodo)
+      if(newTodo.categoryNum == 1){
+
+        newTodo.action = "Покормить:  "+newTodo.action
+
+      }    
       dispatch(addTodo(newTodo)) 
       // navigate('/')
       hideAddTodo(false)
