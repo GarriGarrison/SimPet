@@ -1,8 +1,8 @@
-import React,{useState} from 'react';
+import React,{useEffect, useState} from 'react';
 import classes from './room.module.css'
 
 
-const Room = () => {
+const Room = (props) => {
   
   const [coord,setCoord] =useState({x:449.52,y:1090.36})
   const [player,setPlayer] =useState("./room_Images/cat.png")
@@ -30,6 +30,10 @@ const Room = () => {
     }
     setCoord({x:(e.target.attributes.x.value),y:(e.target.attributes.y.value)}) ;
   }
+
+  // useEffect(() => {
+  //   props.audReg.pause()
+  // }, [])
 
 
   return (

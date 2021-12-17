@@ -42,6 +42,18 @@ function App() {
   const [animalAll, setAnimal] = useState(null)
   const [currAnimal, setCurAnimal] = useState(null)
 
+  const [reqAudio, setReqAudio] = useState(null)
+
+  useEffect(() => {
+    const aud = new Audio()
+    aud.src = "./sims_audio/редактор.mp3"
+    setReqAudio(aud)
+  }, [])
+
+  // useEffect(() => {
+  //   dispatch(checkAuth());
+  // },[]);  
+
   const user = useSelector(state=>state.user)
   const {id} = useSelector(state=>state.user)
 
@@ -93,26 +105,20 @@ function App() {
     <Paw count={6}/>
       <div className="App">
          <Routes >
-          <Route element={ <Nav user={user}/>}/>
+          <Route element={ <Nav user={user} audReg={reqAudio}/>}/>
     
           <Route path="/log" element={ <UserFormLog/>} />
           <Route path="/animal_reg" element={ <StartAnimalForm redirect={'/animal_reg/ancet'}/>} />
           <Route path="/animal_reg/ancet" element={ <StartAnimalAncet anId={animalId}/>} />
           <Route path="/reg" element={ <UserFormReg/>} />
-          <Route path="/start" element={ <Start/>} />
-
-          <Route path="/exit" element={
-            // <RequireAuth user={user} pathL={"/exit"}>
-            <LogOut/>
-            // </RequireAuth>
-            } />
+          <Route path="/start" element={<Start audReg={reqAudio}/>} />
+          <Route path="/exit" element={ <LogOut/>} />
 
           <Route path="/catroom" element={
             <> 
-            {/* <RequireAuth user={user} pathL={"/catroom"}> */}
-          <Nav user={user}/>
+              <Nav  user={user} audReg={reqAudio}/>  
             <div className="rom">
-            <Room/>
+            <Room />
             </div>
             {/* </RequireAuth> */}
 
@@ -121,22 +127,15 @@ function App() {
 
           <Route path="/" element={           
             <>
-            
-            <>
-            <Nav user={user}/>
-            <TogleAnimal animal={animalAll} />
+            <Nav user={user} audReg={reqAudio}/>
+            <TogleAnimal animal={animalAll}/>
             <ToDoList/>
             <RightBarMenu />
 
-            <LeftMenu/>
+            <LeftMenu audReg={reqAudio}/>
             </>
             
           
-        
-            {/* <RequireAuth user={user} pathL={"/"}> */}
-            
-            {/* </RequireAuth> */}
-            </>
          } />
           </Routes>  
       </div>
