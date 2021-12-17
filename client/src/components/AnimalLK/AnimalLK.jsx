@@ -119,7 +119,7 @@ const AnimalLK = (props) => {
 
       <form onSubmit={submitHandlerEdit} className={classes.form}  id="form">
          
-        <img src={preAvatarView} alt="avatar" onClick={clickAvatar} id="avatarImg" width="350" height="250" />
+        <img src={preAvatarView} alt="avatar"  id="avatarImg" width="350" height="250" />
         {/* <div id="modalWindow" class="modal">
 		      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
 		      <img class="modal-content" id="img01" />
