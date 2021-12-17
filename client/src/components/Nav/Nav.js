@@ -8,12 +8,23 @@ import SimplePaw from '../Paw/SimplePaw';
 import { checkAuth } from '../../redux/actions/user.actions';
 
 
- const Nav = ({user}) => {
+//  const Nav = ({user, audReg}) => { 
+const Nav = (props) => { 
   
-  console.log(user);
-  if(!user.name){ 
-  return  <Navigate to='/start'/>}
+  // console.log(user);
+  if(!props.user.name){
+  return  <Navigate to='/start'/>} 
 
+  //  const clickBtnRoom = () => {
+  //     auzdReg.pause()
+  //  }
+
+  function clickBtnRoom(){
+    //setChangeAva(true)
+    props.audReg.pause()
+    // console.log(props);
+  }
+   
 
     return (<>
     <div className={classes.nav}>
@@ -50,15 +61,15 @@ import { checkAuth } from '../../redux/actions/user.actions';
                 LK
             </button>
               </Link>   */}
-              <Link size="lg" variant="secondary" to={'/catroom'}>
-        
-                КОМНАТА КОТИКА
-       
+              <Link to={'/catroom'}>
+            <button type='button' size="lg" variant="secondary" onClick={clickBtnRoom}>
+                  КОМНАТА КОТИКА
+            </button>
               </Link>  
-              <Link size="lg" variant="secondary" to={'#'}>
-          
-                {user.name}
-           
+              <Link to={'#'}>
+            <button size="lg" variant="secondary">
+                {props.user.name}
+            </button>
             </Link> 
               <Link size="lg" variant="secondary" to={'/exit'}>
         
