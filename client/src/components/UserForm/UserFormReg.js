@@ -43,13 +43,18 @@ const UserFormReg = () => {
   }
 
   const submitHandlerUp = (e) => {
+
+    // const audio = document.getElementById('may')
+    // audio.play()
+  
+
     e.preventDefault()
     let payload = Object.entries(userSign).filter((el) => el[1] ? el[1].trim() : el[1])
     if (payload.length) {
       payload = Object.fromEntries(payload)
       console.log(payload);
-      dispatch(signUp(payload))
-      navigate('/animal_reg')
+      dispatch(signUp(payload))  
+      navigate('/animal_reg') 
     }
   }
   const submitHandlerIn = (e) => {
@@ -73,6 +78,7 @@ const UserFormReg = () => {
             Есть учетная запись? <Link to={'/log'}>Войти</Link>
           </p>
         </form>
+        {/* <audio src="./sims_audio/test.mp3" type="audio/mp4" className="may" id="may"/> */}
       </div>
     );
     }

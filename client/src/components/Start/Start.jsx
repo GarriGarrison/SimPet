@@ -21,15 +21,27 @@ const Start = () => {
     navigate("/?period=day");
   }
 
+  const playAudioReg = () => {
+       const audio = new Audio()
+    audio.src = "./sims_audio/редактор.mp3"
+    audio.play()
+  }
+
+   const playAudioLog = () => {
+       const audio = new Audio()
+    audio.src = "./sims_audio/редактор.mp3"
+    audio.play()
+  }
+
   return (
     <>
       <Room />
       <div className={classes.container}>
         <Link to={"/reg"}>
-          <button>Какая офигенная игра! ЗАРЕГАТЬСЯ</button>
+          <button onClick={playAudioReg}>Какая офигенная игра! ЗАРЕГАТЬСЯ</button>
         </Link>
         <Link to={"/log/"}>
-          <button>А я молодецб я зареган</button>
+          <button onClick={playAudioLog}>А я молодец я зареган</button>
         </Link>
       </div>
     </>

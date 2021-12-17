@@ -3,9 +3,9 @@ import { Routes, Route } from "react-router-dom";
 
 import "./App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { checkAuth } from "./redux/actions/user.actions";
+
 import { useEffect, useState } from "react";
-import Main from "./components/Main/Main";
+
 import Paw from "./components/Paw/Paw";
 import LogOut from "../src/components/UserForm/LogOut";
 
@@ -21,10 +21,9 @@ import LeftMenu from "./components/LeftMenu/LeftMenu";
 import StartAnimalForm from "./components/StartAnimalForm/StartAnimalForm";
 import StartAnimalAncet from "./components/StartAnimalAncet/StartAnimalAncet";
 import TogleAnimal from "./components/TogleAnimal/TogleAnimal";
-import { timeoutCare,  timeoutFeed, timeoutMedical } from "./redux/actions/sim.action";
-import AnimalLK from "./components/AnimalLk/AnimalLK";
-import AddTodo from "./components/AddTodo/AddTodo";
-import { todoAllReduser } from "./redux/reducers/todoAll.reducer";
+
+
+
 import ToDoList from "./components/TodoList/ToDoList";
 import Room from "./components/Room/Room";
 
