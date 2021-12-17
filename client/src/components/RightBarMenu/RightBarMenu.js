@@ -62,9 +62,9 @@ console.log(localStorage.user);
 
 
 let timeout = {
-  feed: 10800000,
+  feed: 10800,
   care: 700000000,
-  contact: 150000,
+  contact: 100000,
   medical: 200000,
   party: 5000000,
   hygeine: 600000

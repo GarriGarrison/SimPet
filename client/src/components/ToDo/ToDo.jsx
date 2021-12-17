@@ -100,7 +100,8 @@ function ToDo({todo, period_id, anId}) {
       {editClik?
         <>
       <form onSubmit={handleEdit} className={classes.form}>
-      {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+      {/* {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+      {todoLoc.categoryNum  === 1 &&  <span>Покормить: </span> } */}
       {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
           Ok
@@ -113,7 +114,7 @@ function ToDo({todo, period_id, anId}) {
         <> 
           
           <div id={todo.id} className={classes.list}>
-            {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+            {todoLoc.title  === 'Feed' }
           <span >{todo.action}</span>
           { period_id == 3 && <span> {todo.day}</span> }
           { period_id == 4 && <span> {todo.day}</span> }
