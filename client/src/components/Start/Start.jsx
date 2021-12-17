@@ -41,10 +41,10 @@ const Start = (props) => {
       <Room />
       <div className={classes.container}>
         <Link to={"/reg"}>
-          <button onClick={playAudioReg}>Какая офигенная игра! ЗАРЕГАТЬСЯ</button>
+          <button onClick={playAudioReg}>Зарегистрироваться</button>
         </Link>
         <Link to={"/log/"}>
-          <button onClick={playAudioLog}>А я молодец я зареган</button>
+          <button onClick={playAudioLog}>У меня есть аккаунт</button>
         </Link>
       </div>
     </>

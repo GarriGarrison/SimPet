@@ -47,6 +47,7 @@ const AddTodo = ({anId, hideAddTodo}) => {
     let newTodo = Object.entries(todo)
     if (newTodo.length) {
       newTodo = Object.fromEntries(newTodo)    
+      newTodo.action = "Покормить:  "+newTodo.action
       dispatch(addTodo(newTodo)) 
       // navigate('/')
       hideAddTodo(false)

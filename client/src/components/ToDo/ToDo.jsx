@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
-import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone, setStatus } from "../../redux/actions/sim.action"
+import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone, setFeed, setStatus } from "../../redux/actions/sim.action"
 
 import classes from './todo.module.css'
 
@@ -43,7 +43,7 @@ function ToDo({todo, period_id, anId}) {
       
       
       case 'Feed'||1:
-           dispatch(feedDone())
+           dispatch(setFeed(100))
            break
       
       case 'Contact'||4:
@@ -100,7 +100,8 @@ function ToDo({todo, period_id, anId}) {
       {editClik?
         <>
       <form onSubmit={handleEdit} className={classes.form}>
-      {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+      {/* {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+      {todoLoc.categoryNum  === 1 &&  <span>Покормить: </span> } */}
       {inputs.map(el=> <input key={el.id} type={el.attrs.type} value={el.attrs.value} onChange={el.handleText} name={el.attrs.name}/>  )}
         <button type = "submit">
           Ok
@@ -113,7 +114,7 @@ function ToDo({todo, period_id, anId}) {
         <> 
           
           <div id={todo.id} className={classes.list}>
-            {todoLoc.title  === 'Feed' &&  <span>Покормить: </span> }
+            {todoLoc.title  === 'Feed' }
           <span >{todo.action}</span>
           { period_id == 3 && <span> {todo.day}</span> }
           { period_id == 4 && <span> {todo.day}</span> }
@@ -123,7 +124,7 @@ function ToDo({todo, period_id, anId}) {
           <span > {todo.time}</span>
 
 
-                <div>
+                <div className={classes.btnbox}>
                   <button type="button" onClick={()=>{handleStatus(todo.title, todo.categoryNum)}} class="done">✔</button>
                   <button type="button" onClick={handleEditClick}>✏️</button>
                   <button type="button" onClick={handleDelClick}>x</button>
