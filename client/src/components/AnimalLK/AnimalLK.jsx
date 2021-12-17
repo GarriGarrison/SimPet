@@ -21,9 +21,9 @@ const AnimalLK = (props) => {
   //   dispatch(checkAuth())
   // }, [])
 
-  if (!user) {
-    navigate('/')
-  }
+  // if (!user) {
+  //   navigate('/')
+  // }
 
   const [animalData, setAnimalData] = useState({
     type: props.type, //'cat',

@@ -1,7 +1,7 @@
 import { useEffect, useState, memo } from "react"
 import useInput from '../../hooks/inputHook'
 import { useDispatch } from 'react-redux'
-import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone, setStatus } from "../../redux/actions/sim.action"
+import { careDone, contactDone,  feedDone, hygeineDone, medicinDone, partyDone, setFeed, setStatus } from "../../redux/actions/sim.action"
 
 import classes from './todo.module.css'
 
@@ -43,7 +43,7 @@ function ToDo({todo, period_id, anId}) {
       
       
       case 'Feed'||1:
-           dispatch(feedDone())
+           dispatch(setFeed(100))
            break
       
       case 'Contact'||4:

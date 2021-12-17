@@ -12,10 +12,35 @@ const RightBarMenu = () => {
   let size =100
   if(localStorage.sizeR) size = localStorage.sizeR
   const [zoom, setZoom] = useState(size)
+  const [timeoutFeed, setTimeoutFeed] = useState(null)
+
+
   const [isStat,setStat] = useState(true)
   const [activPosition, setPosition] = useState('M2217.2 223.85l272.71 0 0 -33.61 0 -173.43c0,-9.26 -7.55,-16.81 -16.81,-16.81l-239.1 0 -0.21 0c-9.16,0.11 -16.6,7.62 -16.6,16.8l0 207.05z')
-
+  
+  const {id} = useSelector(state=>state.user)
+  const animId = useSelector(state=>state.animal.currAnimal.id)
   const dispatch = useDispatch()
+  useEffect(()=>{
+  if(animId){
+    if (animId == 1){
+     dispatch(setFeed(localStorage.feed1))
+     dispatch(setCare(localStorage.care1))}
+  
+     else{dispatch(setFeed(100))
+       dispatch(setCare(100))
+  
+     }
+     // dispatch(setContact(localStorage.user.animId.contact.num))
+     // dispatch(setCare(localStorage.user.animId.care.num))
+     // dispatch(setParty(localStorage.user.animId.party.num))
+     // dispatch(setHygeine(localStorage.user.animId.hygeine.num))
+     // dispatch(setMedical(localStorage.user.animId.medical.num))
+   
+   }
+  
+  },[animId])
+  // const user = useSelector((state) => state.user)
   const sim = useSelector((state) => state.sim.status)
   const contactProgress = useSelector((state) => state.sim.contact.num)
   const medicalProgress = useSelector((state) => state.sim.medical.num)
@@ -24,24 +49,22 @@ const RightBarMenu = () => {
   const feedProgress= useSelector((state) => state.sim.feed.num)
   const hygeineProgress = useSelector((state) => state.sim.hygeine.num)
 
+// console.log();
+  
   const feedColor = useSelector((state) => state.sim.feed.color)
   const contactColor = useSelector((state) => state.sim.contact.color)
   const medicalColor = useSelector((state) => state.sim.medical.color)
   const careColor = useSelector((state) => state.sim.care.color)
   const partyColor = useSelector((state) => state.sim.party.color)
   const hygeineColor = useSelector((state) => state.sim.hygeine.color)
+     //хардкод для ползунка
+console.log(localStorage.user);
 
-  
 
-//   let start = 12*60*60*1000
-//  let end = 12.008*60*60*1000
-
-// let latitude = ((end-start)*100)/70 //вряемя проходждения прогрессбара( время от последнего до дедлайна + 30%)
-// const timeout = latitude/100
 let timeout = {
-  feed: 100,
+  feed: 10800000,
   care: 700000000,
-  contact: 150,
+  contact: 150000,
   medical: 200000,
   party: 5000000,
   hygeine: 600000
@@ -75,11 +98,16 @@ let timeout = {
 
   
   useEffect(()=>{
+
+    if(timeoutFeed){
+      clearTimeout(timeoutFeed)
+    }
+
     if (feedProgress>0){
-    setTimeout(() => dispatch(setFeed(feedProgress - 1)), timeout.feed)
+      setTimeoutFeed(setTimeout(() => dispatch(setFeed(feedProgress - 1)), timeout.feed))
   }
     
-    }, [feedProgress, sim])
+    }, [feedProgress])
 
 
 useEffect(()=>{
