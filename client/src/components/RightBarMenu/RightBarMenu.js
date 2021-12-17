@@ -10,10 +10,8 @@ import { setCare, setContact, setFeed, setParty, setHygeine, setStatus, setMedic
 const RightBarMenu = () => {
 
   let size =100
-  if(localStorage.size) size = localStorage.size
-  console.log(size);
+  if(localStorage.sizeR) size = localStorage.sizeR
   const [zoom, setZoom] = useState(size)
-  const [local, setLocal] = useState(localStorage.size)
   const [isStat,setStat] = useState(true)
   const [activPosition, setPosition] = useState('M2217.2 223.85l272.71 0 0 -33.61 0 -173.43c0,-9.26 -7.55,-16.81 -16.81,-16.81l-239.1 0 -0.21 0c-9.16,0.11 -16.6,7.62 -16.6,16.8l0 207.05z')
 
@@ -41,9 +39,9 @@ const RightBarMenu = () => {
 // let latitude = ((end-start)*100)/70 //вряемя проходждения прогрессбара( время от последнего до дедлайна + 30%)
 // const timeout = latitude/100
 let timeout = {
-  feed: 10000000,
+  feed: 100,
   care: 700000000,
-  contact: 150000,
+  contact: 150,
   medical: 200000,
   party: 5000000,
   hygeine: 600000
@@ -117,11 +115,11 @@ useEffect(()=>{
 
   function ZoomUp(){
     setZoom(zoom+5)
-    localStorage.size = zoom
+    localStorage.sizeR = zoom
   }
   function ZoomDown(){
     setZoom(zoom-5)
-    localStorage.size = zoom
+    localStorage.sizeR = zoom
 
   }
   function toggleStat(e){
