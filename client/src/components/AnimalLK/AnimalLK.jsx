@@ -5,6 +5,7 @@ import { checkAuth } from "../../redux/actions/user.actions"
 import { editAnimal } from "../../redux/actions/animal.action"
 import classes from "./animallk.module.css"
 import Logo from "../UserForm/Logo/Logo"
+import AvatarModal from "../AvatarModal/AvatarModal"
 
 
 const AnimalLK = (props) => {
@@ -35,6 +36,8 @@ const AnimalLK = (props) => {
     id: props.id  //null
   })
 
+   const [modalAvatarView, setModalAvatarView] = useState(false)
+
 
   const changeHandler = (e) => {
     setAnimalData(prev => ({...prev, [e.target.name]: e.target.value}))
@@ -51,14 +54,37 @@ const AnimalLK = (props) => {
       payload.age = +payload.age
       payload.weight = +payload.weight
       payload.file = upload.current.files[0]
-      console.log(props.ava,upload.current.files[0]);
-      payload.avatar = upload.current.files[0]? upload.current.files[0].name: props.ava
+      payload.avatar = upload.current.files[0] ? upload.current.files[0].name : props.ava
       
       console.log(payload,'+++++++++++++++++++');
       dispatch(editAnimal(payload)) 
       props.hideLk(false)
     }
-  } 
+  }
+
+  // const clickAvatar = (e) => {
+//     const modal = document.getElementById('myModal');
+//     const img = document.getElementById('myImg');
+//     const modalImg = document.getElementById('img01');
+//     const captionText = document.getElementById('caption');
+
+//     img.onclick = function () {
+// 	  modal.style.display = 'block';
+// 	  modalImg.src = this.src;
+// 	  captionText.innerHTML = this.alt;
+// }
+
+// const span = document.getElementByClassName('close')[0];
+// span.onclick = function () {
+// 	console.log('click')
+// 	modal.style.display = 'none';
+
+// }
+  // }
+
+    function clickAvatar() {
+    setModalAvatarView(!modalAvatarView)
+  }
 
  
 
@@ -68,8 +94,23 @@ const AnimalLK = (props) => {
         <Logo />
       </div>
 
+      <div>
+        {modalAvatarView ?
+          <AvatarModal picture={animalData.avatar} /> : <> </>
+          
+        }
+      </div>
+
       <form onSubmit={submitHandlerEdit} className={classes.form}  id="form">
          
+        <img src={animalData.avatar} alt="avatar" onClick={clickAvatar} id="avatarImg" width="350" height="250" />
+        {/* <div id="modalWindow" class="modal">
+		      <span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+		      <img class="modal-content" id="img01" />
+		      < div id="caption"></div>
+	      </div> */}
+        <input type="file" placeholder="avatar" name="avatar" ref={upload} />
+        
         <select onChange={changeHandler} placeholder="тип" value={animalData.type} name="type" form="form">
           <option value="cat">Кошка</option>
           <option value="dog">Собака</option>
@@ -78,8 +119,6 @@ const AnimalLK = (props) => {
           <option value="turtle">Черепахи</option>
         </select>
         <input onChange={changeHandler} type="text" value={animalData.name} placeholder="имя" name="name" />
-        {/* <input onChange={changeHandler} type="text" placeholder="avatar" name="avatar" /> */}
-        <input type="file" placeholder="avatar" name="avatar" ref={upload} />
         <input onChange={changeHandler} type="text" value={animalData.breed} placeholder="порода" name="breed" />
         <select onChange={changeHandler} name="sex" value={animalData.sex} form="form">
           <option value="1">Мальчик(самец)</option>

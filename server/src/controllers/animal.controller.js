@@ -1,4 +1,4 @@
-const { Animal, Todo, Task, Action, Category } = require('../db/models');
+const { Animal } = require('../db/models');
 
 
 const getAllAnimal = async (req, res) => {
@@ -24,8 +24,6 @@ const addAnimal = async (req, res) => {
   if (type && name && breed && sex && age && weight && user_id) {
     if (!req.files || Object.keys(req.files).length === 0) {
       try {
-        // const createAnimal = req.bo
-        // const addAnimal = await Animal.create(req.body);
         const addAnimal = await Animal.create({
           type,
           avatar: `${HOST}:${PORT}/uploads/avatar.webp`,
@@ -114,15 +112,13 @@ const editAnimal = async (req, res) => {
   sampleFile.mv(`${uploadPath}/${fullname}`, async (err) => {
 
     if (err) {
-      
       return res.status(500).send(err);
-      
     }
 
     try {
       await Animal.update({
         ...req.body,
-        avatar: `${HOST}:${PORT}/uploads/${fullname}`   //fullname
+        avatar: `${HOST}:${PORT}/uploads/${fullname}`
       }, {
         where: { id: req.params.id }
       });
