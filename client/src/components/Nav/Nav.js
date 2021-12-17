@@ -61,19 +61,15 @@ const Nav = (props) => {
                 LK
             </button>
               </Link>   */}
-              <Link to={'/catroom'}>
-            <button type='button' size="lg" variant="secondary" onClick={clickBtnRoom}>
+              <Link onClick={clickBtnRoom} to={'/catroom'}>
                   КОМНАТА КОТИКА
-            </button>
               </Link>  
               <Link to={'#'}>
-            <button size="lg" variant="secondary">
                 {props.user.name}
-            </button>
             </Link> 
               <Link size="lg" variant="secondary" to={'/exit'}>
         
-                EXIT
+               ВЫХОД
           
               </Link>
         </div> 
